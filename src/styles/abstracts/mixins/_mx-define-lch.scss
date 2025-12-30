@@ -10,9 +10,9 @@
 ///     @include define-adjusted-lch($color-accent, --color-accent-hover, -15);
 ///   }
 
-@use "sass:color";
-@use "sass:math";
-@use "sass:string";
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:string';
 
 /// Define a base LCH color from a Sass color variable
 ///
@@ -24,11 +24,11 @@
 ///   // Output: --color-accent: lch(90% 15 85);
 
 @mixin define-lch($base-color, $css-var-name) {
-  $l: math.div(color.channel($base-color, "lightness", $space: lch), 1%);
-  $c: math.div(color.channel($base-color, "chroma", $space: lch), 1);
-  $h: math.div(color.channel($base-color, "hue", $space: lch), 1deg);
+  $l: math.div(color.channel($base-color, 'lightness', $space: lch), 1%);
+  $c: math.div(color.channel($base-color, 'chroma', $space: lch), 1);
+  $h: math.div(color.channel($base-color, 'hue', $space: lch), 1deg);
 
-  #{$css-var-name}: string.unquote("lch(#{$l}% #{$c} #{$h})");
+  #{$css-var-name}: string.unquote('lch(#{$l}% #{$c} #{$h})');
 }
 
 /// Define an LCH color with alpha transparency
@@ -42,11 +42,11 @@
 ///   // Output: --color-overlay-medium: lch(10% 5 30 / 0.65);
 
 @mixin define-lch-alpha($base-color, $css-var-name, $alpha: 1) {
-  $l: math.div(color.channel($base-color, "lightness", $space: lch), 1%);
-  $c: math.div(color.channel($base-color, "chroma", $space: lch), 1);
-  $h: math.div(color.channel($base-color, "hue", $space: lch), 1deg);
+  $l: math.div(color.channel($base-color, 'lightness', $space: lch), 1%);
+  $c: math.div(color.channel($base-color, 'chroma', $space: lch), 1);
+  $h: math.div(color.channel($base-color, 'hue', $space: lch), 1deg);
 
-  #{$css-var-name}: string.unquote("lch(#{$l}% #{$c} #{$h} / #{$alpha})");
+  #{$css-var-name}: string.unquote('lch(#{$l}% #{$c} #{$h} / #{$alpha})');
 }
 
 /// Define an adjusted LCH color with modified lightness
@@ -70,14 +70,14 @@
   $l-adjustment: 0,
   $c-multiplier: 1
 ) {
-  $l: math.div(color.channel($base-color, "lightness", $space: lch), 1%);
-  $c: math.div(color.channel($base-color, "chroma", $space: lch), 1);
-  $h: math.div(color.channel($base-color, "hue", $space: lch), 1deg);
+  $l: math.div(color.channel($base-color, 'lightness', $space: lch), 1%);
+  $c: math.div(color.channel($base-color, 'chroma', $space: lch), 1);
+  $h: math.div(color.channel($base-color, 'hue', $space: lch), 1deg);
 
   $l-adjusted: $l + $l-adjustment;
   $c-adjusted: $c * $c-multiplier;
 
-  #{$css-var-name}: string.unquote("lch(#{$l-adjusted}% #{$c-adjusted} #{$h})");
+  #{$css-var-name}: string.unquote('lch(#{$l-adjusted}% #{$c-adjusted} #{$h})');
 }
 /// Define an adjusted LCH color with lightness adjustment AND alpha
 ///
@@ -96,13 +96,13 @@
   $l-adjustment: 0,
   $alpha: 1
 ) {
-  $l: math.div(color.channel($base-color, "lightness", $space: lch), 1%);
-  $c: math.div(color.channel($base-color, "chroma", $space: lch), 1);
-  $h: math.div(color.channel($base-color, "hue", $space: lch), 1deg);
+  $l: math.div(color.channel($base-color, 'lightness', $space: lch), 1%);
+  $c: math.div(color.channel($base-color, 'chroma', $space: lch), 1);
+  $h: math.div(color.channel($base-color, 'hue', $space: lch), 1deg);
 
   $l-adjusted: $l + $l-adjustment;
 
   #{$css-var-name}: string.unquote(
-    "lch(#{$l-adjusted}% #{$c} #{$h} / #{$alpha})"
+    'lch(#{$l-adjusted}% #{$c} #{$h} / #{$alpha})'
   );
 }

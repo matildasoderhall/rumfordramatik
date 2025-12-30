@@ -1,0 +1,31 @@
+/// Viewport and Grid System Tokens
+
+/// Total columns in the grid system
+$columnCount: 12;
+
+/// Small devices breakpoint (320px)
+$breakpoint-sm: 20rem;
+
+/// Tablets and up breakpoint (800px)
+$breakpoint-md: 50rem;
+
+/// Desktop and up breakpoint (1280px)
+$breakpoint-lg: 80rem;
+
+/// Maximum width for boxed containers (1440px)
+$maxContentWidth: 90rem;
+
+:root {
+  /// Viewport-relative unit that switches between vw and vh
+  /// based on screen aspect ratio to maintain consistent scaling
+  /// on both standard and ultra-wide displays
+  --vwx: 1vw;
+
+  @media screen and (min-aspect-ratio: 2/1) and (min-height: 950px) {
+    --vwx: 2vh;
+  }
+
+  /// Fluid grid gap that scales responsively from 1rem (mobile) to 2rem (desktop)
+  /// Used by the Grid component for consistent spacing between columns
+  --grid-gap: clamp(1rem, 0.5856rem + 1.768 * var(--vwx), 2rem);
+}

@@ -26,4 +26,6 @@ $black: #000000;
 
   // --- BORDERS / UTILS ---
   @include mx.define-lch-alpha($black, --color-border, 0.2);
+
+  --color-focus: var(--color-accent);
 }

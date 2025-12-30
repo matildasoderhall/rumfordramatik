@@ -1,4 +1,4 @@
-@use "../tokens" as *;
+@use '../tokens' as *;
 
 html {
   scroll-behavior: smooth;
@@ -11,7 +11,7 @@ body {
   background-color: var(--color-background);
   color: var(--color-text);
 
-  font-family: $font-serif; 
+  font-family: $font-serif;
   -webkit-font-smoothing: antialiased;
 
   &:has(dialog[open]) {
@@ -19,7 +19,11 @@ body {
   }
 }
 
-h1, h2, h3, h4, .display-text {
+h1,
+h2,
+h3,
+h4,
+.display-text {
   font-family: $font-condensed;
   font-weight: 700;
   line-height: 1.1;
