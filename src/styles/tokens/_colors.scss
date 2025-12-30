@@ -1,0 +1,29 @@
+@use '../abstracts/mixins' as mx;
+
+$primary: #a81c22;
+$accent: #1501a3;
+$bg: #f5f5f0;
+$white: #ffffff;
+$black: #000000;
+
+:root {
+  // --- BACKGROUNDS ---
+  @include mx.define-lch($bg, --color-bg);
+  @include mx.define-lch($white, --color-white);
+
+  // --- TEXT ---
+  @include mx.define-lch($black, --color-text);
+
+  // --- BRAND COLORS ---
+  @include mx.define-lch($primary, --color-primary);
+  @include mx.define-adjusted-lch($primary, --color-primary-hover, -10);
+  @include mx.define-adjusted-lch($primary, --color-primary-active, -15);
+  @include mx.define-lch-alpha($primary, --color-primary-transparent, 0.5);
+
+  @include mx.define-lch($accent, --color-accent);
+  @include mx.define-adjusted-lch($accent, --color-accent-hover, -10);
+  @include mx.define-adjusted-lch($accent, --color-accent-active, -15);
+
+  // --- BORDERS / UTILS ---
+  @include mx.define-lch-alpha($black, --color-border, 0.2);
+}
