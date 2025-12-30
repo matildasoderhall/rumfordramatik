@@ -1,0 +1,21 @@
+@use './viewport' as *;
+
+:root {
+  // Base Scale (Fixed)
+  --space-3xs: 0.25rem; // 4px
+  --space-2xs: 0.5rem; // 8px
+  --space-xs: 0.75rem; // 12px
+  --space-s: 1rem; // 16px
+  --space-m: 1.5rem; // 24px
+  --space-l: 2rem; // 32px
+  --space-xl: 3rem; // 48px
+  --space-2xl: 4rem; // 64px
+  --space-3xl: 6rem; // 96px
+
+  // Fluid Spacing
+  // 24px (mobile) to 48px (desktop)
+  --space-fluid: clamp(1.5rem, 1rem + 2 * var(--vwx), 3rem);
+
+  // Section Spacing (For big gaps between layout parts)
+  --space-section: clamp(3rem, 2rem + 4 * var(--vwx), 6rem);
+}
