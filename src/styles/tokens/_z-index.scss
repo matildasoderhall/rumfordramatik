@@ -1,0 +1,20 @@
+$z-layers: (
+  'below': -1,
+  'default': 1,
+  'decor': 10,
+  // Your scribbles/arrows
+  'content': 20,
+  // Text that must be readable
+  'header': 100,
+  // The sticky nav bar
+  'modal': 1000,
+  // Popups/Menu overlays
+  'tooltip': 2000,
+);
+
+@function z($layer) {
+  @if not map-has-key($z-layers, $layer) {
+    @warn "No z-index found in $z-layers map for `#{$layer}`. Property omitted.";
+  }
+  @return map-get($z-layers, $layer);
+}
