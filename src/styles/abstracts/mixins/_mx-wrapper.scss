@@ -1,0 +1,9 @@
+@use '../../tokens/viewport' as *;
+
+@mixin wrapper {
+  width: 100%;
+  max-width: $maxContentWidth;
+  margin-inline: auto;
+
+  padding-inline: var(--space-fluid);
+}
