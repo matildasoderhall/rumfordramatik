@@ -2,7 +2,6 @@ import styles from './icon.module.scss';
 import classNames from 'classnames';
 import type React from 'react';
 import { IconFill, IconSize } from './Icon.types';
-import type { Spacing } from '../types';
 
 interface IconProps {
   /**
@@ -13,10 +12,10 @@ interface IconProps {
 
   /**
    * Sets the dimensions (width and height) of the icon.
-   * Accepts either a specific IconSize token or a general Spacing token.
+   * Accepts a specific IconSize token.
    * @default IconSize.FsMD
    */
-  size?: IconSize | Spacing;
+  size?: IconSize;
 
   /**
    * Determines the color variant applied to the icon's SVG path.
