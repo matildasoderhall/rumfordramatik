@@ -1,0 +1,64 @@
+.icon {
+ display: inline-flex;
+ width: auto;
+
+ svg {
+    color: inherit; 
+  }
+}
+
+.icon-fill {
+  &--inherit {
+    color: inherit;
+  }
+}
+
+.icon-size {
+  &--heading-2xl {
+    height: var(--fs-900) !important;
+  }
+
+  &--heading-xl {
+    height: var(--fs-800) !important;
+  }
+
+  &--heading-lg {
+    height: var(--fs-700) !important;
+  }
+
+  &--heading-md {
+    height: var(--fs-600) !important;
+  }
+
+  &--heading-sm {
+    height: var(--fs-500) !important;
+  }
+
+  &--heading-xs {
+    height: var(--fs-400) !important;
+  }
+
+  &--text-lg {
+    height: var(--text-500) !important;
+  }
+  
+  &--text-md {
+    height: var(--text-400) !important;
+  }
+  
+  &--text-base {
+    height: var(--text-300) !important;
+  }
+  
+  &--text-sm {
+    height: var(--text-200) !important;
+  }
+  
+  &--text-xs {
+    height: var(--text-100) !important;
+  }
+
+  &--space-2xl {
+    height: var(--space-2xl) !important;
+  }
+}
