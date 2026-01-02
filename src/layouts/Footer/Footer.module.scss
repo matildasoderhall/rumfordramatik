@@ -1,5 +1,6 @@
 @use '@styles/tokens' as *;
 @use '@styles/abstracts/mixins' as *;
+@use '@styles/tokens/viewport' as *;
 
 .footer {
   font-family: $font-condensed;
@@ -13,6 +14,8 @@
 
   margin-inline: 15%;
   gap: var(--space-s);
+
+  @include wrapper;
 }
 
 .links {
@@ -33,7 +36,7 @@
 }
 
 .link {
-    color: var(--color-text);
+  color: var(--color-text);
   transition: color 0.2s ease;
 
   &:hover,
