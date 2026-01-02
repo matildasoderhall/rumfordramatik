@@ -19,5 +19,7 @@ export enum IconSize {
     TextSM = 'text-sm',
     TextXS = 'text-xs',
     Inherit = "Inherit",
+
+    Space2XL = 'space-2xl'
 }
 
