@@ -1,3 +1,4 @@
+import styles from './Main.module.scss';
 import type React from 'react';
 
 interface MainProps {
@@ -11,5 +12,5 @@ interface MainProps {
  * Used within MainLayout to wrap route content.
  */
 export const Main = ({ children }: MainProps) => {
-  return <main>{children}</main>;
+  return <main className={styles.main}>{children}</main>;
 };
