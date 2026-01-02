@@ -1,0 +1,132 @@
+@use '@styles/abstracts/mixins' as *;
+@use '@styles/tokens' as *;
+
+.nav {
+  position: fixed;
+  z-index: z('modal');
+  inset: 0;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  display: flex;
+  justify-content: space-between;
+
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  height: 100vh;
+  height: 100dvh;
+  width: 100vw;
+
+  visibility: hidden;
+
+  &.isOpen {
+    visibility: visible;
+
+    transform: translateX(0);
+    transition:
+      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      visibility 0s 0s;
+  }
+
+  @include mq(lg) {
+    width: 40vw;
+    left: auto;
+    right: 0;
+    background-color: var(--color-bg);
+
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+    border-left: 1px solid var(--color-border);
+  }
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-l);
+
+  margin: auto;
+
+  font-family: $font-condensed;
+  font-size: var(--text-500);
+}
+
+.link {
+  &:hover {
+    color: var(--color-primary);
+    transition: color 0.2s ease-in-out;
+  }
+
+  &.active {
+    border-bottom: 1px solid var(--color-text);
+
+    &:hover {
+      color: var(--color-text);
+      cursor: default;
+    }
+  }
+}
+
+.menuToggleBtn {
+  color: var(--color-text);
+  z-index: z('default');
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    color: var(--color-primary);
+    transition: color 0.2s ease-in-out;
+  }
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.closeBtn {
+  position: absolute;
+  top: var(--space-m);
+  right: var(--space-fluid);
+
+  color: var(--color-text);
+  z-index: (z('modal') + 1);
+
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.3s ease 0.1s;
+
+  &:hover {
+    color: var(--color-primary);
+    transition: color 0.2s ease-in-out;
+  }
+
+  @include mq(lg) {
+    left: var(--space-fluid);
+  }
+}
+
+.nav.isOpen .closeBtn {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: (z('modal') - 1);
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+
+  @include mq(lg) {
+    backdrop-filter: blur(2px);
+  }
+
+  &.isOpen {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
