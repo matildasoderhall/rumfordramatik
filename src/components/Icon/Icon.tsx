@@ -27,7 +27,7 @@ interface IconProps {
   /**
    * Optional additional CSS class to apply to the icon for custom styling.
    */
-  classname?: string;
+  className?: string;
 }
 
 /**
@@ -59,13 +59,15 @@ export const Icon = ({
   icon: IconComponent,
   size = IconSize.FsMD,
   fill = IconFill.Inherit,
+  className,
 }: IconProps) => {
   return (
     <IconComponent
       className={classNames(
         styles.icon,
         styles[`icon-fill--${fill}`],
-        styles[`icon-size--${size}`]
+        styles[`icon-size--${size}`],
+        className
       )}
     />
   );
