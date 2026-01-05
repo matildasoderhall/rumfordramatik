@@ -16,7 +16,7 @@ $black: #000000;
 
   // --- BRAND COLORS ---
   @include mx.define-lch($primary, --color-primary);
-  @include mx.define-adjusted-lch($primary, --color-primary-hover, -10);
+  @include mx.define-adjusted-lch($primary, --color-primary-hover, -7);
   @include mx.define-adjusted-lch($primary, --color-primary-active, -15);
   @include mx.define-lch-alpha($primary, --color-primary-transparent, 0.5);
 
