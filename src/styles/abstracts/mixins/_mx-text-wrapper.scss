@@ -1,0 +1,23 @@
+// Adds an ellipsis after a specific number of lines.
+// @param $lines: The number of lines to show before cutting off. 
+//                Leave empty for single-line truncation.
+@mixin truncate-text($lines: null) {
+  @if $lines {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  } @else {
+    // Single-line truncation
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@mixin wrap-text {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
