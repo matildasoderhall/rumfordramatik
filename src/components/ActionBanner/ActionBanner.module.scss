@@ -1,0 +1,80 @@
+@use '@styles/tokens/typography' as *;
+@use '@styles/abstracts/mixins' as *;
+
+.actionBanner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-family: $font-condensed;
+
+  align-items: flex-start;
+  &.start {
+    align-items: flex-start;
+  }
+  &.end {
+    align-items: flex-end;
+  }
+}
+
+.link {
+  display: flex;
+  background-color: var(--color-primary);
+  padding: var(--space-2xs) var(--space-l);
+  color: var(--color-white);
+  text-transform: uppercase;
+  width: fit-content;
+  text-wrap: nowrap;
+  font-size: var(--fs-600);
+  box-shadow: -5px 4px 25px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease-in;
+
+  gap: var(--space-l);
+  align-items: center;
+
+  .icon {
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  &:hover {
+    background-color: var(--color-primary-hover);
+    .slideRight {
+      transform: translateX(0.5rem);
+    }
+
+    .slideLeft {
+      transform: translateX(-0.5rem);
+    }
+  }
+}
+
+.stickerText {
+  font-family: $font-script;
+  color: var(--color-accent);
+  font-size: var(--fs-600);
+  padding-top: var(--space-2xs);
+
+  padding-right: var(--space-m);
+  padding-left: var(--space-2xl);
+  transform: rotate(8deg);
+  text-transform: uppercase;
+}
+
+.content {
+  padding-inline: var(--space-fluid);
+}
+
+.contentTitle {
+  font-size: var(--fs-500);
+  padding-right: var(--space-2xl);
+
+  &.openCall {
+    color: var(--color-primary);
+  }
+}
+
+.contentBody {
+  font-size: var(--text-400);
+  max-width: 58ch;
+  @include wrap-text;
+}
