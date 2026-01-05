@@ -29,3 +29,16 @@ export interface WPPost {
     author?: Array<{ name: string; avatar_urls: Record<string, string> }>;
   };
 }
+
+export interface OpenCallACF {
+  theme: string;
+  description: string;
+  application_deadline: string;
+}
+
+export interface WPOpenCall {
+  id: number;
+  title: { rendered: string };
+  status: string;
+  acf: OpenCallACF;
+}
