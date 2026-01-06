@@ -17,7 +17,9 @@ export const MainNav = () => {
   return (
     <>
       <button
-        className={classNames(styles.menuToggleBtn, { [styles.hidden]: isOpen })}
+        className={classNames(styles.menuToggleBtn, {
+          [styles.hidden]: isOpen,
+        })}
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Open menu"
         aria-expanded={isOpen}
@@ -57,8 +59,9 @@ export const MainNav = () => {
         </ul>
       </nav>
 
-      <div className={classNames(styles.backdrop, { [styles.isOpen]: isOpen})}
-      onClick={() => setIsOpen(false)}
+      <div
+        className={classNames(styles.backdrop, { [styles.isOpen]: isOpen })}
+        onClick={() => setIsOpen(false)}
       />
     </>
   );

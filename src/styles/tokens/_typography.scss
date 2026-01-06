@@ -30,11 +30,7 @@ $font-normal: normal;
   --fs-600: clamp(1.3348rem, 0.6611rem + 2.8745 * var(--vwx), 2.9607rem);
   --fs-700: clamp(1.5017rem, 0.4886rem + 4.3226 * var(--vwx), 3.9467rem);
   --fs-800: clamp(1.6894rem, 0.2095rem + 6.3143 * var(--vwx), 5.2609rem);
-  --fs-900: clamp(
-    1.9006rem,
-    -0.2177rem + 9.0382 * var(--vwx),
-    7.0128rem
-  );
+  --fs-900: clamp(1.9006rem, -0.2177rem + 9.0382 * var(--vwx), 7.0128rem);
 
   // -- BODY HELPERS --
   --text-100: calc(var(--fs-300) * 0.75);

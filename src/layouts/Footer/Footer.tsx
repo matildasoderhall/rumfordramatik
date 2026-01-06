@@ -5,10 +5,7 @@ export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.links}>
-        <a
-          href="mailto:info@rumfordramatik.se"
-          className={styles.link}
-        >
+        <a href="mailto:info@rumfordramatik.se" className={styles.link}>
           info@rumfordramatik.se
         </a>
         <SocialsNav />

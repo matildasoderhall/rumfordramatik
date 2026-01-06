@@ -1,9 +1,9 @@
 .icon {
- display: inline-flex;
- width: auto;
+  display: inline-flex;
+  width: auto;
 
- svg {
-    color: inherit; 
+  svg {
+    color: inherit;
   }
 }
 
@@ -41,19 +41,19 @@
   &--text-lg {
     height: var(--text-500) !important;
   }
-  
+
   &--text-md {
     height: var(--text-400) !important;
   }
-  
+
   &--text-base {
     height: var(--text-300) !important;
   }
-  
+
   &--text-sm {
     height: var(--text-200) !important;
   }
-  
+
   &--text-xs {
     height: var(--text-100) !important;
   }

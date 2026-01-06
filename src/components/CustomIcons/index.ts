@@ -1,1 +1,1 @@
-export { LogoWithText } from './LogoWithText'
+export { LogoWithText } from './LogoWithText';
