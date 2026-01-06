@@ -3,10 +3,30 @@ import type { WPEvent, WPIssue } from '../models/wordpress';
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
+/**
+ * Pre-configured Axios instance for WordPress API requests.
+ * Uses the base URL defined in environment variables (VITE_API_URL).
+ */
 export const wpApi = axios.create({
   baseURL: BASE_URL,
 });
 
+/**
+ * Fetches a list of "Issue" custom post types from the WordPress REST API.
+ * Automatically handles:
+ * - Embedding linked resources (`_embed=true`)
+ * - Filtering for 'publish' status
+ * - Error normalization (converts Axios errors to user-friendly strings)
+ * @returns {Promise<WPIssue[]>} A promise that resolves to an array of WPIssue objects.
+ * @throws {Error} Throws a friendly error message if the request fails (e.g., "No issues found", "Server error").
+ * @example
+ * try {
+ * const issues = await getIssues();
+ * console.log(issues);
+ * } catch (err) {
+ * console.error(err.message);
+ * }
+ */
 export const getIssues = async (): Promise<WPIssue[]> => {
   try {
     const response = await wpApi.get<WPIssue[]>('/issue', {
@@ -38,6 +58,15 @@ export const getIssues = async (): Promise<WPIssue[]> => {
   }
 };
 
+/**
+ * Fetches a list of "Event" custom post types from the WordPress REST API.
+ * Automatically handles:
+ * - Embedding linked resources (`_embed=true`)
+ * - Filtering for 'publish' status
+ * - Error normalization
+ * @returns {Promise<WPEvent[]>} A promise that resolves to an array of WPEvent objects.
+ * @throws {Error} Throws a friendly error message if the request fails.
+ */
 export const getEvents = async (): Promise<WPEvent[]> => {
   try {
     const response = await wpApi.get<WPEvent[]>('/event', {
