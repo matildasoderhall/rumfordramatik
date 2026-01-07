@@ -9,24 +9,30 @@ export interface WPImage {
   };
 }
 
-export interface WPPost {
+export interface WPIssue {
   id: number;
-  date: string;
-  slug: string;
-  
-  title: {
-    rendered: string;
+  title: { rendered: string };
+  acf: {
+    issue_number?: number;
+    theme?: string;
+    content?: [
+      {
+        play?: string;
+        playwright?: string;
+      },
+    ];
+    preface?: string;
   };
-  excerpt: {
-    rendered: string;
-  };
-  content: {
-    rendered: string;
-  };
- 
-  _embedded?: {
-    'wp:featuredmedia'?: WPImage[];
-    author?: Array<{ name: string; avatar_urls: Record<string, string> }>;
+}
+
+export interface WPEvent {
+  id: number;
+  title: { rendered: string };
+  acf: {
+    title?: string;
+    date?: string;
+    description?: string;
+    sticker?: string;
   };
 }
 

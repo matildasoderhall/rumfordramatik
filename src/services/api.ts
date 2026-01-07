@@ -1,44 +1,101 @@
-import axios, { AxiosError } from "axios";
-import type { WPOpenCall, WPPost } from "../models/wordpress";
+import axios, { AxiosError } from 'axios';
+import type { WPEvent, WPIssue, WPOpenCall } from '../models/wordpress';
 
-const BASE_URL = import.meta.env.VITE_API_URL; 
+const BASE_URL = import.meta.env.VITE_API_URL;
 
+/**
+ * Pre-configured Axios instance for WordPress API requests.
+ * Uses the base URL defined in environment variables (VITE_API_URL).
+ */
 export const wpApi = axios.create({
-  baseURL: BASE_URL
+  baseURL: BASE_URL,
 });
 
-export const getPosts = async (): Promise<WPPost[]> => {
-
+/**
+ * Fetches a list of "Issue" custom post types from the WordPress REST API.
+ * Automatically handles:
+ * - Embedding linked resources (`_embed=true`)
+ * - Filtering for 'publish' status
+ * - Error normalization (converts Axios errors to user-friendly strings)
+ * @returns {Promise<WPIssue[]>} A promise that resolves to an array of WPIssue objects.
+ * @throws {Error} Throws a friendly error message if the request fails (e.g., "No issues found", "Server error").
+ * @example
+ * try {
+ * const issues = await getIssues();
+ * console.log(issues);
+ * } catch (err) {
+ * console.error(err.message);
+ * }
+ */
+export const getIssues = async (): Promise<WPIssue[]> => {
   try {
-    const response = await wpApi.get<WPPost[]>('/posts', {
-    params: {
-      _embed: true,
-      per_page: 6,
-      status: 'publish',
-    },
-  });
+    const response = await wpApi.get<WPIssue[]>('/issue', {
+      params: {
+        _embed: true,
+        status: 'publish',
+      },
+    });
 
-  return response.data;
-
+    return response.data;
   } catch (error) {
-    const axiosError = error as AxiosError<{ message?: string, code?: string }>;
+    const axiosError = error as AxiosError<{ message?: string; code?: string }>;
 
     const wpMessage = axiosError.response?.data?.message;
 
     if (wpMessage) {
       throw new Error(wpMessage);
     }
-    
+
     if (axiosError.response?.status === 404) {
-      throw new Error("No posts found.");
+      throw new Error('No issues found.');
     }
 
     if (axiosError.response?.status === 500) {
-      throw new Error("WordPress server error. Please try again later.");
+      throw new Error('WordPress server error. Please try again later.');
     }
 
-    throw new Error("Failed to load posts. Please check your connection.");
-  } 
+    throw new Error('Failed to load issues. Please check your connection.');
+  }
+};
+
+/**
+ * Fetches a list of "Event" custom post types from the WordPress REST API.
+ * Automatically handles:
+ * - Embedding linked resources (`_embed=true`)
+ * - Filtering for 'publish' status
+ * - Error normalization
+ * @returns {Promise<WPEvent[]>} A promise that resolves to an array of WPEvent objects.
+ * @throws {Error} Throws a friendly error message if the request fails.
+ */
+export const getEvents = async (): Promise<WPEvent[]> => {
+  try {
+    const response = await wpApi.get<WPEvent[]>('/event', {
+      params: {
+        _embed: true,
+        status: 'publish',
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    const axiosError = error as AxiosError<{ message?: string; code?: string }>;
+
+    const wpMessage = axiosError.response?.data?.message;
+
+    if (wpMessage) {
+      throw new Error(wpMessage);
+    }
+
+    if (axiosError.response?.status === 404) {
+      throw new Error('No events found.');
+    }
+
+    if (axiosError.response?.status === 500) {
+      throw new Error('WordPress server error. Please try again later.');
+    }
+
+    throw new Error('Failed to load events. Please check your connection.');
+  }
 };
 
 export const getOpenCall = async (): Promise<WPOpenCall> => {
