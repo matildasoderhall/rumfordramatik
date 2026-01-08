@@ -6,13 +6,14 @@ import { Button } from '../Button';
 
 interface LatestIssueProps {
   issue: WPIssue | null;
+  className?: string;
 }
 
-export const LatestIssue = ({ issue }: LatestIssueProps) => {
+export const LatestIssue = ({ issue, className }: LatestIssueProps) => {
   const acf = issue?.acf || {};
 
   return (
-    <section className={classNames(styles.latestIssue)}>
+    <section className={classNames(styles.latestIssue, className)}>
       <IssueCover
         className={styles.cover}
         issueNumber={acf.issue_number ?? 0}
