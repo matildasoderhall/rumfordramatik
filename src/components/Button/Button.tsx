@@ -4,12 +4,13 @@ import classNames from 'classnames';
 interface ButtonProps {
   children: string;
   disabled?: boolean;
+  className?: string;
 }
 
-export const Button = ({ children, disabled }: ButtonProps) => {
+export const Button = ({ children, disabled, className }: ButtonProps) => {
   return (
     <button className={classNames(
-      styles.button,
+      styles.button, className
     )}>
       <span className={styles.buttonText}>{children}</span>
     </button>
