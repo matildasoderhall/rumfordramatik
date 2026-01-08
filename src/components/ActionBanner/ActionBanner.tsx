@@ -14,6 +14,7 @@ interface ActionBannerProps {
   contentTitle: string;
   contentBody?: string;
   isOpenCall?: boolean;
+  className?: string;
 }
 
 export const ActionBanner = ({
@@ -25,9 +26,10 @@ export const ActionBanner = ({
   contentTitle,
   contentBody,
   isOpenCall = false,
+  className
 }: ActionBannerProps) => {
   return (
-    <div className={classNames(styles.actionBanner, styles[align])}>
+    <div className={classNames(styles.actionBanner, styles[align], className)}>
       <NavLink to={to} className={styles.link}>
         {arrowDirection === 'left' && (
           <Icon
