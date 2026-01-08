@@ -4,9 +4,10 @@ import classNames from 'classnames';
 interface IssueCoverProps {
   issueNumber: number;
   theme: string;
+  className: string;
 }
 
-export const IssueCover = ({ issueNumber, theme }: IssueCoverProps) => {
+export const IssueCover = ({ issueNumber, theme, className }: IssueCoverProps) => {
   const getTitle = (num: number) => {
     if (!num) return '';
 
@@ -14,7 +15,7 @@ export const IssueCover = ({ issueNumber, theme }: IssueCoverProps) => {
   };
 
   return (
-    <div className={classNames(styles.issueCover)}>
+    <div className={classNames(styles.issueCover, className)}>
       <div className={styles.coverBg}>
         <span className={styles.issueNumber}>Nr. {getTitle(issueNumber)}</span>
       </div>
