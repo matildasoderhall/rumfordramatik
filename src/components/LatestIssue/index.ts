@@ -1,0 +1,1 @@
+export { LatestIssue } from './LatestIssue';
