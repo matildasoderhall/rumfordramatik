@@ -28,3 +28,9 @@ h4,
   font-weight: 700;
   line-height: 1.1;
 }
+
+h2 {
+  font-size: var(--fs-700);
+  font-weight: $weight-regular;
+  margin: 0;
+}
