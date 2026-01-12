@@ -1,0 +1,41 @@
+@use '@styles/tokens/viewport' as *;
+@use '@styles/tokens/spacing' as *;
+@use '@styles/abstracts/mixins' as *;
+
+.archivePage {
+  padding-inline: var(--space-fluid);
+  padding-block: var(--space-xl);
+  @include wrapper;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+}
+
+.archiveWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+  @include mq(md) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-inline: var(--space-s);
+  }
+
+  @include mq(lg) {
+    grid-template-columns: repeat(3, 1fr);
+    padding-inline: var(--space-xl);
+    gap: var(--space-m);
+  }
+}
+
+.title {
+  text-align: center;
+  @include mq(lg) {
+    text-align: start;
+  }
+}
+
+.cover :hover {
+    
+}
