@@ -69,9 +69,6 @@
 
 .title {
   order: 1;
-  font-size: var(--fs-700);
-  font-weight: $weight-regular;
-  margin: 0;
 
   @include mq(md) {
     order: unset;
