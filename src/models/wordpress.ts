@@ -33,6 +33,7 @@ export interface WPEvent {
     date?: string;
     description?: string;
     sticker?: string;
+    theme?: string;
   };
 }
 
