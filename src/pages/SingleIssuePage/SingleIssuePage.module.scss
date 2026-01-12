@@ -1,0 +1,115 @@
+@use '@styles/tokens/typography' as *;
+@use '@styles/abstracts/mixins' as *;
+
+.singleIssuePage {
+  @include wrapper;
+  padding-inline: var(--space-fluid);
+  padding-block: var(--space-m);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+
+  @include mq(md) {
+    padding-block: 0;
+    padding-bottom: var(--space-2xl);
+  }
+}
+
+.coverWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+
+  @include mq(md) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+}
+
+.coverButton {
+  @include mq(md) {
+    grid-row: 2;
+    align-self: start;
+    justify-self: end;
+    margin-right: clamp(3%, 51.34vw - 379px, 25%);
+  }
+}
+.cover {
+  grid-row: 1 / -1;
+}
+
+.contentsWrapper {
+  display: flex;
+  flex-direction: column;
+  align-self: end;
+}
+
+.playList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+
+  font-size: var(--text-500);
+
+  @include mq(md) {
+    max-width: 24.3rem;
+  }
+}
+
+.playListRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  @include mq(md) {
+    grid-template-columns: 1fr auto;
+  }
+
+  dd {
+    text-align: right;
+  }
+}
+
+.title {
+  font-family: $font-serif;
+  padding-left: var(--space-s);
+  padding-bottom: var(--space-m);
+
+  @include mq(md) {
+    padding-inline: var(--space-xl);
+  }
+}
+
+.prefaceWrapper {
+  display: flex;
+  flex-direction: column;
+
+  @include mq(md) {
+    padding-inline: var(--space-2xl);
+    align-self: center;
+  }
+
+  @include mq(lg) {
+    max-width: 90%;
+    align-self: center;
+  }
+}
+
+.prefaceBody {
+  line-height: 1.375;
+
+  @include mq(md) {
+    display: block;
+    column-count: 2;
+    column-gap: 10%;
+  }
+}
+
+.prefaceButton {
+  margin-block: var(--space-2xl);
+
+  @include mq(lg) {
+    display: none;
+  }
+}
