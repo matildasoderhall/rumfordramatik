@@ -4,10 +4,11 @@ import classNames from 'classnames';
 interface IssueCoverProps {
   issueNumber: number;
   theme: string;
-  className: string;
+  className?: string;
+  hoverEffect?: boolean;
 }
 
-export const IssueCover = ({ issueNumber, theme, className }: IssueCoverProps) => {
+export const IssueCover = ({ issueNumber, theme, className, hoverEffect }: IssueCoverProps) => {
   const getTitle = (num: number) => {
     if (!num) return '';
 
@@ -16,7 +17,7 @@ export const IssueCover = ({ issueNumber, theme, className }: IssueCoverProps) =
 
   return (
     <div className={classNames(styles.issueCover, className)}>
-      <div className={styles.coverBg}>
+      <div className={classNames(styles.coverBg, { [styles.hoverEffect]: hoverEffect })}>
         <span className={styles.issueNumber}>Nr. {getTitle(issueNumber)}</span>
       </div>
       <span className={styles.theme}>Tema: {theme}</span>

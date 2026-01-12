@@ -13,8 +13,8 @@ export interface WPIssue {
   id: number;
   title: { rendered: string };
   acf: {
-    issue_number?: number;
-    theme?: string;
+    issue_number: number;
+    theme: string;
     content?: [
       {
         play?: string;
