@@ -1,0 +1,1 @@
+export { IssueCover } from './IssueCover';

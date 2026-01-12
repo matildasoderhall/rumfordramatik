@@ -16,4 +16,9 @@
       @content;
     }
   }
+  @else if $size == xlg {
+    @media (min-width: $maxContentWidth) {
+      @content;
+    }
+  }
 }

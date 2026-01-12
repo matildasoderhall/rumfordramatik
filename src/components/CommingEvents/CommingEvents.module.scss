@@ -1,0 +1,169 @@
+@use '@styles/tokens/typography' as *;
+@use '@styles/tokens/z-index' as *;
+@use '@styles/tokens/viewport' as *;
+@use '@styles/abstracts/mixins' as *;
+
+.commingEvents {
+  padding-inline: var(--space-fluid);
+  margin-block: var(--space-2xl);
+
+  @include mq(md) {
+    padding-inline: 0;
+  }
+}
+
+.sectionTitle {
+  margin-bottom: var(--space-l);
+  @include mq(md) {
+    padding-left: 10%;
+  }
+}
+
+.eventWrapper {
+  display: flex;
+  flex-direction: column;
+
+  @include mq(md) {
+    display: grid;
+    grid-template-columns: repeat($columnCount, 1fr);
+    grid-template-rows: auto 1fr;
+    column-gap: var(--space-s);
+    row-gap: var(--space-l);
+  }
+}
+
+.imgBg {
+  aspect-ratio: 295 / 183;
+  width: 85%;
+}
+
+.imgWrapper {
+  display: grid;
+  grid-template-areas: 'stack';
+
+  width: fit-content;
+  margin-top: var(--space-xl);
+
+  @include mq(md) {
+    width: 100%;
+    position: relative;
+
+    grid-row: 2;
+    grid-column: 1 / 8;
+
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+
+  &::before {
+    content: '';
+    grid-area: stack;
+
+    z-index: 0;
+    background-color: var(--color-primary);
+
+    @include mq(md) {
+      position: absolute;
+      left: 0;
+      width: 95%;
+      height: 80%;
+      top: 35%;
+      transform: translateY(-50%);
+    }
+  }
+
+  img {
+    grid-area: stack;
+    z-index: 1;
+
+    display: block;
+    max-width: 80vw;
+    height: auto;
+
+    transform: translate(10%, -8%);
+
+    @include mq(md) {
+      position: relative;
+      width: 70%;
+      transform: translate(-14%, -15%);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      align-self: center;
+    }
+  }
+}
+
+.title {
+  font-family: $font-script;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-size: var(--fs-600);
+  font-weight: $weight-regular;
+  padding-right: var(--space-s);
+  align-self: end;
+
+  @include mq(md) {
+    grid-row: 1;
+    grid-column: 1 / -1;
+    text-align: center;
+  }
+}
+
+.infoWrapper {
+  grid-row: 2;
+  grid-column: 9 / 12;
+
+  display: flex;
+  flex-direction: column;
+
+  margin-top: var(--space-2xl);
+}
+
+.eventDate {
+  position: relative;
+  font-family: $font-condensed;
+  font-size: 2.25rem;
+  align-self: end;
+  letter-spacing: 0.06em;
+
+  margin-top: var(--space-m);
+
+  @include mq(md) {
+    align-self: center;
+    margin-bottom: var(--space-2xs);
+  }
+}
+
+.sticker {
+  font-family: $font-script;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-size: var(--fs-500);
+  transform: rotate(-8deg);
+  margin-bottom: 1rem;
+
+  position: absolute;
+  text-wrap: nowrap;
+  bottom: 20%;
+  right: 48%;
+
+  @include mq(md) {
+    bottom: 45%;
+    right: 25%;
+    transform: rotate(-13deg);
+  }
+}
+
+.description {
+  letter-spacing: 0.06em;
+  align-self: center;
+  text-align: center;
+
+  @include mq(md) {
+    text-align: start;
+  }
+}
+
+.theme {
+  text-transform: uppercase;
+}

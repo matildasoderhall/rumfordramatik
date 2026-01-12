@@ -1,0 +1,50 @@
+@use '@styles/abstracts/mixins' as *;
+.homePage {
+  @include wrapper;
+  padding-top: var(--space-2xl);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.banner {
+  display: contents;
+
+  @include mq(md) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.openCallBtn {
+  order: 1;
+
+  @include mq(md) {
+    order: unset;
+  }
+}
+
+.newsletterBtn {
+  order: 3;
+
+  @include mq(md) {
+    order: unset;
+    align-items: flex-start !important;
+  }
+}
+
+.latestNumberSection {
+  order: 2;
+
+  @include mq(md) {
+    order: unset;
+  }
+}
+
+.commingEventsSection {
+  order: 4;
+
+  @include mq(md) {
+    order: unset;
+  }
+}

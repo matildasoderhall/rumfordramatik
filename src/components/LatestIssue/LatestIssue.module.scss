@@ -1,0 +1,95 @@
+@use '@styles/abstracts/mixins' as *;
+@use '@styles/tokens/spacing' as *;
+@use '@styles/tokens/typography' as *;
+
+.latestIssue {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-l);
+  padding-inline: var(--space-fluid);
+  padding-block: var(--space-2xl);
+
+  @include mq(md) {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 0 2rem;
+    align-items: start;
+  }
+}
+
+.cover {
+  width: 100%;
+  order: 2;
+
+  @include mq(md) {
+    order: unset;
+  }
+}
+
+.contentWrapper {
+  display: contents;
+  @include mq(md) {
+    display: flex;
+    flex-direction: column;
+
+    height: 0;
+    min-height: 100%;
+    overflow: hidden;
+  }
+}
+
+.preface {
+  display: none;
+  line-height: 1.6;
+
+  @include mq(md) {
+    display: block;
+    min-height: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 8;
+    overflow: hidden;
+  }
+
+  @include mq(lg) {
+    display: block;
+
+    -webkit-line-clamp: unset;
+
+    column-count: 2;
+    column-gap: 10%;
+    column-fill: auto;
+
+    flex: 1;
+    height: 100%;
+    margin-right: var(--space-xl);
+    -webkit-mask-image: linear-gradient(black 90%, transparent 100%);
+  }
+}
+
+.title {
+  order: 1;
+
+  @include mq(md) {
+    order: unset;
+    padding-block: var(--space-l);
+  }
+}
+
+.orderBtn {
+  width: 100%;
+  order: 3;
+
+  margin-top: var(--space-xl);
+  @include mq(md) {
+    order: unset;
+    width: fit-content;
+    margin-top: var(--space-l);
+    align-self: center;
+  }
+
+  @include mq(lg) {
+    align-self: end;
+    margin-right: 21%;
+  }
+}

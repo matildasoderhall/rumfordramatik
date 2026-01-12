@@ -1,0 +1,59 @@
+@use '@styles/tokens/typography' as *;
+@use '@styles/tokens/spacing' as *;
+@use '@styles/abstracts/mixins' as *;
+
+.issueCover {
+  container-type: inline-size;
+  width: 100%;
+
+  min-width: 300px;
+  max-width: 500px;
+
+  display: flex;
+  flex-direction: column;
+
+  padding-right: 20vw;
+
+  @include mq(md) {
+    padding-right: 8vw;
+  }
+
+  @include mq(xlg) {
+    padding-right: 7.2rem;
+  }
+}
+
+.coverBg {
+  background-color: var(--color-primary);
+  position: relative;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  aspect-ratio: 290 / 390;
+  width: 100%;
+}
+
+.issueNumber {
+  font-size: clamp(3rem, 43.5cqi, 12rem);
+  text-transform: uppercase;
+  font-family: $font-serif;
+  white-space: nowrap;
+  line-height: 0.8;
+
+  padding-bottom: 0.2rem;
+  margin-left: 5cqi;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.theme {
+  font-size: clamp(3rem, 2.45rem + 1.5vw, 4rem);
+  text-transform: uppercase;
+  font-family: $font-condensed;
+  line-height: 0.8;
+
+  padding-top: 0.5rem;
+
+  @include mq(md) {
+    padding-top: 1.5rem;
+  }
+}

@@ -27,10 +27,12 @@ $font-normal: normal;
   // Headings
   --fs-400: clamp(1.0547rem, 0.8013rem + 1.0812 * var(--vwx), 1.6663rem);
   --fs-500: clamp(1.1865rem, 0.7578rem + 1.8291 * var(--vwx), 2.2211rem);
-  --fs-600: clamp(1.3348rem, 0.6611rem + 2.8745 * var(--vwx), 2.9607rem);
-  --fs-700: clamp(1.5017rem, 0.4886rem + 4.3226 * var(--vwx), 3.9467rem);
-  --fs-800: clamp(1.6894rem, 0.2095rem + 6.3143 * var(--vwx), 5.2609rem);
-  --fs-900: clamp(1.9006rem, -0.2177rem + 9.0382 * var(--vwx), 7.0128rem);
+  --fs-600: clamp(1.7rem, 1.15rem + 2.25vw, 2.96rem);
+  --fs-700: clamp(2rem, 1.1rem + 3.5vw, 3.95rem);
+  --fs-800: clamp(2.4rem, 1.2rem + 5.5vw, 5.26rem);
+  --fs-900: clamp(2.75rem, 1.5rem + 8vw, 7.01rem);
+  --fs-1000: clamp(3.25rem, 1rem + 11vw, 9.35rem);
+  --fs-1100: clamp(3.75rem, 0.5rem + 15vw, 12.46rem);
 
   // -- BODY HELPERS --
   --text-100: calc(var(--fs-300) * 0.75);
