@@ -18,11 +18,14 @@
 
 .openCallBtn {
   order: 1;
+
+  @include mq(md) {
+    order: unset;
+  }
 }
 
 .newsletterBtn {
   order: 3;
-  
 
   @include mq(md) {
     order: unset;
@@ -32,4 +35,16 @@
 
 .latestNumberSection {
   order: 2;
+
+  @include mq(md) {
+    order: unset;
+  }
+}
+
+.commingEventsSection {
+  order: 4;
+
+  @include mq(md) {
+    order: unset;
+  }
 }

@@ -3,9 +3,12 @@ import styles from './HomePage.module.scss';
 import classNames from 'classnames';
 import { LatestIssue } from '@/components/LatestIssue';
 import { useIssues } from '@/hooks/useIssues';
+import { CommingEvents } from '@/components/CommingEvents';
+import { useEvents } from '@/hooks/useEvents';
 
 export const HomePage = () => {
   const { issues } = useIssues();
+  const { events } = useEvents();
 
   return (
     <div className={classNames(styles.homePage)}>
@@ -34,6 +37,8 @@ export const HomePage = () => {
       </div>
 
       <LatestIssue issue={issues[0]} className={styles.latestNumberSection} />
+
+      <CommingEvents event={events[0]} className={styles.commingEventsSection}/>
     </div>
   );
 };
