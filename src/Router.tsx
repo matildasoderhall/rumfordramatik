@@ -18,7 +18,7 @@ export const appRouter = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: 'about-us',
+        path: 'om-oss',
         element: <AboutPage />,
       },
       {
@@ -26,15 +26,15 @@ export const appRouter = createBrowserRouter([
         element: <OpenCallPage />,
       },
       {
-        path: 'archive',
+        path: 'arkiv',
         element: <ArchivePage />,
       },
       {
-        path: 'archive/:id',
+        path: 'arkiv/:id',
         element: <SingleIssuePage />,
       },
       {
-        path: 'sign-up',
+        path: 'prenumerera',
         element: <SignUpPage />,
       },
       {

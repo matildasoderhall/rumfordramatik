@@ -11,7 +11,7 @@ export const ArchivePage = () => {
       <h1 className={styles.title}>Arkiv</h1>
       <section className={styles.archiveWrapper}>
         {issues.map((issue) => (
-          <Link key={issue.id} to={`/archive/${issue.acf.issue_number}`}>
+          <Link key={issue.id} to={`/arkiv/${issue.acf.issue_number}`}>
             <IssueCover
               issueNumber={issue.acf.issue_number}
               theme={issue.acf.theme}
