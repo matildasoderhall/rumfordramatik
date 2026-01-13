@@ -7,12 +7,12 @@ import { CommingEvents } from '@/components/CommingEvents';
 import { useEvents } from '@/hooks/useEvents';
 
 export const HomePage = () => {
-  const { issues } = useIssues();
-  const { events } = useEvents();
+  const { issues, loading: issuesLoading, error: issuesError } = useIssues();
+  const { events, loading: eventsLoading, error: eventsError } = useEvents();
 
   return (
     <div className={classNames(styles.homePage)}>
-      <h1 className='visually-hidden'>Hem</h1>
+      <h1 className="visually-hidden">Hem</h1>
       <div className={styles.banner}>
         <ActionBanner
           title="Nyhetsbrev"
@@ -37,9 +37,19 @@ export const HomePage = () => {
         />
       </div>
 
-      <LatestIssue issue={issues[0]} className={styles.latestNumberSection} />
+      <LatestIssue
+        issue={issues[0]}
+        isLoading={issuesLoading}
+        isError={!!issuesError}
+        className={styles.latestNumberSection}
+      />
 
-      <CommingEvents event={events[0]} className={styles.commingEventsSection}/>
+      <CommingEvents
+        event={events[0]}
+        isLoading={eventsLoading}
+        isError={!!eventsError}
+        className={styles.commingEventsSection}
+      />
     </div>
   );
 };
