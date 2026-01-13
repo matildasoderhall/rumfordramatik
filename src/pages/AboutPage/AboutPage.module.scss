@@ -1,0 +1,257 @@
+@use '@styles/abstracts/mixins' as *;
+@use '@styles/tokens/typography' as *;
+
+.aboutPage {
+  @include wrapper;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  row-gap: var(--space-s);
+  padding-bottom: var(--space-2xl);
+
+  @include mq(md) {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: var(--space-s);
+    padding-block: var(--space-2xl);
+    row-gap: var(--space-xl);
+  }
+
+  @include mq(lg) {
+    row-gap: var(--space-xs);
+  }
+}
+
+.title {
+  writing-mode: vertical-lr;
+  margin-top: var(--space-xl);
+  justify-content: center;
+  padding-block: var(--space-xs);
+
+  grid-row: 1;
+  grid-column: 2;
+
+  @include mq(md) {
+    grid-column: 11 / 13;
+    margin-top: 0;
+    justify-self: center;
+  }
+}
+
+.imgWrapperTop {
+  grid-column: 1;
+  grid-row: 1;
+  display: grid;
+  grid-template-areas: 'stack';
+
+  width: 80vw;
+  margin-top: var(--space-m);
+
+  @include mq(md) {
+    width: 100%;
+    position: relative;
+    height: auto;
+    margin: 0;
+
+    grid-row: 1;
+    grid-column: 1 / 8;
+
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @include mq(lg) {
+    grid-column: 1 / 6;
+  }
+
+  &::before {
+    content: '';
+    grid-area: stack;
+
+    z-index: 0;
+    background-color: var(--color-primary);
+
+    @include mq(md) {
+      position: absolute;
+      width: 100%;
+      height: 110%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  img {
+    grid-area: stack;
+    z-index: 1;
+
+    display: block;
+    max-width: 70vw;
+    height: auto;
+
+    transform: translateY(10%);
+
+    box-shadow: 0 2px 3px rgb(255, 255, 255);
+
+    @include mq(md) {
+      position: relative;
+      max-width: 80%;
+
+      transform: none;
+    }
+  }
+}
+
+.groupchatSticker {
+  font-family: $font-script;
+  color: var(--color-accent);
+  font-size: clamp(1.7rem, 1.4231rem + 1.2308vw, 2.5rem);
+  max-width: 35vw;
+
+  transform: rotate(10deg);
+  padding-left: var(--space-s);
+  padding-top: var(--space-xs);
+
+  @include mq(md) {
+    grid-row: 3;
+    grid-column: 3 / span 3;
+
+    transform: rotate(-16deg);
+
+    text-align: center;
+  }
+
+  @include mq(lg) {
+    grid-row: 2;
+    grid-column: 2 / 4;
+    text-align: left;
+    padding-left: 0;
+    padding-top: var(--space-l);
+    padding-right: var(--space-l);
+  }
+}
+
+.imgWrapperBottom {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-areas: 'stack';
+
+  width: 82vw;
+  margin-left: auto;
+
+  @include mq(md) {
+    width: 100%;
+    position: relative;
+
+    grid-row: 2;
+    grid-column: 7 / 13;
+  }
+
+  &::before {
+    content: '';
+    grid-area: stack;
+
+    z-index: 0;
+    background-color: var(--color-primary);
+
+    @include mq(md) {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  img {
+    grid-area: stack;
+    z-index: 1;
+
+    display: block;
+    max-width: 60vw;
+    height: auto;
+
+    transform: translate(30%, -10%);
+
+    box-shadow: 0 2px 3px rgb(255, 255, 255);
+
+    @include mq(md) {
+      position: relative;
+      width: 80%;
+      transform: translate(10%, -10%);
+    }
+
+    @include mq(lg) {
+      max-width: 60%;
+      transform: translate(15%, -10%);
+    }
+  }
+}
+
+.aboutTextWrapper {
+  grid-column: 1 / -1;
+  padding-inline: var(--space-fluid);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+  line-height: 1.375;
+
+  @include mq(md) {
+    grid-row: 2;
+    grid-column: 1 / 7;
+
+    padding-inline: var(--space-l);
+    padding-top: var(--space-m);
+  }
+
+  @include mq(lg) {
+    grid-row: 1;
+    grid-column: 7 / 11;
+    padding-left: 0;
+  }
+}
+
+.meetingspotSticker {
+  font-family: $font-script;
+  color: var(--color-accent);
+  font-size: clamp(1.7rem, 1.4231rem + 1.2308vw, 2.5rem);
+  max-width: 35vw;
+
+  transform: rotate(-15deg);
+  padding-left: var(--space-l);
+  padding-block: var(--space-s);
+
+  @include mq(md) {
+    grid-row: 1;
+    grid-column: 9 / 11;
+  }
+
+  @include mq(lg) {
+    grid-column: 10 / 12;
+    padding: 0;
+    justify-self: center;
+    margin-top: -3rem;
+  }
+}
+
+.contactText {
+  grid-column: 1 / -1;
+  padding-inline: var(--space-fluid);
+
+  a:hover {
+    color: var(--color-primary);
+  }
+
+  @include mq(md) {
+    grid-row: 3;
+    grid-column: 6 / 11;
+    padding: 0;
+    align-self: center;
+  }
+
+  @include mq(lg) {
+    grid-row: 2;
+    grid-column: 3 / 7;
+
+    padding-inline: var(--space-xl);
+
+    align-self: center;
+  }
+}
