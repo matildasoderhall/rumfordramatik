@@ -1,0 +1,176 @@
+@use '@styles/abstracts/mixins' as *;
+@use '@styles/tokens/typography' as *;
+
+.aboutPage {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  row-gap: var(--space-s);
+  padding-bottom: var(--space-2xl);
+}
+
+.title {
+  writing-mode: vertical-lr;
+  margin-top: var(--space-xl);
+  justify-content: center;
+  padding-block: var(--space-xs);
+
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.imgWrapperTop {
+  grid-column: 1;
+  grid-row: 1;
+  display: grid;
+  grid-template-areas: 'stack';
+
+  width: 80vw;
+  margin-top: var(--space-m);
+
+  @include mq(md) {
+    width: 100%;
+    position: relative;
+
+    grid-row: 2;
+    grid-column: 1 / 8;
+
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+
+  &::before {
+    content: '';
+    grid-area: stack;
+
+    z-index: 0;
+    background-color: var(--color-primary);
+
+    @include mq(md) {
+      position: absolute;
+      left: 0;
+      width: 95%;
+      height: 80%;
+      top: 35%;
+      transform: translateY(-50%);
+    }
+  }
+
+  img {
+    grid-area: stack;
+    z-index: 1;
+
+    display: block;
+    max-width: 70vw;
+    height: auto;
+
+    transform: translateY(10%);
+
+    box-shadow: 0 2px 3px rgb(255, 255, 255);
+
+    @include mq(md) {
+      position: relative;
+      width: 70%;
+      transform: translate(-14%, -15%);
+      align-self: center;
+    }
+  }
+}
+
+.groupchatSticker {
+  font-family: $font-script;
+  color: var(--color-accent);
+  font-size: var(--fs-600);
+  max-width: 35vw;
+
+  transform: rotate(10deg);
+  padding-left: var(--space-s);
+  padding-top: var(--space-xs);
+}
+
+.imgWrapperBottom {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-areas: 'stack';
+
+  width: 82vw;
+  margin-left: auto;
+
+  @include mq(md) {
+    width: 100%;
+    position: relative;
+
+    grid-row: 2;
+    grid-column: 1 / 8;
+
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+
+  &::before {
+    content: '';
+    grid-area: stack;
+
+    z-index: 0;
+    background-color: var(--color-primary);
+
+    @include mq(md) {
+      position: absolute;
+      left: 0;
+      width: 95%;
+      height: 80%;
+      top: 35%;
+      transform: translateY(-50%);
+    }
+  }
+
+  img {
+    grid-area: stack;
+    z-index: 1;
+
+    display: block;
+    max-width: 60vw;
+    height: auto;
+
+    transform: translate(30%, -10%);
+
+    box-shadow: 0 2px 3px rgb(255, 255, 255);
+
+    @include mq(md) {
+      position: relative;
+      width: 70%;
+      transform: translate(-14%, -15%);
+      align-self: center;
+    }
+  }
+}
+
+.aboutTextWrapper {
+  grid-column: 1 / -1;
+  padding-inline: var(--space-fluid);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+  line-height: 1.375;
+}
+
+.meetingspotSticker {
+  font-family: $font-script;
+  color: var(--color-accent);
+  font-size: var(--fs-600);
+  max-width: 35vw;
+
+  transform: rotate(-15deg);
+  padding-left: var(--space-l);
+  padding-block: var(--space-s);
+}
+
+.contactText {
+  grid-column: 1 / -1;
+  padding-inline: var(--space-fluid);
+
+  a:hover {
+    color: var(--color-primary);
+  }
+}
