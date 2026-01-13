@@ -23,6 +23,7 @@ export const SingleIssuePage = () => {
 
   return (
     <div className={classNames(styles.singleIssuePage)}>
+      <h1 className='visually-hidden'>Rum för dramatik nummer {issue.acf.issue_number}: tema {issue.acf.theme}</h1>
       <div className={styles.coverWrapper}>
       <IssueCover
         issueNumber={issue.acf.issue_number}

@@ -12,6 +12,7 @@ export const HomePage = () => {
 
   return (
     <div className={classNames(styles.homePage)}>
+      <h1 className='visually-hidden'>Hem</h1>
       <div className={styles.banner}>
         <ActionBanner
           title="Nyhetsbrev"
