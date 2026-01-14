@@ -5,6 +5,7 @@
   position: fixed;
   z-index: z('modal');
   inset: 0;
+  background-color: var(--color-bg);
 
   overflow-y: auto;
   overflow-x: hidden;
@@ -34,8 +35,6 @@
     width: 40vw;
     left: auto;
     right: 0;
-    background-color: var(--color-bg);
-
     box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
     border-left: 1px solid var(--color-border);
   }
