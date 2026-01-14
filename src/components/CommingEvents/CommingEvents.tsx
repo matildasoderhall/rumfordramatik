@@ -4,10 +4,29 @@ import classNames from 'classnames';
 
 interface CommingEventsProps {
   event: WPEvent | null;
+  isLoading: boolean;
+  isError: boolean;
   className?: string;
 }
 
-export const CommingEvents = ({ event, className }: CommingEventsProps) => {
+export const CommingEvents = ({ event, isLoading, isError, className }: CommingEventsProps) => {
+  if (isError) {
+    return (
+      <section className={classNames(styles.latestIssue, className)}>
+        <h2 className={styles.sectionTitle}>Kommande event</h2>
+        <p className={styles.errorText}>
+          Hoppsan, det verkar vara något fel på servern. Prova att ladda om
+          sidan för att se kommande event.
+        </p>
+      </section>
+    );
+  }
+
+  if (isLoading || !event) {
+    return null;
+  }
+
+
   const acf = event?.acf || {};
 
   const formatDate = (dateString: string) => {

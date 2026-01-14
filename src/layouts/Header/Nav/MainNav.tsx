@@ -6,10 +6,10 @@ import { NavLink } from 'react-router';
 
 const NAV_ITEMS = [
   { label: 'Hem', path: '/' },
-  { label: 'Prenumerera', path: 'sign-up' },
-  { label: 'Om oss', path: 'about-us' },
+  { label: 'Prenumerera', path: 'prenumerera' },
+  { label: 'Om oss', path: 'om-oss' },
   { label: 'Open Call', path: 'open-call' },
-  { label: 'Arkiv', path: 'archive' },
+  { label: 'Arkiv', path: 'arkiv' },
 ];
 
 export const MainNav = () => {

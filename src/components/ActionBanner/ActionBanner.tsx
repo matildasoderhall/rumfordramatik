@@ -1,6 +1,6 @@
 import styles from './ActionBanner.module.scss';
 import classNames from 'classnames';
-import { NavLink } from 'react-router';
+import { Link } from 'react-router';
 import { ActionBannerAlign } from './ActionBanner.types';
 import { ArrowLeft, ArrowRight } from '../CustomIcons';
 import { Icon, IconFill, IconSize } from '../Icon';
@@ -30,7 +30,7 @@ export const ActionBanner = ({
 }: ActionBannerProps) => {
   return (
     <div className={classNames(styles.actionBanner, styles[align], className)}>
-      <NavLink to={to} className={styles.link}>
+      <Link to={to} className={styles.link}>
         {arrowDirection === 'left' && (
           <Icon
             icon={ArrowLeft}
@@ -49,7 +49,7 @@ export const ActionBanner = ({
             className={classNames(styles.icon, styles.slideRight)}
           />
         )}
-      </NavLink>
+      </Link>
 
       <span className={styles.stickerText}>{stickerText}</span>
       <div className={styles.content}>
