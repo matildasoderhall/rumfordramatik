@@ -10,7 +10,7 @@ interface CommingEventsProps {
 }
 
 export const CommingEvents = ({ event, isLoading, isError, className }: CommingEventsProps) => {
-  if (!isError) {
+  if (isError) {
     return (
       <section className={classNames(styles.latestIssue, className)}>
         <h2 className={styles.sectionTitle}>Kommande event</h2>
