@@ -2,7 +2,7 @@ import type { WPIssue } from '@/models/wordpress';
 import styles from './LatestIssue.module.scss';
 import classNames from 'classnames';
 import { IssueCover } from '../IssueCover';
-import { Button } from '../Button';
+import { Button, ButtonType } from '../Button';
 
 interface LatestIssueProps {
   issue: WPIssue | null;
@@ -44,7 +44,8 @@ export const LatestIssue = ({
       <div className={styles.contentWrapper}>
         <h2 className={styles.title}>Senaste numret</h2>
         <p className={styles.preface}>{acf.preface}</p>
-        <Button className={styles.orderBtn}>Beställ numret</Button>
+        <span className={styles.readMoreScribble}>Läs mer</span>
+        <Button type={ButtonType.Button} className={styles.orderBtn}>Beställ numret</Button>
       </div>
     </section>
   );
