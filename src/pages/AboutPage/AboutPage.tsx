@@ -24,22 +24,29 @@ export const AboutPage = () => {
 
       <div className={styles.aboutTextWrapper}>
         <p>
-          Vi är en fysisk tidskrift som publicerar nyskriven dramatik på
-          svenska, men även på norska och danska tillsammans med svensk
-          översättning. Tidskriften vänder sig till dem som har ett intresse för
-          dramatik, text och scenkonst.
+          Vi är en <span className={styles.circled}>fysisk tidskrift</span> som
+          publicerar nyskriven dramatik på svenska, men även på norska och
+          danska tillsammans med svensk översättning. Tidskriften vänder sig
+          till dem som har ett intresse för{' '}
+          <span className={styles.underlined}> dramatik</span>, text och
+          scenkonst.
         </p>
         <p>
-          Med tidskriften vill vi skapa en mötesplats för den samtida
+          Med tidskriften vill vi skapa en{' '}
+          <span className={styles.underlined}>mötesplats</span> för den samtida
           dramatiken, utforska vad dramatisk text kan vara idag och ge en
-          alternativ möjlighet för dramatiker att bli publicerade.
+          alternativ möjlighet för dramatiker att bli{' '}
+          <span className={styles.circled}>publicerade</span>.
         </p>
       </div>
       <span className={styles.meetingspotSticker}>mötesplats</span>
       <p className={styles.contactText}>
         Har du några funderingar eller vill komma i kontakt med oss kan du
-        skriva till oss på sociala medier eller mejla till
-        <a href="mailto:info@rumfordramatik.se"> info@rumfordramatik.se</a>.
+        skriva till oss på sociala medier eller mejla till {' '}
+        <a href="mailto:info@rumfordramatik.se">
+          info@rumfordramatik.se
+        </a>
+        .
       </p>
     </div>
   );
