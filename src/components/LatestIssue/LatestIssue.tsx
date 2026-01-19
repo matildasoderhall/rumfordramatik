@@ -9,6 +9,7 @@ interface LatestIssueProps {
   issue: WPIssue | null;
   isLoading: boolean;
   isError: boolean;
+  nextSectionId: string;
   className?: string;
 }
 
@@ -16,6 +17,7 @@ export const LatestIssue = ({
   issue,
   isError,
   isLoading,
+  nextSectionId,
   className,
 }: LatestIssueProps) => {
   if (isError) {
@@ -32,8 +34,17 @@ export const LatestIssue = ({
   if (isLoading || !issue) {
     return null;
   }
-
   const acf = issue.acf;
+
+  const scrollDown = () => {
+    const nextSection = document.getElementById(nextSectionId);
+
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth'});
+    } else {
+      window.scrollBy({ top: window.innerHeight * 0.8, behavior: 'smooth'});
+    }
+  };
 
   return (
     <section className={classNames(styles.latestIssue, className)}>
@@ -43,7 +54,7 @@ export const LatestIssue = ({
           issueNumber={acf.issue_number}
           theme={acf.theme}
         />
-        <DecorativeArrow type={ArrowType.singleCurved} className={styles.arrow}/>
+        <DecorativeArrow type={ArrowType.singleCurved} className={styles.curvedArrow}/>
       </div>
 
       <div className={styles.contentWrapper}>
@@ -54,6 +65,15 @@ export const LatestIssue = ({
           Beställ numret
         </Button>
       </div>
+      <button 
+        type="button" 
+        onClick={scrollDown} 
+        className={styles.scrollArrowBtn}
+        aria-label="Scroll to next section"
+      >
+        <DecorativeArrow type={ArrowType.single} className={styles.singleArrow}/>
+      </button>
+      
     </section>
   );
 };

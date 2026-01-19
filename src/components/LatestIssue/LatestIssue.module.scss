@@ -3,6 +3,7 @@
 @use '@styles/tokens/typography' as *;
 
 .latestIssue {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--space-l);
@@ -16,12 +17,43 @@
     align-items: start;
   }
 }
+.singleArrow {
+  position: absolute;
+  bottom: var(--space-2xl);
+  right: 0;
+  --arrow-width: 3rem;
+  --arrow-height: auto;
+  aspect-ratio: 108 / 214;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(0.5rem);
+  }
+
+  @include mq(md) {
+    --arrow-width: 3rem;
+    bottom: calc(var(--space-xl) * -1);
+    right: -0.7rem;
+  }
+
+  @include mq(lg) {
+    bottom: -5rem;
+    right: 1rem;
+  }
+}
 
 .issueWrapper {
   position: relative;
+  order: 2;
+
+  @include mq(md) {
+    order: unset;
+  }
 }
 
-.arrow {
+.curvedArrow {
   position: absolute;
   display: none;
 
@@ -42,11 +74,6 @@
 
 .cover {
   width: 100%;
-  order: 2;
-
-  @include mq(md) {
-    order: unset;
-  }
 }
 
 .contentWrapper {
