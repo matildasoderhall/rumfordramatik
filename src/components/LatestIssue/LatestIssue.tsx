@@ -3,6 +3,7 @@ import styles from './LatestIssue.module.scss';
 import classNames from 'classnames';
 import { IssueCover } from '../IssueCover';
 import { Button, ButtonType } from '../Button';
+import { ArrowType, DecorativeArrow } from '../DecorativeArrow';
 
 interface LatestIssueProps {
   issue: WPIssue | null;
@@ -36,16 +37,22 @@ export const LatestIssue = ({
 
   return (
     <section className={classNames(styles.latestIssue, className)}>
-      <IssueCover
-        className={styles.cover}
-        issueNumber={acf.issue_number}
-        theme={acf.theme}
-      />
+      <div className={styles.issueWrapper}>
+        <IssueCover
+          className={styles.cover}
+          issueNumber={acf.issue_number}
+          theme={acf.theme}
+        />
+        <DecorativeArrow type={ArrowType.singleCurved} className={styles.arrow}/>
+      </div>
+
       <div className={styles.contentWrapper}>
         <h2 className={styles.title}>Senaste numret</h2>
         <p className={styles.preface}>{acf.preface}</p>
         <span className={styles.readMoreScribble}>Läs mer</span>
-        <Button type={ButtonType.Button} className={styles.orderBtn}>Beställ numret</Button>
+        <Button type={ButtonType.Button} className={styles.orderBtn}>
+          Beställ numret
+        </Button>
       </div>
     </section>
   );

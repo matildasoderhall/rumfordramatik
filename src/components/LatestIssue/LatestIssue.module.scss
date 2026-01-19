@@ -17,6 +17,29 @@
   }
 }
 
+.issueWrapper {
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  display: none;
+
+  @include mq(md) {
+    display: block;
+    right: -28%;
+    bottom: var(--space-l);
+    --arrow-width: 40%;
+    --arrow-height: auto;
+    aspect-ratio: 214 / 108;
+  }
+
+  @include mq(lg) {
+    right: -15%;
+    --arrow-rotation: 5deg;
+  }
+}
+
 .cover {
   width: 100%;
   order: 2;
