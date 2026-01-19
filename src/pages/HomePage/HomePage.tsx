@@ -41,6 +41,7 @@ export const HomePage = () => {
         issue={issues[0]}
         isLoading={issuesLoading}
         isError={!!issuesError}
+        nextSectionId='upcoming-events'
         className={styles.latestNumberSection}
       />
 

@@ -42,7 +42,7 @@ export const CommingEvents = ({ event, isLoading, isError, className }: CommingE
   const displayDate = acf.date ? formatDate(acf.date) : '';
 
   return (
-    <section className={classNames(styles.commingEvents, className)}>
+    <section className={classNames(styles.commingEvents, className)} id='upcoming-events'>
       <h2 className={styles.sectionTitle}>Kommande event</h2>
 
       <article className={styles.eventWrapper}>
