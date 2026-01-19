@@ -1,0 +1,20 @@
+@use '@styles/abstracts/mixins' as *;
+
+.decorativeArrow {
+  display: block;
+  pointer-events: none;
+}
+
+.double-curved {
+  @include double-curved-arrow;
+}
+
+.single-curved {
+  @include single-curved-arrow;
+}
+
+.single {
+  @include single-arrow;
+}
+
+
