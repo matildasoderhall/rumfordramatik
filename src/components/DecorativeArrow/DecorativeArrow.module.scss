@@ -2,15 +2,16 @@
 
 .decorativeArrow {
   display: block;
-  pointer-events: none;
 }
 
 .double-curved {
   @include double-curved-arrow;
+  pointer-events: none;
 }
 
 .single-curved {
   @include single-curved-arrow;
+  pointer-events: none;
 }
 
 .single {
