@@ -7,7 +7,6 @@
   flex-direction: column;
   font-family: $font-condensed;
 
-  
   &.start {
     align-items: flex-start;
   }
@@ -66,15 +65,72 @@
 
 .contentTitle {
   font-size: var(--fs-500);
-  padding-right: var(--space-2xl);
+  margin-right: var(--space-xl);
 
   &.openCall {
     color: var(--color-primary);
+    @include long-double-underline(var(--color-accent), 100%, 1em);
   }
 }
 
 .contentBody {
   font-size: var(--text-400);
-  max-width: 58ch;
+  max-width: 50ch;
   @include wrap-text;
+
+  @include mq(lg) {
+    max-width: 58ch;
+  }
+}
+
+.ctaWrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.openCallArrow {
+  @include double-curved-arrow('right');
+  position: absolute;
+  top: 50%;
+  left: -30%;
+
+  @include mq(md) {
+    --arrow-width: 90px;
+    --arrow-height: 90px;
+    --arrow-rotation: 5deg;
+    top: 60%;
+  }
+
+  @include mq(lg) {
+    --arrow-width: 100px;
+    --arrow-height: 100px;
+    --arrow-rotation: 7deg;
+    top: 70%;
+  }
+}
+
+.newsletterArrow {
+  @include double-curved-arrow('right');
+  position: absolute;
+  top: 40%;
+  left: -33%;
+  --arrow-rotation: 15deg;
+
+  @include mq(md) {
+    @include double-curved-arrow('right');
+    --arrow-width: 95px;
+    --arrow-height: 95px;
+    --arrow-rotation: -10deg;
+    top: 55%;
+    left: auto;
+    right: -30%;
+    transform: scaleX(-1) rotate(var(--arrow-rotation)) !important;
+  }
+
+  @include mq(lg) {
+    --arrow-width: 110px;
+    --arrow-height: 110px;
+    --arrow-rotation: -17deg;
+    top: 70%;
+  }
 }

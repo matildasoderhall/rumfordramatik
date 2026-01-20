@@ -16,7 +16,13 @@
   }
 }
 
+.issueWrapper {
+  grid-row: 1 / -1;
+  position: relative;
+}
+
 .coverWrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--space-xl);
@@ -29,6 +35,14 @@
 }
 
 .coverButton {
+  @include circle;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  margin-top: var(--space-m);
+
+  &:hover {
+    background-color: var(--color-primary-hover);
+    transform: scale(1.02);
+  }
   @include mq(md) {
     grid-row: 2;
     align-self: start;
@@ -36,14 +50,33 @@
     margin-right: clamp(3%, 51.34vw - 379px, 25%);
   }
 }
-.cover {
-  grid-row: 1 / -1;
+
+.curvedArrow {
+  position: absolute;
+  display: none;
+
+  @include mq(md) {
+    display: block;
+    right: -10%;
+    bottom: var(--space-m);
+    --arrow-width: 40%;
+    --arrow-height: auto;
+    aspect-ratio: 214 / 108;
+  }
+
+  @include mq(lg) {
+    right: 0%;
+  }
 }
 
 .contentsWrapper {
   display: flex;
   flex-direction: column;
-  align-self: end;
+  align-self: center;
+
+  @include mq(md) {
+    align-self: end;
+  }
 }
 
 .playList {
@@ -108,8 +141,37 @@
 
 .prefaceButton {
   margin-block: var(--space-2xl);
+  align-self: center;
 
   @include mq(lg) {
     display: none;
+  }
+}
+
+.singleArrow {
+  position: absolute;
+  
+  right: 0;
+  bottom: 45%;
+  --arrow-width: 3rem;
+  --arrow-height: auto;
+  aspect-ratio: 108 / 214;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(0.5rem);
+  }
+
+  @include mq(md) {
+    --arrow-width: 3rem;
+    bottom: calc(var(--space-xl) * -1);
+    right: -0.7rem;
+  }
+
+  @include mq(lg) {
+    bottom: -5rem;
+    right: 1rem;
   }
 }

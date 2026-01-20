@@ -1,9 +1,10 @@
 import { IssueCover } from '@/components/IssueCover';
 import styles from './SingleIssuePage.module.scss';
 import classNames from 'classnames';
-import { Button } from '@/components/Button';
+import { Button, ButtonType } from '@/components/Button';
 import { useIssues } from '@/hooks/useIssues';
 import { useParams } from 'react-router';
+import { DecorativeArrow, ArrowType } from '@/components/DecorativeArrow';
 
 export const SingleIssuePage = () => {
   const { id } = useParams();
@@ -21,37 +22,72 @@ export const SingleIssuePage = () => {
     );
   }
 
+  const scrollDown = () => {
+    const nextSection = document.getElementById('preface');
+
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.scrollBy({ top: window.innerHeight * 0.8, behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className={classNames(styles.singleIssuePage)}>
-      <h1 className='visually-hidden'>Rum för dramatik nummer {issue.acf.issue_number}: tema {issue.acf.theme}</h1>
+      <h1 className="visually-hidden">
+        Rum för dramatik nummer {issue.acf.issue_number}: tema {issue.acf.theme}
+      </h1>
       <div className={styles.coverWrapper}>
-      <IssueCover
-        issueNumber={issue.acf.issue_number}
-        theme={issue.acf.theme}
-        className={styles.cover}
-      />
-      <Button className={styles.coverButton}>Beställ numret</Button>
-
-      {issue.acf.content && (
-        <div className={styles.contentsWrapper}>
-          <h2 className={styles.title}>Innehåll</h2>
-          <dl className={styles.playList}>
-            {issue.acf.content.map((content) => (
-              <div key={content.play} className={styles.playListRow}>
-                <dt>{content.play}</dt>
-                <dd>{content.playwright}</dd>
-              </div>
-            ))}
-          </dl>
+        <div className={styles.issueWrapper}>
+          <IssueCover
+            issueNumber={issue.acf.issue_number}
+            theme={issue.acf.theme}
+            className={styles.cover}
+          />
+          <DecorativeArrow
+            type={ArrowType.singleCurved}
+            className={styles.curvedArrow}
+          />
         </div>
-      )}
+
+        <Button type={ButtonType.Button} className={styles.coverButton}>
+          Beställ numret
+        </Button>
+
+        {issue.acf.content && (
+          <div className={styles.contentsWrapper}>
+            <h2 className={styles.title}>Innehåll</h2>
+            <dl className={styles.playList}>
+              {issue.acf.content.map((content) => (
+                <div key={content.play} className={styles.playListRow}>
+                  <dt>{content.play}</dt>
+                  <dd>{content.playwright}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        )}
+
+        <button
+          type="button"
+          onClick={scrollDown}
+          className={styles.scrollArrowBtn}
+          aria-label="Scroll to next section"
+        >
+          <DecorativeArrow
+            type={ArrowType.single}
+            className={styles.singleArrow}
+          />
+        </button>
       </div>
 
       {issue.acf.preface && (
-        <div className={styles.prefaceWrapper}>
+        <div className={styles.prefaceWrapper} id="preface">
           <h2 className={styles.title}>Förord</h2>
           <p className={styles.prefaceBody}>{issue.acf.preface}</p>
-          <Button className={styles.prefaceButton}>Beställ numret</Button>
+          <Button type={ButtonType.Button} className={styles.prefaceButton}>
+            Beställ numret
+          </Button>
         </div>
       )}
     </div>

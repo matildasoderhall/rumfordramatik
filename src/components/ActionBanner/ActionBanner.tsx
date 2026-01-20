@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { ActionBannerAlign } from './ActionBanner.types';
 import { ArrowLeft, ArrowRight } from '../CustomIcons';
 import { Icon, IconFill, IconSize } from '../Icon';
+import { ArrowDirection, ArrowType, DecorativeArrow } from '../DecorativeArrow';
 
 interface ActionBannerProps {
   title: string;
@@ -26,30 +27,45 @@ export const ActionBanner = ({
   contentTitle,
   contentBody,
   isOpenCall = false,
-  className
+  className,
 }: ActionBannerProps) => {
   return (
     <div className={classNames(styles.actionBanner, styles[align], className)}>
-      <Link to={to} className={styles.link}>
-        {arrowDirection === 'left' && (
-          <Icon
-            icon={ArrowLeft}
-            fill={IconFill.OnDark}
-            size={IconSize.TextMD}
-            className={classNames(styles.icon, styles.slideLeft)}
-          />
-        )}
-        <span>{title}</span>
+      <div className={styles.ctaWrapper}>
+        <Link to={to} className={styles.link}>
+          {arrowDirection === 'left' && (
+            <Icon
+              icon={ArrowLeft}
+              fill={IconFill.OnDark}
+              size={IconSize.TextMD}
+              className={classNames(styles.icon, styles.slideLeft)}
+            />
+          )}
+          <span>{title}</span>
 
-        {arrowDirection === 'right' && (
-          <Icon
-            icon={ArrowRight}
-            fill={IconFill.OnDark}
-            size={IconSize.FsMD}
-            className={classNames(styles.icon, styles.slideRight)}
+          {arrowDirection === 'right' && (
+            <Icon
+              icon={ArrowRight}
+              fill={IconFill.OnDark}
+              size={IconSize.FsMD}
+              className={classNames(styles.icon, styles.slideRight)}
+            />
+          )}
+        </Link>
+
+        {isOpenCall ? (
+          <DecorativeArrow
+            type={ArrowType.doubleCurved}
+            direction={ArrowDirection.right}
+            className={styles.openCallArrow}
+          />
+        ) : (
+          <DecorativeArrow
+            type={ArrowType.doubleCurved}
+            className={styles.newsletterArrow}
           />
         )}
-      </Link>
+      </div>
 
       <span className={styles.stickerText}>{stickerText}</span>
       <div className={styles.content}>

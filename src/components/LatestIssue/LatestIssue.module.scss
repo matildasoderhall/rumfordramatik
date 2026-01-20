@@ -3,11 +3,12 @@
 @use '@styles/tokens/typography' as *;
 
 .latestIssue {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--space-l);
-  padding-inline: var(--space-fluid);
-  padding-block: var(--space-2xl);
+  margin-inline: var(--space-fluid);
+  margin-block: var(--space-2xl);
 
   @include mq(md) {
     display: grid;
@@ -16,14 +17,63 @@
     align-items: start;
   }
 }
+.singleArrow {
+  position: absolute;
+  bottom: var(--space-2xl);
+  right: 0;
+  --arrow-width: 3rem;
+  --arrow-height: auto;
+  aspect-ratio: 108 / 214;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 
-.cover {
-  width: 100%;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(0.5rem);
+  }
+
+  @include mq(md) {
+    --arrow-width: 3rem;
+    bottom: calc(var(--space-xl) * -1);
+    right: -0.7rem;
+  }
+
+  @include mq(lg) {
+    bottom: -5rem;
+    right: 1rem;
+  }
+}
+
+.issueWrapper {
+  position: relative;
   order: 2;
 
   @include mq(md) {
     order: unset;
   }
+}
+
+.curvedArrow {
+  position: absolute;
+  display: none;
+
+  @include mq(md) {
+    display: block;
+    right: -28%;
+    bottom: var(--space-l);
+    --arrow-width: 40%;
+    --arrow-height: auto;
+    aspect-ratio: 214 / 108;
+  }
+
+  @include mq(lg) {
+    right: -15%;
+    --arrow-rotation: 5deg;
+  }
+}
+
+.cover {
+  width: 100%;
 }
 
 .contentWrapper {
@@ -34,7 +84,8 @@
 
     height: 0;
     min-height: 100%;
-    overflow: hidden;
+
+    padding-right: var(--space-l);
   }
 }
 
@@ -84,7 +135,7 @@
   @include mq(md) {
     order: unset;
     width: fit-content;
-    margin-top: var(--space-l);
+    margin-top: var(--space-xs);
     align-self: center;
   }
 
@@ -101,4 +152,23 @@
   font-size: var(--fs-500);
   color: var(--color-primary-hover);
   padding: var(--space-xl);
+}
+
+.readMoreScribble {
+  display: none;
+  @include mq(md) {
+    align-self: end;
+    display: contents;
+    font-family: $font-script;
+    font-size: var(--fs-600);
+    color: var(--color-accent);
+    text-transform: uppercase;
+
+    transform: rotate(0.37deg);
+    @include double-underline();
+  }
+
+  @include mq(lg) {
+    margin-right: 15%;
+  }
 }
