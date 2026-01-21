@@ -1,0 +1,75 @@
+@use '@styles/abstracts/mixins' as *;
+@use '@styles/tokens/typography' as *;
+
+.scribbleApply {
+  position: absolute;
+  color: var(--color-accent);
+  font-family: $font-script;
+  font-size: var(--fs-600);
+
+  top: 16%;
+  transform: rotate(13deg);
+  right: 0;
+  padding: calc(var(--space-fluid) + var(--space-s));
+}
+
+.openCallPage {
+  position: relative;
+  padding-inline: var(--space-fluid);
+  padding-block: var(--space-m);
+  @include wrapper;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+.applicationDescriptionSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+  padding-inline: var(--space-xs);
+}
+
+.lastApplicationDate {
+  max-width: fit-content;
+  color: var(--color-primary);
+  font-weight: $weight-regular;
+  @include long-double-underline(var(--color-accent), 100%, 1em);
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+.nextTheme {
+  font-family: $font-condensed;
+  font-size: var(--fs-700);
+  font-weight: $weight-regular;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .theme {
+    text-transform: uppercase;
+    @include single-underline(var(--color-accent), 100%, 0.9em, 6);
+  }
+}
+
+.applicationDescription {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+}
+
+.applicationFormSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-l);
+}
+
+.applicationFormInfo {
+  p {
+    font-family: $font-condensed;
+    font-size: var(--fs-500);
+  }
+}
