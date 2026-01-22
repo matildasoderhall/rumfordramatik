@@ -11,6 +11,13 @@
   transform: rotate(13deg);
   right: 0;
   padding: calc(var(--space-fluid) + var(--space-s));
+
+  @include mq(lg) {
+    right: auto;
+    top: 2%;
+    left: 38%;
+    transform: rotate(-5deg);
+  }
 }
 
 .openCallPage {
@@ -19,10 +26,30 @@
   padding-block: var(--space-m);
   @include wrapper;
 
+  h1 {
+    text-align: center;
+    margin-bottom: var(--space-l);
+
+    @include mq(md) {
+      text-align: start;
+    }
+  }
+}
+
+.mainContentWrapper {
   display: flex;
   flex-direction: column;
   gap: var(--space-xl);
   align-items: center;
+
+  @include mq(lg) {
+    padding-inline: var(--space-xl);
+    align-items: baseline;
+
+    display: grid;
+    grid-template-columns: 37% 1fr;
+    gap: calc(var(--space-2xl) * 2);
+  }
 }
 
 .applicationDescriptionSection {
@@ -30,28 +57,47 @@
   flex-direction: column;
   gap: var(--space-s);
   padding-inline: var(--space-xs);
+  align-items: center;
+
+  @include mq(md) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  @include mq(lg) {
+    flex-direction: column;
+    padding: 0;
+  }
 }
 
 .lastApplicationDate {
   max-width: fit-content;
   color: var(--color-primary);
+  font-family: $font-condensed;
   font-weight: $weight-regular;
   @include long-double-underline(var(--color-accent), 100%, 1em);
   text-align: center;
+  font-size: var(--fs-600);
   margin-bottom: var(--space-xl);
-}
-.nextTheme {
-  font-family: $font-condensed;
-  font-size: var(--fs-700);
-  font-weight: $weight-regular;
 
+  @include mq(md) {
+    order: 2;
+    align-self: flex-start;
+  }
+}
+
+.nextTheme {
+  font-weight: $weight-regular;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 
   .theme {
     text-transform: uppercase;
-    @include single-underline(var(--color-accent), 100%, 0.9em, 6);
+    @include single-underline(var(--color-accent), 100%, 0.7em, 6);
+  }
+
+  @include mq(md) {
   }
 }
 
@@ -59,6 +105,21 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-s);
+
+  p {
+    line-height: 1.6em;
+  }
+
+  @include mq(md) {
+    max-width: 45%;
+  }
+  @include mq(lg) {
+    max-width: 100%;
+
+    p {
+      padding-right: var(--space-xl);
+    }
+  }
 }
 
 .applicationFormSection {

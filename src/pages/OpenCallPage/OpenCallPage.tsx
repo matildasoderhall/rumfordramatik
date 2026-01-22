@@ -37,18 +37,19 @@ export const OpenCallPage = () => {
           </div>
         </>
       ) : (
-        <>
+        <div className={styles.mainContentWrapper}>
           <span className={styles.scribbleApply}>Sök nu!</span>
           <section className={styles.applicationDescriptionSection}>
-            <h2 className={styles.lastApplicationDate}>
+            <p className={styles.lastApplicationDate}>
               Sista ansökningsdag är{' '}
               <span className={styles.date}>{formattedDate}</span>
-            </h2>
-            <p className={styles.nextTheme}>
-              Nästa nummers tema är:{' '}
-              <span className={styles.theme}>{data?.acf.theme}</span>
             </p>
+
             <div className={styles.applicationDescription}>
+              <h2 className={styles.nextTheme}>
+                Nästa nummers tema är:{' '}
+                <span className={styles.theme}>{data?.acf.theme}</span>
+              </h2>
               {descriptionParagraphs?.map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}
@@ -65,7 +66,7 @@ export const OpenCallPage = () => {
               <Button type={ButtonType.Submit}>Skicka</Button>
             </form>
           </section>
-        </>
+        </div>
       )}
     </div>
   );
