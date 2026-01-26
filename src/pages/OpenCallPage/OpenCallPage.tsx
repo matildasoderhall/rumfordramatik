@@ -1,6 +1,6 @@
-import { Button, ButtonType } from '@/components/Button';
 import styles from './OpenCallPage.module.scss';
 import classNames from 'classnames';
+import { OpenCallForm } from '@/components/Forms/OpenCallForm';
 import { useOpenCall } from '@/hooks/useOpenCall';
 
 export const OpenCallPage = () => {
@@ -61,10 +61,7 @@ export const OpenCallPage = () => {
               <p>Notera att du kan lägga in flera filer i samma ansökan.</p>
             </div>
 
-            <form action="">
-              {/* Add input fields */}
-              <Button type={ButtonType.Submit}>Skicka</Button>
-            </form>
+            <OpenCallForm />
           </section>
         </div>
       )}
