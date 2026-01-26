@@ -23,7 +23,7 @@ export const OpenCallPage = () => {
     <div className={classNames(styles.openCallPage)}>
       <h1 className={styles.pageTitle}>Open Call</h1>
 
-      {isExpired ? (
+      {!isExpired ? (
           <section className={styles.closedMessage}>
             <div className={styles.closedMessageInfo}>
               <h2>Just nu har vi inget öppet Open Call.</h2>
