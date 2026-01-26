@@ -6,7 +6,7 @@ import classNames from 'classnames';
 interface TextInputProps {
   label: string;
   name: string;
-  type: string;
+  type?: string;
   variant: InputVariant;
   value: string;
   autoComplete?: string;
@@ -21,7 +21,7 @@ interface TextInputProps {
 export const TextInput = ({
   label,
   name,
-  type,
+  type = 'text',
   value,
   variant = InputVariant.Primary,
   autoComplete,
