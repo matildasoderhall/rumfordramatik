@@ -2,6 +2,7 @@ import styles from './OpenCallPage.module.scss';
 import classNames from 'classnames';
 import { OpenCallForm } from '@/components/Forms/OpenCallForm';
 import { useOpenCall } from '@/hooks/useOpenCall';
+import { NewsletterContainer } from '@/components/Forms/NewsletterForm';
 
 export const OpenCallPage = () => {
   const { data, loading, isExpired, applicationDeadline } = useOpenCall();
@@ -22,20 +23,19 @@ export const OpenCallPage = () => {
     <div className={classNames(styles.openCallPage)}>
       <h1 className={styles.pageTitle}>Open Call</h1>
 
-      {!isExpired ? (
-        <>
+      {isExpired ? (
           <section className={styles.closedMessage}>
-            <h2>Just nu har vi inget öppet call.</h2>
-            <p>
-              Men vi öppnar snart igen! Skriv upp dig på nyhetsbrevet så missar
-              du inte nästa deadline.
-            </p>
+            <div className={styles.closedMessageInfo}>
+              <h2>Just nu har vi inget öppet Open Call.</h2>
+              <p>
+                Men vi öppnar snart igen! Skriv upp dig på nyhetsbrevet så
+                missar du inte nästa deadline.
+              </p>
+            </div>
+            <div className={styles.newsletterEmbed}>
+              <NewsletterContainer />
+            </div>
           </section>
-
-          <div className={styles.newsletterEmbed}>
-            {/* <NewsletterSubscribe /> */}
-          </div>
-        </>
       ) : (
         <div className={styles.mainContentWrapper}>
           <span className={styles.scribbleApply}>Sök nu!</span>
@@ -56,11 +56,6 @@ export const OpenCallPage = () => {
             </div>
           </section>
           <section className={styles.applicationFormSection}>
-            <div className={styles.applicationFormInfo}>
-              <h2>Fyll i nedan uppgifter för att skicka in din ansökan.</h2>
-              <p>Notera att du kan lägga in flera filer i samma ansökan.</p>
-            </div>
-
             <OpenCallForm />
           </section>
         </div>

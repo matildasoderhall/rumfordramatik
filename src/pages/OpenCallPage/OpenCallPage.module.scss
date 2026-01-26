@@ -1,22 +1,51 @@
 @use '@styles/abstracts/mixins' as *;
 @use '@styles/tokens/typography' as *;
 
+.closedMessage {
+  display: flex;
+
+  flex-direction: column;
+  .closedMessageInfo {
+    h2 {
+      font-size: var(--fs-600);
+    }
+
+    p {
+      font-family: $font-condensed;
+      font-size: var(--text-500);
+    }
+  }
+
+  @include mq(lg) {
+    flex-direction: row;
+  }
+}
+
 .scribbleApply {
   position: absolute;
   color: var(--color-accent);
   font-family: $font-script;
-  font-size: var(--fs-600);
+  font-size: clamp(2.5rem, 2rem + 2.5vw, 4rem);
+  text-transform: uppercase;
 
-  top: 16%;
+  top: 1%;
   transform: rotate(13deg);
   right: 0;
   padding: calc(var(--space-fluid) + var(--space-s));
 
+  @include mq(md) {
+    right: auto;
+    top: auto;
+    bottom: 22%;
+    left: 0%;
+    transform: rotate(-13deg);
+  }
+
   @include mq(lg) {
     right: auto;
     top: 2%;
-    left: 38%;
-    transform: rotate(-5deg);
+    left: 68%;
+    transform: rotate(11deg);
   }
 }
 
@@ -24,6 +53,7 @@
   position: relative;
   padding-inline: var(--space-fluid);
   padding-block: var(--space-m);
+  margin-bottom: var(--space-m);
   @include wrapper;
 
   h1 {
@@ -37,10 +67,17 @@
 }
 
 .mainContentWrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--space-xl);
   align-items: center;
+
+  @include mq(md) {
+    flex-direction: row;
+    align-items: start;
+    justify-content: center;
+  }
 
   @include mq(lg) {
     padding-inline: var(--space-xl);
@@ -48,25 +85,25 @@
 
     display: grid;
     grid-template-columns: 37% 1fr;
-    gap: calc(var(--space-2xl) * 2);
+    gap: calc(var(--space-2xl));
   }
 }
 
 .applicationDescriptionSection {
   display: flex;
   flex-direction: column;
-  gap: var(--space-s);
+  gap: var(--space-xl);
   padding-inline: var(--space-xs);
   align-items: center;
 
-  @include mq(md) {
-    flex-direction: row;
-    justify-content: space-between;
+  h2 {
+    font-size: clamp(2rem, 1.68rem + 1.6vw, 2.96rem);
   }
 
-  @include mq(lg) {
+  @include mq(md) {
     flex-direction: column;
     padding: 0;
+    max-width: 380px;
   }
 }
 
@@ -77,12 +114,13 @@
   font-weight: $weight-regular;
   @include long-double-underline(var(--color-accent), 100%, 1em);
   text-align: center;
-  font-size: var(--fs-600);
+
+  font-size: 2rem;
   margin-bottom: var(--space-xl);
 
   @include mq(md) {
     order: 2;
-    align-self: flex-start;
+    align-self: end;
   }
 }
 
@@ -110,12 +148,7 @@
     line-height: 1.6em;
   }
 
-  @include mq(md) {
-    max-width: 45%;
-  }
   @include mq(lg) {
-    max-width: 100%;
-
     p {
       padding-right: var(--space-xl);
     }
