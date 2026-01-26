@@ -6,6 +6,26 @@ import { useSubmitApplication } from '@/hooks/useSubmitApplication';
 import { FileInput } from '@/components/FileInput';
 import { XIcon } from '@phosphor-icons/react';
 
+
+/**
+ * A form component allowing users to submit an "Open Call" application.
+ *
+ * This component handles:
+ * - Collecting applicant details (First Name, Last Name, Email).
+ * - Managing file uploads with client-side validation for size (Max 10MB) and count (Max 3 files).
+ * - Submitting data to WordPress via Contact Form 7 (using the `useSubmitApplication` hook).
+ * - Displaying validation errors returned from the server.
+ * - Rendering a success state upon successful submission.
+ *
+ * @component
+ * @example
+ * return (
+ * <main>
+ * <h1>Apply Now</h1>
+ * <OpenCallForm />
+ * </main>
+ * )
+ */
 export const OpenCallForm = () => {
   const { submit, status, message, invalidFields } = useSubmitApplication();
 
