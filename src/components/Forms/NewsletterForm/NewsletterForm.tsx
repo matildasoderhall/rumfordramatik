@@ -16,6 +16,25 @@ interface NewsletterFormProps {
   }) => void;
 }
 
+/**
+ * A newsletter subscription form designed to work with `react-mailchimp-subscribe`.
+ *
+ * Key behaviors:
+ * - **Duplicate Handling:** Checks to detect "Already Subscribed" cases.
+ * Mailchimp sometimes returns these as "success" (profile updated) and sometimes as "error".
+ * This component unifies them into a single "Warning" popup state.
+ * - **Success Handling:** Real new subscribers get a "Success" popup and the form is cleared.
+ * - **Render Loop Prevention:** Uses `setTimeout(..., 0)` in `useEffect` to safely handle status updates
+ * without triggering React synchronous state update warnings.
+ *
+ * @component
+ * @example
+ * <NewsletterForm
+ * status={status}   // "sending" | "error" | "success"
+ * message={message} // "Thank you for subscribing!" or "Already subscribed..."
+ * onValidated={(formData) => submitToMailchimp(formData)}
+ * />
+ */
 export const NewsletterForm = ({
   status,
   message,

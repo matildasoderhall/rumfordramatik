@@ -18,6 +18,27 @@ interface TextInputProps {
   className?: string;
 }
 
+/**
+ * A reusable text input component that handles labels, validation states, and mandatory indicators.
+ *
+ * Features:
+ * - Built-in `<label>` wrapping for accessibility.
+ * - Displays a "*Obligatoriskt" helper text automatically if `required` is true.
+ * - Conditionally renders an error message block when `variant` is set to `InputVariant.Error`.
+ *
+ * @component
+ * @example
+ * <TextInput
+ * label="E-post"
+ * name="email"
+ * type="email"
+ * value={email}
+ * onValueChange={(e) => setEmail(e.target.value)}
+ * required
+ * variant={hasError ? InputVariant.Error : InputVariant.Primary}
+ * feedback="Du måste ange en giltig e-postadress."
+ * />
+ */
 export const TextInput = ({
   label,
   name,

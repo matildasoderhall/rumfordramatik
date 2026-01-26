@@ -12,6 +12,29 @@ interface FileInputProps {
   onFilesSelected: (files: File[]) => void;
 }
 
+/**
+ * A wrapper component for file uploads that supports both Drag-and-Drop and Click-to-Browse.
+ *
+ * It hides the native HTML file input and presents a styled "drop zone" instead.
+ * When files are selected (via drop or dialog), it passes the raw `File[]` array to the parent.
+ *
+ * @component
+ * @example
+ * const handleFiles = (files: File[]) => {
+ * console.log("User picked:", files);
+ * };
+ *
+ * return (
+ * <FileInput
+ * label="Ladda upp CV"
+ * subLabel="Endast PDF, max 5MB"
+ * accept=".pdf"
+ * multiple={false}
+ * onFilesSelected={handleFiles}
+ * error={errorMessage}
+ * />
+ * );
+ */
 export const FileInput = ({
   label,
   subLabel,

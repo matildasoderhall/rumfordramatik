@@ -12,6 +12,16 @@ interface ButtonProps {
   className?: string;
 }
 
+/**
+ * A general-purpose button component supporting various types, states, and styles.
+ *
+ * Features:
+ * - Supports standard HTML button types (submit, button, reset) via `ButtonType`.
+ * - Automatically disables interactions when `loading` or `disabled` is true.
+ * - `circled` prop allows for an alternative circled visual style (often used for specific calls to action).
+ *
+ * @component
+ */
 export const Button = ({
   children,
   type = ButtonType.Button,
