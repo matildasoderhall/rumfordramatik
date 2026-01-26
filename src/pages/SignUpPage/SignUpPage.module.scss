@@ -1,5 +1,66 @@
+@use '@styles/tokens/typography' as *;
+@use '@styles/abstracts/mixins' as *;
+
 .signUpPage {
+  padding-inline: var(--space-fluid);
+  padding-block: var(--space-xl);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+
+  @include mq(md) {
+    gap: 0;
+  }
+}
+
+.mainContentWrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: var(--space-xl);
+
+  @include mq(md) {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  @include mq(lg) {
+    padding-inline: var(--space-2xl);
+    justify-content: space-between;
+  }
+}
+
+.infoTextWrapper {
+  position: relative;
+
+  @include mq(md) {
+    padding-top: var(--space-m);
+  }
+}
+
+.infoText {
+  font-family: $font-condensed;
+  font-size: var(--fs-600);
+}
+
+.stickerText {
+  @include long-double-underline(var(--color-accent), 100%, 1.3em);
+
+  position: absolute;
+  right: 0;
+  bottom: -65%;
+  transform: rotate(5deg);
+
+  font-family: $font-script;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-size: clamp(2rem, 1.68rem + 1.6vw, 2.96rem);
+
+  @include mq(md) {
+    transform: rotate(-6deg);
+    left: 0;
+    right: auto;
+    bottom: -60%;
+  }
 }
