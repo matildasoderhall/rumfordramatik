@@ -1,12 +1,65 @@
 import styles from './OpenCallPage.module.scss';
 import classNames from 'classnames';
 import { OpenCallForm } from '@/components/Forms/OpenCallForm';
+import { useOpenCall } from '@/hooks/useOpenCall';
+import { NewsletterContainer } from '@/components/Forms/NewsletterForm';
 
 export const OpenCallPage = () => {
+  const { data, loading, isExpired, applicationDeadline } = useOpenCall();
+
+  const formattedDate = applicationDeadline
+    ? applicationDeadline.toLocaleDateString('sv-SE', {
+        day: 'numeric',
+        month: 'long',
+      })
+    : '';
+
+  const descriptionParagraphs = data?.acf.description.split(/\r\n\r\n|\n\n/);
+
+  if (loading)
+    return <div className={classNames(styles.openCallPage)}>Laddar...</div>;
+
   return (
     <div className={classNames(styles.openCallPage)}>
       <h1 className={styles.pageTitle}>Open Call</h1>
-      <OpenCallForm />
+
+      {isExpired ? (
+          <section className={styles.closedMessage}>
+            <div className={styles.closedMessageInfo}>
+              <h2>Just nu har vi inget öppet Open Call.</h2>
+              <p>
+                Men vi öppnar snart igen! Skriv upp dig på nyhetsbrevet så
+                missar du inte nästa deadline.
+              </p>
+            </div>
+            <div className={styles.newsletterEmbed}>
+              <NewsletterContainer />
+            </div>
+          </section>
+      ) : (
+        <div className={styles.mainContentWrapper}>
+          <span className={styles.scribbleApply}>Sök nu!</span>
+          <section className={styles.applicationDescriptionSection}>
+            <p className={styles.lastApplicationDate}>
+              Sista ansökningsdag är{' '}
+              <span className={styles.date}>{formattedDate}</span>
+            </p>
+
+            <div className={styles.applicationDescription}>
+              <h2 className={styles.nextTheme}>
+                Nästa nummers tema är:{' '}
+                <span className={styles.theme}>{data?.acf.theme}</span>
+              </h2>
+              {descriptionParagraphs?.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
+            </div>
+          </section>
+          <section className={styles.applicationFormSection}>
+            <OpenCallForm />
+          </section>
+        </div>
+      )}
     </div>
   );
 };
