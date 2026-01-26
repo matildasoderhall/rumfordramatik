@@ -3,6 +3,22 @@ import { submitApplication } from "@/services/api";
 import axios from "axios";
 import { useState } from "react"
 
+
+/**
+ * A custom hook that handles the submission logic for Contact Form 7 (CF7) forms.
+ * * It manages the entire request lifecycle including loading state, success/error handling, 
+ * and parsing validation errors returned by the WordPress REST API.
+ *
+ * @returns An object containing the submission handler, current status, server messages, validation errors, and a reset function.
+ * * @example
+ * ```tsx
+ * const { submit, status, message, invalidFields } = useSubmitApplication();
+ * * const handleSubmit = (formData) => {
+ * submit('1337', formData); // Form ID and Data
+ * };
+ * * if (status === 'success') return <SuccessMessage msg={message} />;
+ * ```
+ */
 export const useSubmitApplication = () => {
     const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
     const [message, setMessage] = useState('');
