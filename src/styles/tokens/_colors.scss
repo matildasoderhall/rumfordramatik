@@ -6,10 +6,16 @@ $bg: #f5f5f0;
 $white: #ffffff;
 $black: #000000;
 
+$color-success: #009700;
+$color-warning: #ff8000;
+$color-error: #ff1616;
+$color-info: #3d6ae5;
+
 :root {
   // --- BACKGROUNDS ---
   @include mx.define-lch($bg, --color-bg);
   @include mx.define-lch($white, --color-white);
+  @include mx.define-lch($black, --color-black);
 
   // --- TEXT ---
   @include mx.define-lch($black, --color-text);
@@ -28,4 +34,33 @@ $black: #000000;
   @include mx.define-lch-alpha($black, --color-border, 0.2);
 
   --color-focus: var(--color-accent);
+
+   /// States
+  // Success variants
+  @include mx.define-lch($color-success, --color-success); // Base
+  @include mx.define-adjusted-lch($color-success, --color-success-surface, 40, 0.3); // light surface
+  @include mx.define-adjusted-lch($color-success, --color-success-surface-hover, 50, 0.2);
+  @include mx.define-lch($color-success, --color-success-border); // Border, sam as Base
+  @include mx.define-adjusted-lch($color-success, --color-success-text, -30); // dark text
+
+  // Warning variants
+  @include mx.define-lch($color-warning, --color-warning);
+  @include mx.define-adjusted-lch($color-warning, --color-warning-surface, 40, 0.3);
+  @include mx.define-adjusted-lch($color-warning, --color-warning-surface-hover, 50, 0.2);
+  @include mx.define-lch($color-warning, --color-warning-border);
+  @include mx.define-adjusted-lch($color-warning, --color-warning-text, -20);
+
+  // Error variants
+  @include mx.define-lch($color-error, --color-error);
+  @include mx.define-adjusted-lch($color-error, --color-error-surface, 45, 0.3);
+  @include mx.define-adjusted-lch($color-error, --color-error-surface-hover, 55, 0.2);
+  @include mx.define-lch($color-error, --color-error-border);
+  @include mx.define-adjusted-lch($color-error, --color-error-text, -20);
+
+  // Info variants
+  @include mx.define-lch($color-info, --color-info);
+  @include mx.define-adjusted-lch($color-info, --color-info-surface, 40, 0.3);
+  @include mx.define-adjusted-lch($color-info, --color-info-surface-hover, 50, 0.2);
+  @include mx.define-lch($color-info, --color-info-border);
+  @include mx.define-adjusted-lch($color-info, --color-info-text, -20);
 }
