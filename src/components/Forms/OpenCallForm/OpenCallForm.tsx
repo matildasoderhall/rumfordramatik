@@ -2,7 +2,7 @@ import { useState, type FormEvent } from 'react';
 import { Button, ButtonType } from '@/components/Button';
 import styles from './OpenCallForm.module.scss';
 import { InputVariant, TextInput } from '@/components/TextInput';
-import { useSubmitApplication } from '@/hooks/useSubmitApplication';
+import { useSubmitForm } from '@/hooks/useSubmitForm';
 import { FileInput } from '@/components/FileInput';
 import { XIcon } from '@phosphor-icons/react';
 import { Spinner } from '@/components/Spinner';
@@ -27,7 +27,7 @@ import { Spinner } from '@/components/Spinner';
  * )
  */
 export const OpenCallForm = () => {
-  const { submit, status, message, invalidFields } = useSubmitApplication();
+  const { submit, status, message, invalidFields } = useSubmitForm();
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
