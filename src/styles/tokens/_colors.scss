@@ -32,6 +32,7 @@ $color-info: #3d6ae5;
 
   // --- BORDERS / UTILS ---
   @include mx.define-lch-alpha($black, --color-border, 0.2);
+  @include mx.define-lch-alpha($black, --color-black-transparent-md, 0.5);
 
   --color-focus: var(--color-accent);
 
