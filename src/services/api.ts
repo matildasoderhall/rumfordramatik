@@ -131,7 +131,7 @@ export const getOpenCall = async (): Promise<WPOpenCall> => {
   }
 }
 
-export const submitApplication = async (formId: string, data: FormData): Promise<CF7Response> => {
+export const submitContactForm = async (formId: string, data: FormData): Promise<CF7Response> => {
   const url = `${BASE_SUBMIT_CONTACT_URL}/${formId}/feedback`;
   const response = await axios.post<CF7Response>(url, data); 
 
