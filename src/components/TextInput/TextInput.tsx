@@ -9,6 +9,7 @@ interface TextInputProps {
   type?: string;
   variant: InputVariant;
   value: string;
+  min?: number;
   autoComplete?: string;
   feedback?: string;
   required?: boolean;
@@ -46,6 +47,7 @@ export const TextInput = ({
   value,
   variant = InputVariant.Primary,
   autoComplete,
+  min,
   feedback = '',
   required = false,
   loading,
@@ -65,6 +67,7 @@ export const TextInput = ({
           value={value}
           onChange={onValueChange}
           autoComplete={autoComplete}
+          min={min}
         />
       </label>
       <span
