@@ -7,6 +7,7 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import { OpenCallPage } from './pages/OpenCallPage';
 import { SignUpPage } from './pages/SignUpPage';
 import { SingleIssuePage } from './pages/SingleIssuePage';
+import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 
 export const appRouter = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ export const appRouter = createBrowserRouter([
       {
         path: 'nyhetsbrev',
         element: <SignUpPage />,
+      },
+      {
+        path: 'integritetspolicy',
+        element: <PrivacyPolicyPage />,
       },
       {
         path: '*',
