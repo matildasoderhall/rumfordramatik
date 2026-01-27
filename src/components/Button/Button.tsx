@@ -1,9 +1,10 @@
 import styles from './Button.module.scss';
 import classNames from 'classnames';
 import { ButtonType } from './Button.types';
+import type { ReactNode } from 'react';
 
 interface ButtonProps {
-  children: string;
+  children: ReactNode;
   type: ButtonType;
   disabled?: boolean;
   loading?: boolean;
