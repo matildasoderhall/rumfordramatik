@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { Button, ButtonType } from '@/components/Button';
 import { useState, type FormEvent, useEffect } from 'react';
 import { Alert } from '@/components/Alert';
+import { Spinner } from '@/components/Spinner';
 
 interface NewsletterFormProps {
   status: 'sending' | 'error' | 'success' | null;
@@ -56,22 +57,17 @@ export const NewsletterForm = ({
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      // Check the message content even if status is success
       const msg = String(message).toLowerCase();
       const isProfileUpdate = msg.includes('already subscribed') || msg.includes('profile has been updated');
 
       if (status === 'success' && isProfileUpdate) {
-        // ⚠️ It is technically a success (profile updated), but for the user -> "Already Subscribed"
         setAlertOpen(true); 
-        // Do NOT clear form so they can see what they typed
       } 
       else if (status === 'success') {
-        // ✅ Real Success (New Subscriber)
         setAlertOpen(true);
         clearForm();
       } 
       else if (status === 'error') {
-        // ❌ Error (Duplicate or other)
         if (msg.includes('already subscribed') || msg.includes('redan prenumerant')) {
           setAlertOpen(true);
         }
@@ -170,7 +166,7 @@ export const NewsletterForm = ({
         />
 
         <Button type={ButtonType.Submit} disabled={status === 'sending'} circled>
-          {status === 'sending' ? 'Skickar...' : 'Prenumerera'}
+          {status === 'sending' ? <Spinner size={28}/> : 'Prenumerera'}
         </Button>
       </form>
     </>

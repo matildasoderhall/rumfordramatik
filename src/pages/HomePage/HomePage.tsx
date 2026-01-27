@@ -6,11 +6,16 @@ import { useIssues } from '@/hooks/useIssues';
 import { CommingEvents } from '@/components/CommingEvents';
 import { useEvents } from '@/hooks/useEvents';
 import { useOpenCall } from '@/hooks/useOpenCall';
+import { SectionLoader } from '@/components/Spinner';
 
 export const HomePage = () => {
   const { issues, loading: issuesLoading, error: issuesError } = useIssues();
   const { events, loading: eventsLoading, error: eventsError } = useEvents();
-  const { isExpired, applicationDeadline, loading: openCallLoading } = useOpenCall();
+  const {
+    isExpired,
+    applicationDeadline,
+    loading: openCallLoading,
+  } = useOpenCall();
 
   const formattedDate = applicationDeadline
     ? applicationDeadline.toLocaleDateString('sv-SE', {
@@ -50,13 +55,17 @@ export const HomePage = () => {
         )}
       </div>
 
-      <LatestIssue
-        issue={issues[0]}
-        isLoading={issuesLoading}
-        isError={!!issuesError}
-        nextSectionId="upcoming-events"
-        className={styles.latestNumberSection}
-      />
+      {issuesLoading ? (
+        <SectionLoader />
+      ) : (
+        <LatestIssue
+          issue={issues[0]}
+          isLoading={issuesLoading}
+          isError={!!issuesError}
+          nextSectionId="upcoming-events"
+          className={styles.latestNumberSection}
+        />
+      )}
 
       <CommingEvents
         event={events[0]}

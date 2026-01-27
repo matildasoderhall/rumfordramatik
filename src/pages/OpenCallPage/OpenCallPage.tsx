@@ -4,6 +4,7 @@ import { OpenCallForm } from '@/components/Forms/OpenCallForm';
 import { useOpenCall } from '@/hooks/useOpenCall';
 import { NewsletterContainer } from '@/components/Forms/NewsletterForm';
 import { FormattedText } from '@/components/FormattedText';
+import { SectionLoader } from '@/components/Spinner';
 
 export const OpenCallPage = () => {
   const { data, loading, isExpired, applicationDeadline } = useOpenCall();
@@ -16,25 +17,29 @@ export const OpenCallPage = () => {
     : '';
 
   if (loading)
-    return <div className={classNames(styles.openCallPage)}>Laddar...</div>;
+    return (
+      <div className={classNames(styles.openCallPage)}>
+        <SectionLoader />
+      </div>
+    );
 
   return (
     <div className={classNames(styles.openCallPage)}>
       <h1 className={styles.pageTitle}>Open Call</h1>
 
       {isExpired ? (
-          <section className={styles.closedMessage}>
-            <div className={styles.closedMessageInfo}>
-              <h2>Just nu har vi inget öppet Open Call.</h2>
-              <p>
-                Men vi öppnar snart igen! Skriv upp dig på nyhetsbrevet så
-                missar du inte nästa deadline.
-              </p>
-            </div>
-            <div className={styles.newsletterEmbed}>
-              <NewsletterContainer />
-            </div>
-          </section>
+        <section className={styles.closedMessage}>
+          <div className={styles.closedMessageInfo}>
+            <h2>Just nu har vi inget öppet Open Call.</h2>
+            <p>
+              Men vi öppnar snart igen! Skriv upp dig på nyhetsbrevet så missar
+              du inte nästa deadline.
+            </p>
+          </div>
+          <div className={styles.newsletterEmbed}>
+            <NewsletterContainer />
+          </div>
+        </section>
       ) : (
         <div className={styles.mainContentWrapper}>
           <span className={styles.scribbleApply}>Sök nu!</span>
@@ -49,7 +54,7 @@ export const OpenCallPage = () => {
                 Nästa nummers tema är:{' '}
                 <span className={styles.theme}>{data?.acf.theme}</span>
               </h2>
-              <FormattedText text={data?.acf.description}/>
+              <FormattedText text={data?.acf.description} />
             </div>
           </section>
           <section className={styles.applicationFormSection}>

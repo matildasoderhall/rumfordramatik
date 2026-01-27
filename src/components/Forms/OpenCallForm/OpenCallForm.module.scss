@@ -63,6 +63,9 @@ div:has(input[type='file']) {
   @include circle;
   grid-column: 2;
   justify-self: center;
+
+  display: flex;
+  justify-content: center;
 }
 
 .fileList {
