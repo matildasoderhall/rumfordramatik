@@ -1,0 +1,38 @@
+@use '@styles/abstracts/mixins' as *;
+
+.orderPage {
+  @include wrapper;
+  padding-inline: var(--space-fluid);
+  padding-block: var(--space-xl);
+
+  h1 {
+    text-transform: uppercase;
+  }
+
+  
+}
+
+.formWrapper {
+  @include mq(lg) {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: var(--space-xl);
+    padding-inline: var(--space-xl);
+  }
+
+  > :nth-child(1) {
+    grid-column: 1 / span 4;
+  }
+
+  > :nth-child(2) {
+    grid-column: 5 / span 5;
+  }
+}
+
+.orderInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+  font-size: var(--text-200);
+  margin-bottom: var(--space-xl);
+}
