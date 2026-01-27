@@ -5,7 +5,7 @@ import { InputVariant, TextInput } from '@/components/TextInput';
 import { useSubmitApplication } from '@/hooks/useSubmitApplication';
 import { FileInput } from '@/components/FileInput';
 import { XIcon } from '@phosphor-icons/react';
-
+import { Spinner } from '@/components/Spinner';
 
 /**
  * A form component allowing users to submit an "Open Call" application.
@@ -195,7 +195,13 @@ export const OpenCallForm = () => {
         disabled={status === 'sending'}
         className={styles.submitButton}
       >
-        {status === 'sending' ? 'Skickar...' : 'Skicka ansökan'}
+        {status === 'sending' ? (
+          <>
+            Skickar <Spinner size={28} />{' '}
+          </>
+        ) : (
+          'Skicka ansökan'
+        )}
       </Button>
     </form>
   );
