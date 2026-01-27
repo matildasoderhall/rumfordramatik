@@ -24,6 +24,7 @@
 
   @include mq(md) {
     @include reset-visually-hidden;
+    font-family: $font-condensed;
     font-weight: $weight-regular;
     font-size: var(--fs-700);
   }

@@ -17,7 +17,9 @@ export const Header = () => {
             size={IconSize.Space2XL}
           ></Icon>
         </NavLink>
-        <h2 className={styles.headerText}>Rum för dramatik</h2>
+        <NavLink to="/">
+          <span className={styles.headerText}>Rum för dramatik</span>
+        </NavLink>
         <MainNav />
       </div>
     </header>
