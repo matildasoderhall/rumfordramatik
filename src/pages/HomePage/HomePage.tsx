@@ -16,7 +16,7 @@ export const HomePage = () => {
       <div className={styles.banner}>
         <ActionBanner
           title="Nyhetsbrev"
-          to="/prenumerera"
+          to="/nyhetsbrev"
           arrowDirection="left"
           contentTitle="Missa inte dramatiken!"
           contentBody="Prenumerera på vårt nyhetsbrev och få det senaste från Rum för Dramatik före alla andra."
