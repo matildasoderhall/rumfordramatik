@@ -34,7 +34,7 @@ export const appRouter = createBrowserRouter([
         element: <SingleIssuePage />,
       },
       {
-        path: 'prenumerera',
+        path: 'nyhetsbrev',
         element: <SignUpPage />,
       },
       {
