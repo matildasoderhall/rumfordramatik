@@ -8,8 +8,10 @@ export const AboutPage = () => {
 
       <div className={styles.imgWrapperTop}>
         <img
-          src="http://rumfordramatik.se/admin/wp-content/uploads/2026/01/test.jpeg"
-          alt=""
+          src="http://rumfordramatik.se/admin/wp-content/uploads/2026/01/redaktionen-rum-for-dramatik-1.webp"
+          alt="Redaktionen och skaparna bakom tidskriften Rum för dramatik. Fem personer sitter samlade vid ett bord i en bar- eller cafémiljö och tittar in i kameran."
+          width={1818}
+          height={1228}
         />
       </div>
       <span className={styles.longSticker}>
@@ -17,8 +19,10 @@ export const AboutPage = () => {
       </span>
       <div className={styles.imgWrapperBottom}>
         <img
-          src="http://rumfordramatik.se/admin/wp-content/uploads/2026/01/test.jpeg"
-          alt=""
+          src="http://rumfordramatik.se/admin/wp-content/uploads/2026/01/event-publik-rum-for-dramatik.webp"
+          alt="Publik och gäster minglar under en releasefest. Stämningen är tät och festlig med ballonger och dämpad belysning."
+          width={1818}
+          height={1228}
         />
       </div>
 
