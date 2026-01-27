@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { OpenCallForm } from '@/components/Forms/OpenCallForm';
 import { useOpenCall } from '@/hooks/useOpenCall';
 import { NewsletterContainer } from '@/components/Forms/NewsletterForm';
+import { FormattedText } from '@/components/FormattedText';
 
 export const OpenCallPage = () => {
   const { data, loading, isExpired, applicationDeadline } = useOpenCall();
@@ -13,8 +14,6 @@ export const OpenCallPage = () => {
         month: 'long',
       })
     : '';
-
-  const descriptionParagraphs = data?.acf.description.split(/\r\n\r\n|\n\n/);
 
   if (loading)
     return <div className={classNames(styles.openCallPage)}>Laddar...</div>;
@@ -50,9 +49,7 @@ export const OpenCallPage = () => {
                 Nästa nummers tema är:{' '}
                 <span className={styles.theme}>{data?.acf.theme}</span>
               </h2>
-              {descriptionParagraphs?.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
+              <FormattedText text={data?.acf.description}/>
             </div>
           </section>
           <section className={styles.applicationFormSection}>
