@@ -16,6 +16,16 @@
   }
 }
 
+.imgWrapper {
+  width: 22%;
+  height: auto;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
 .content {
   padding: 20px 30px;
   min-width: 300px;
@@ -43,25 +53,4 @@
   background: transparent;
   font-size: 1.2rem;
   z-index: 10;
-}
-
-.warningIcon {
-  color: var(--color-warning-text);
-  background-color: var(--color-warning-surface);
-  border-radius: 9999px;
-  padding: 2px;
-}
-
-.successIcon {
-  color: var(--color-success-text);
-  background-color: var(--color-success-surface);
-  border-radius: 9999px;
-  padding: 2px;
-}
-
-.infoIcon {
-  color: var(--color-info-text);
-  background-color: var(--color-info-surface);
-  border-radius: 9999px;
-  padding: 2px;
 }
