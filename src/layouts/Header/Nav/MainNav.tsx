@@ -6,7 +6,7 @@ import { NavLink } from 'react-router';
 
 const NAV_ITEMS = [
   { label: 'Hem', path: '/' },
-  { label: 'Prenumerera', path: 'prenumerera' },
+  { label: 'Nyhetsbrev', path: 'nyhetsbrev' },
   { label: 'Om oss', path: 'om-oss' },
   { label: 'Open Call', path: 'open-call' },
   { label: 'Arkiv', path: 'arkiv' },

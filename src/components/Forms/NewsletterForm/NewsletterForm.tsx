@@ -4,7 +4,6 @@ import classNames from 'classnames';
 import { Button, ButtonType } from '@/components/Button';
 import { useState, type FormEvent, useEffect } from 'react';
 import { Alert } from '@/components/Alert';
-import { AlertVariant } from '@/components/Alert/Alert.types';
 
 interface NewsletterFormProps {
   status: 'sending' | 'error' | 'success' | null;
@@ -89,8 +88,6 @@ export const NewsletterForm = ({
     (status === 'success' && (msg.includes('already subscribed') || msg.includes('profile has been updated')));
 
   const isRealSuccess = status === 'success' && !isDuplicate;
-
-  const alertVariant = isRealSuccess ? AlertVariant.Success : AlertVariant.Warning;
   
   const alertHeading = isRealSuccess ? 'Välkommen!' : 'Redan prenumerant';
 
@@ -118,7 +115,6 @@ export const NewsletterForm = ({
       <Alert
         isOpen={alertOpen}
         onClose={handleCloseAlert}
-        variant={alertVariant}
         heading={alertHeading}
         description={alertDescription}
       />
