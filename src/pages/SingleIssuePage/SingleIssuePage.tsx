@@ -3,8 +3,9 @@ import styles from './SingleIssuePage.module.scss';
 import classNames from 'classnames';
 import { Button, ButtonType } from '@/components/Button';
 import { useIssues } from '@/hooks/useIssues';
-import { useParams } from 'react-router';
+import { Link, useParams } from 'react-router';
 import { DecorativeArrow, ArrowType } from '@/components/DecorativeArrow';
+import { FormattedText } from '@/components/FormattedText';
 
 export const SingleIssuePage = () => {
   const { id } = useParams();
@@ -49,10 +50,11 @@ export const SingleIssuePage = () => {
             className={styles.curvedArrow}
           />
         </div>
-
-        <Button type={ButtonType.Button} className={styles.coverButton}>
-          Beställ numret
-        </Button>
+        <Link to="/beställ" className={styles.coverButtonWrapper}>
+          <Button type={ButtonType.Button} className={styles.coverButton}>
+            Beställ numret
+          </Button>
+        </Link>
 
         {issue.acf.content && (
           <div className={styles.contentsWrapper}>
@@ -84,10 +86,15 @@ export const SingleIssuePage = () => {
       {issue.acf.preface && (
         <div className={styles.prefaceWrapper} id="preface">
           <h2 className={styles.title}>Förord</h2>
-          <p className={styles.prefaceBody}>{issue.acf.preface}</p>
-          <Button type={ButtonType.Button} className={styles.prefaceButton}>
-            Beställ numret
-          </Button>
+          <FormattedText
+            text={issue.acf.preface}
+            className={styles.prefaceBody}
+          />
+          <Link to="/beställ" className={styles.prefaceButton}>
+            <Button type={ButtonType.Button}>
+              Beställ numret
+            </Button>
+          </Link>
         </div>
       )}
     </div>

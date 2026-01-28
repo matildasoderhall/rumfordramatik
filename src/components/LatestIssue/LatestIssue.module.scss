@@ -100,6 +100,12 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 8;
     overflow: hidden;
+
+    -webkit-mask-image: linear-gradient(black 90%, transparent 100%);
+
+    p {
+      padding-bottom: var(--space-xs);
+    }
   }
 
   @include mq(lg) {
@@ -114,7 +120,6 @@
     flex: 1;
     height: 100%;
     margin-right: var(--space-xl);
-    -webkit-mask-image: linear-gradient(black 90%, transparent 100%);
   }
 }
 
@@ -127,14 +132,11 @@
   }
 }
 
-.orderBtn {
-  width: 100%;
+.orderBtnWrapper {
   order: 3;
-
   margin-top: var(--space-xl);
   @include mq(md) {
     order: unset;
-    width: fit-content;
     margin-top: var(--space-xs);
     align-self: center;
   }
@@ -142,6 +144,14 @@
   @include mq(lg) {
     align-self: end;
     margin-right: 21%;
+  }
+}
+.orderBtn {
+  width: 100%;
+
+  
+  @include mq(md) {
+    width: fit-content;
   }
 }
 

@@ -23,14 +23,15 @@ export const useOpenCall = () => {
         fetchData();
     }, []);
 
-    const isExpired = (() => {
-        if (!data?.acf.application_deadline) return false;
+    const rawDate = data?.acf?.application_deadline;
 
-        const rawDate = data.acf.application_deadline;
+    const applicationDeadline = rawDate 
+        ? new Date(rawDate.replace(' ', 'T')) 
+        : null;
 
-        const safeDateString = rawDate.replace('', 'T');
-        return new Date(safeDateString) < new Date();
-    })
+    const isExpired = applicationDeadline 
+        ? applicationDeadline < new Date()
+        : false;
 
-    return { data, loading, error, isExpired };
+    return { data, loading, error, isExpired, applicationDeadline };
 }

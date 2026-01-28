@@ -4,6 +4,8 @@ import classNames from 'classnames';
 import { IssueCover } from '../IssueCover';
 import { Button, ButtonType } from '../Button';
 import { ArrowType, DecorativeArrow } from '../DecorativeArrow';
+import { FormattedText } from '../FormattedText';
+import { Link } from 'react-router';
 
 interface LatestIssueProps {
   issue: WPIssue | null;
@@ -40,9 +42,9 @@ export const LatestIssue = ({
     const nextSection = document.getElementById(nextSectionId);
 
     if (nextSection) {
-      nextSection.scrollIntoView({ behavior: 'smooth'});
+      nextSection.scrollIntoView({ behavior: 'smooth' });
     } else {
-      window.scrollBy({ top: window.innerHeight * 0.8, behavior: 'smooth'});
+      window.scrollBy({ top: window.innerHeight * 0.8, behavior: 'smooth' });
     }
   };
 
@@ -54,26 +56,33 @@ export const LatestIssue = ({
           issueNumber={acf.issue_number}
           theme={acf.theme}
         />
-        <DecorativeArrow type={ArrowType.singleCurved} className={styles.curvedArrow}/>
+        <DecorativeArrow
+          type={ArrowType.singleCurved}
+          className={styles.curvedArrow}
+        />
       </div>
 
       <div className={styles.contentWrapper}>
         <h2 className={styles.title}>Senaste numret</h2>
-        <p className={styles.preface}>{acf.preface}</p>
+        <FormattedText text={acf.preface} className={styles.preface} />
         <span className={styles.readMoreScribble}>Läs mer</span>
-        <Button type={ButtonType.Button} className={styles.orderBtn}>
-          Beställ numret
-        </Button>
+        <Link to={`/arkiv/${acf.issue_number}`} className={styles.orderBtnWrapper}>
+          <Button type={ButtonType.Button} className={styles.orderBtn}>
+            Beställ numret
+          </Button>
+        </Link>
       </div>
-      <button 
-        type="button" 
-        onClick={scrollDown} 
+      <button
+        type="button"
+        onClick={scrollDown}
         className={styles.scrollArrowBtn}
         aria-label="Scroll to next section"
       >
-        <DecorativeArrow type={ArrowType.single} className={styles.singleArrow}/>
+        <DecorativeArrow
+          type={ArrowType.single}
+          className={styles.singleArrow}
+        />
       </button>
-      
     </section>
   );
 };

@@ -1,0 +1,56 @@
+@use '@styles/tokens/typography' as *;
+
+.alert {
+  padding-block: var(--space-xl);
+  padding-inline: var(--space-m);
+  border: none;
+  background-color: var(--color-primary);
+  margin: auto;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+
+  &::backdrop {
+    background-color: rgba(black, 0.75);
+    backdrop-filter: blur(3px);
+    pointer-events: none;
+  }
+}
+
+.imgWrapper {
+  width: 22%;
+  height: auto;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.content {
+  padding: 20px 30px;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-m);
+
+  font-family: $font-condensed;
+  color: var(--color-white);
+
+  p {
+    font-size: var(--text-500);
+    text-align: center;
+  }
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: var(--color-white);
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  font-size: 1.2rem;
+  z-index: 10;
+}

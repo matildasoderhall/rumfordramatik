@@ -1,0 +1,52 @@
+@use '@styles/tokens/typography' as *;
+
+.privacyPolicyPage {
+  max-width: 50rem;
+  margin: 0 auto;
+  padding: var(--space-l) var(--space-s);
+  line-height: 1.6;
+
+  h1 {
+    font-size: var(--fs-600);
+    margin-bottom: var(--space-2xs);
+  }
+
+  h2 {
+    font-size: var(--fs-400);
+    margin-top: var(--space-l);
+    margin-bottom: var(--space-s);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--space-2xs);
+  }
+
+  h3 {
+    font-size: var(--fs-300);
+    margin-top: var(--space-m);
+    margin-bottom: var(--space-2xs);
+  }
+
+  p {
+    margin-bottom: var(--space-s);
+  }
+
+  ul {
+    list-style-type: disc;
+    padding-left: var(--space-m);
+    margin-bottom: var(--space-m);
+
+    li {
+      margin-bottom: var(--space-2xs);
+    }
+  }
+
+  .lastUpdated {
+    font-size: var(--text-100);
+    color: var(--color-black-transparent-md);
+    margin-bottom: var(--space-l);
+    display: block;
+  }
+
+  strong {
+    font-weight: $weight-bold;
+  }
+}

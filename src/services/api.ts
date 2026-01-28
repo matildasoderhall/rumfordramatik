@@ -1,7 +1,9 @@
 import axios, { AxiosError } from 'axios';
 import type { WPEvent, WPIssue, WPOpenCall } from '../models/wordpress';
+import type { CF7Response } from '@/models/CF7Response';
 
 const BASE_URL = import.meta.env.VITE_API_URL;
+const BASE_SUBMIT_CONTACT_URL = import.meta.env.VITE_API_CONTACT_URL;
 
 /**
  * Pre-configured Axios instance for WordPress API requests.
@@ -73,6 +75,7 @@ export const getEvents = async (): Promise<WPEvent[]> => {
       params: {
         _embed: true,
         status: 'publish',
+        per_page: 5,
       },
     });
 
@@ -127,4 +130,11 @@ export const getOpenCall = async (): Promise<WPOpenCall> => {
 
     throw new Error("Failed to load Open Call data.");
   }
+}
+
+export const submitContactForm = async (formId: string, data: FormData): Promise<CF7Response> => {
+  const url = `${BASE_SUBMIT_CONTACT_URL}/${formId}/feedback`;
+  const response = await axios.post<CF7Response>(url, data); 
+
+  return response.data;
 }

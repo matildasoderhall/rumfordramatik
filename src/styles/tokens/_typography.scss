@@ -22,11 +22,11 @@ $font-normal: normal;
 
   // Body text sizes
   --fs-200: clamp(0.8333rem, 0.7901rem + 0.1846 * var(--vwx), 0.9377rem);
-  --fs-300: clamp(0.9375rem, 0.808rem + 0.5525 * var(--vwx), 1.25rem); // BASE
+  --fs-300: clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem); // BASE
 
   // Headings
-  --fs-400: clamp(1.0547rem, 0.8013rem + 1.0812 * var(--vwx), 1.6663rem);
-  --fs-500: clamp(1.1865rem, 0.7578rem + 1.8291 * var(--vwx), 2.2211rem);
+  --fs-400: clamp(1.35rem, 1.1rem + 1.2vw, 1.75rem);
+  --fs-500: clamp(1.5rem, 1.15rem + 2vw, 2.25rem);
   --fs-600: clamp(1.7rem, 1.15rem + 2.25vw, 2.96rem);
   --fs-700: clamp(2rem, 1.1rem + 3.5vw, 3.95rem);
   --fs-800: clamp(2.4rem, 1.2rem + 5.5vw, 5.26rem);

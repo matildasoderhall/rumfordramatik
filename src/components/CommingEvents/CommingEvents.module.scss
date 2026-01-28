@@ -19,28 +19,50 @@
   }
 }
 
+.eventsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+}
+
 .eventWrapper {
   display: flex;
   flex-direction: column;
 
   @include mq(md) {
     display: grid;
-    grid-template-columns: repeat($columnCount, 1fr);
+    grid-template-columns: repeat(12, 1fr); 
     grid-template-rows: auto 1fr;
     column-gap: var(--space-s);
     row-gap: var(--space-l);
   }
-}
 
-.imgBg {
-  aspect-ratio: 295 / 183;
-  width: 85%;
+  &:nth-child(even) {
+    @include mq(md) {
+      .infoWrapper {
+        grid-column: 2 / 6; 
+      }
+
+      .imgWrapper {
+        grid-column: 6 / 13; 
+        justify-content: start;
+      }
+
+      .imgWrapper::before {
+        left: auto;
+        right: 0;
+      }
+
+      .imgWrapper img {
+        transform: translate(14%, -15%);
+      }
+    }
+  }
 }
 
 .imgWrapper {
   display: grid;
   grid-template-areas: 'stack';
-
   width: fit-content;
   margin-top: var(--space-xl);
 
@@ -52,14 +74,13 @@
     grid-column: 1 / 8;
 
     display: flex;
-    justify-content: end;
+    justify-content: end; 
     align-items: center;
   }
 
   &::before {
     content: '';
     grid-area: stack;
-
     z-index: 0;
     background-color: var(--color-primary);
 
@@ -76,11 +97,9 @@
   img {
     grid-area: stack;
     z-index: 1;
-
     display: block;
     max-width: 80vw;
     height: auto;
-
     transform: translate(10%, -8%);
 
     @include mq(md) {
@@ -100,8 +119,7 @@
   font-size: var(--fs-600);
   font-weight: $weight-regular;
   padding-right: var(--space-s);
-  align-self: end;
-
+  align-self: start;
   @include long-double-underline(var(--color-accent), 100%, 1.1em);
 
   @include mq(md) {
@@ -113,13 +131,14 @@
 }
 
 .infoWrapper {
-  grid-row: 2;
-  grid-column: 9 / 12;
-
   display: flex;
   flex-direction: column;
-
-  margin-top: var(--space-2xl);
+  margin-top: var(--space-l);
+  
+  @include mq(md) {
+    grid-row: 2;
+    grid-column: 9 / 12;
+  }
 }
 
 .eventDate {
@@ -128,7 +147,6 @@
   font-size: 2.25rem;
   align-self: end;
   letter-spacing: 0.06em;
-
   margin-top: var(--space-m);
 
   @include mq(md) {
@@ -144,15 +162,14 @@
   font-size: var(--fs-500);
   transform: rotate(-8deg);
   margin-bottom: 1rem;
-
   position: absolute;
   text-wrap: nowrap;
   bottom: 20%;
   right: 48%;
 
   @include mq(md) {
-    bottom: 45%;
-    right: 25%;
+    bottom: 55%;
+    right: 8%;
     transform: rotate(-13deg);
   }
 }
@@ -170,11 +187,15 @@
 .theme {
   text-transform: uppercase;
   @include single-underline;
+  display: inline-block;
+  white-space: nowrap;
+  max-width: none;
+
+  width: auto;
+  min-width: max-content;
 }
 
 .errorText {
-  order: 1;
-  grid-column: 1 / -1;
   text-align: center;
   font-size: var(--fs-500);
   color: var(--color-primary-hover);

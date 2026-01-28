@@ -102,32 +102,32 @@
   }
 }
 
-.groupchatSticker {
+.longSticker {
   font-family: $font-script;
   color: var(--color-accent);
   font-size: clamp(1.7rem, 1.4231rem + 1.2308vw, 2.5rem);
-  max-width: 35vw;
+  max-width: 50vw;
 
-  transform: rotate(10deg);
+  transform: rotate(-10deg);
   padding-left: var(--space-s);
   padding-top: var(--space-xs);
 
+  text-align: center;
+
   @include mq(md) {
     grid-row: 3;
-    grid-column: 3 / span 3;
+    grid-column: 2 / span 4;
 
     transform: rotate(-16deg);
-
-    text-align: center;
   }
 
   @include mq(lg) {
     grid-row: 2;
-    grid-column: 2 / 4;
-    text-align: left;
+    grid-column: 1 / 4;
     padding-left: 0;
     padding-top: var(--space-l);
     padding-right: var(--space-l);
+    padding-left: var(--space-2xl);
   }
 }
 
@@ -208,7 +208,7 @@
   }
 }
 
-.meetingspotSticker {
+.shortSticker {
   font-family: $font-script;
   color: var(--color-accent);
   font-size: clamp(1.7rem, 1.4231rem + 1.2308vw, 2.5rem);
