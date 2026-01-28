@@ -122,7 +122,10 @@
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
 
-  $scale: if($direction == 'left', -1, 1);
+  $scale: 1;
+  @if $direction == 'left' {
+    $scale: -1;
+  }
 
   transform: scaleX(#{$scale}) rotate(var(--arrow-rotation, #{$default-rotate}));
 }
