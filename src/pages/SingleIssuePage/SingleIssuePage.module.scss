@@ -138,6 +138,11 @@
 .prefaceButton {
   margin-block: var(--space-2xl);
   align-self: center;
+  width: 100%;
+
+  @include mq(md) {
+    width: auto;
+  }
 
   @include mq(lg) {
     display: none;
