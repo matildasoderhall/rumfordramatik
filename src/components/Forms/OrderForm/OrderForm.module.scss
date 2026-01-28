@@ -1,0 +1,201 @@
+@use '@styles/abstracts/mixins' as *;
+@use '@styles/tokens/typography' as *;
+@use '@styles/tokens/z-index' as *;
+
+.orderFormWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.orderForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  max-width: 35rem;
+}
+
+.successMessage {
+  max-width: 600px;
+  max-height: fit-content;
+  margin: var(--space-s) auto;
+  padding: var(--space-l);
+  text-align: center;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-size: var(--text-500);
+  font-family: $font-condensed;
+
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  h2 {
+    margin-bottom: var(--space-s);
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  @include mq(md) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.narrowField {
+  max-width: 150px;
+}
+
+.zipCityRow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  @include mq(md) {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--space-s);
+  }
+}
+
+.radioGroupWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+
+  .label {
+    font-family: $font-condensed;
+    padding-left: 2px;
+    font-size: var(--text-500);
+  }
+
+  .radioLabel {
+    font-size: var(--text-200);
+    font-weight: 500;
+  }
+}
+
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  cursor: pointer;
+
+  input[type='radio'] {
+    accent-color: var(--color-text);
+    width: 1.1em;
+    height: 1.1em;
+  }
+}
+
+.addressSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+/* Custom Checkbox Styles */
+.checkboxGroup {
+  margin-top: var(--space-s);
+  padding-top: var(--space-s);
+  border-top: 1px dashed var(--color-border);
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+
+  input {
+    opacity: 0;
+    position: absolute;
+    height: 0;
+    width: 0;
+  }
+
+  .customCheckbox {
+    height: 20px;
+    width: 20px;
+    min-width: 20px;
+    background-color: transparent;
+    border: 1px solid var(--color-black-transparent-md);
+    margin-right: var(--space-xs);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.2s ease;
+
+    /* Scribbled Checkmark */
+    &::after {
+      content: '';
+      position: absolute;
+      width: 32px;
+      height: 32px;
+
+      top: 50%;
+      left: 50%;
+
+      background-color: var(--color-accent);
+
+      -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='23 2 9 17 4 12' /%3E%3C/svg%3E");
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='23 2 9 17 4 12' /%3E%3C/svg%3E");
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      -webkit-mask-size: contain;
+
+      transform: translate(-50%, -50%) scale(0) rotate(-10deg);
+
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+      z-index: z('decor');
+    }
+  }
+
+  input:checked ~ .customCheckbox::after {
+    transform: translate(-50%, -50%) scale(1) rotate(-5deg);
+  }
+
+  .labelText {
+    font-family: $font-condensed;
+    font-size: var(--fs-400);
+  }
+}
+
+.errorMessage {
+  color: var(--color-warning-text);
+  background: var(--color-warning-surface);
+  padding: var(--space-s);
+  font-family: $font-condensed;
+  font-size: var(--text-400);
+}
+
+.legalText {
+  font-size: var(--text-100);
+  color: var(--color-black-transparent-md);
+  margin-bottom: var(--space-s);
+  
+  @include mq(md) {
+    max-width: 500px;
+  }
+
+  a {
+    text-decoration: underline;
+    color: inherit;
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}
+
+.submitButton {
+    align-self: center;
+}
