@@ -104,6 +104,7 @@ export const CommingEvents = ({
                     height={image.height}
                     width={image.width}
                     className={styles.img}
+                    loading='lazy'
                   />
                 )}
               </div>
