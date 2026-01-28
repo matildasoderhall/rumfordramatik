@@ -68,7 +68,7 @@ export const HomePage = () => {
       )}
 
       <CommingEvents
-        event={events[0]}
+        events={events}
         isLoading={eventsLoading}
         isError={!!eventsError}
         className={styles.commingEventsSection}

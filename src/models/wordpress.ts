@@ -35,6 +35,16 @@ export interface WPEvent {
     sticker?: string;
     theme?: string;
   };
+  yoast_head_json?: {
+    schema?: {
+      "@graph": Array<{
+        url?: string;
+        caption?: string;
+        width?: number;
+        height?: number;
+      }>;
+    };
+  };
 }
 
 export interface OpenCallACF {

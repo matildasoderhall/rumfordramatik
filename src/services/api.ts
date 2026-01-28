@@ -75,6 +75,7 @@ export const getEvents = async (): Promise<WPEvent[]> => {
       params: {
         _embed: true,
         status: 'publish',
+        per_page: 5,
       },
     });
 
