@@ -15,8 +15,7 @@
     @media (min-width: $breakpoint-lg) {
       @content;
     }
-  }
-  @else if $size == xlg {
+  } @else if $size == xlg {
     @media (min-width: $maxContentWidth) {
       @content;
     }

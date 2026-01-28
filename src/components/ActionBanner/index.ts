@@ -1,2 +1,2 @@
 export { ActionBanner } from './ActionBanner';
-export { ActionBannerAlign } from './ActionBanner.types'
+export { ActionBannerAlign } from './ActionBanner.types';

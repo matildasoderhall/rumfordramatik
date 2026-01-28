@@ -117,24 +117,28 @@ export const getOpenCall = async (): Promise<WPOpenCall> => {
 
     return response.data[0];
   } catch (error) {
-    const axiosError = error as AxiosError<{ message?: string, code?: string }>;
+    const axiosError = error as AxiosError<{ message?: string; code?: string }>;
     const wpMessage = axiosError.response?.data?.message;
 
     if (wpMessage) throw new Error(wpMessage);
-    if (axiosError.response?.status === 404) throw new Error('Open Call page not found.');
+    if (axiosError.response?.status === 404)
+      throw new Error('Open Call page not found.');
     if (axiosError.response?.status === 500) throw new Error('Server error.');
-    
+
     if (error instanceof Error) {
       throw error;
     }
 
-    throw new Error("Failed to load Open Call data.");
+    throw new Error('Failed to load Open Call data.');
   }
-}
+};
 
-export const submitContactForm = async (formId: string, data: FormData): Promise<CF7Response> => {
+export const submitContactForm = async (
+  formId: string,
+  data: FormData
+): Promise<CF7Response> => {
   const url = `${BASE_SUBMIT_CONTACT_URL}/${formId}/feedback`;
-  const response = await axios.post<CF7Response>(url, data); 
+  const response = await axios.post<CF7Response>(url, data);
 
   return response.data;
-}
+};

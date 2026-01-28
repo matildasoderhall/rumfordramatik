@@ -14,7 +14,12 @@ export const Footer = () => {
         </a>
         <SocialsNav />
       </div>
-      <p>©{currentYear} Rum för dramatik |  <Link className={styles.link} to={"/integritetspolicy"}>Integritetspolicy</Link></p>
+      <p>
+        ©{currentYear} Rum för dramatik |{' '}
+        <Link className={styles.link} to={'/integritetspolicy'}>
+          Integritetspolicy
+        </Link>
+      </p>
     </footer>
   );
 };

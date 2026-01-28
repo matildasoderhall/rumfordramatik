@@ -182,7 +182,7 @@
   font-size: var(--text-100);
   color: var(--color-black-transparent-md);
   margin-bottom: var(--space-s);
-  
+
   @include mq(md) {
     max-width: 500px;
   }
@@ -197,5 +197,5 @@
 }
 
 .submitButton {
-    align-self: center;
+  align-self: center;
 }

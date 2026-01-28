@@ -1,6 +1,6 @@
 type IconProps = React.SVGProps<SVGSVGElement>;
 
-export const ArrowLeft = ( props: IconProps) => {
+export const ArrowLeft = (props: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

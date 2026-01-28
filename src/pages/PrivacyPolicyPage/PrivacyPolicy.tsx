@@ -23,7 +23,8 @@ export const PrivacyPolicyPage = () => {
         </p>
         <ul>
           <li>
-            <strong>Verksamhet:</strong> Tidskriften Rum för dramatik (Ideell redaktion)
+            <strong>Verksamhet:</strong> Tidskriften Rum för dramatik (Ideell
+            redaktion)
           </li>
           <li>
             <strong>Kontaktperson:</strong> Klara Asta Kirk

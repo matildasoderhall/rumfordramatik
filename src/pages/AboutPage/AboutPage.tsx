@@ -46,11 +46,8 @@ export const AboutPage = () => {
       <span className={styles.shortSticker}>mötesplats</span>
       <p className={styles.contactText}>
         Har du några funderingar eller vill komma i kontakt med oss kan du
-        skriva till oss på sociala medier eller mejla till {' '}
-        <a href="mailto:info@rumfordramatik.se">
-          info@rumfordramatik.se
-        </a>
-        .
+        skriva till oss på sociala medier eller mejla till{' '}
+        <a href="mailto:info@rumfordramatik.se">info@rumfordramatik.se</a>.
       </p>
     </div>
   );

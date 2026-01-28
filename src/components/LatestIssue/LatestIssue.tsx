@@ -66,7 +66,10 @@ export const LatestIssue = ({
         <h2 className={styles.title}>Senaste numret</h2>
         <FormattedText text={acf.preface} className={styles.preface} />
         <span className={styles.readMoreScribble}>Läs mer</span>
-        <Link to={`/arkiv/${acf.issue_number}`} className={styles.orderBtnWrapper}>
+        <Link
+          to={`/arkiv/${acf.issue_number}`}
+          className={styles.orderBtnWrapper}
+        >
           <Button type={ButtonType.Button} className={styles.orderBtn}>
             Beställ numret
           </Button>
