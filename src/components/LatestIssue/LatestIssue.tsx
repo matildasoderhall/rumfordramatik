@@ -5,6 +5,7 @@ import { IssueCover } from '../IssueCover';
 import { Button, ButtonType } from '../Button';
 import { ArrowType, DecorativeArrow } from '../DecorativeArrow';
 import { FormattedText } from '../FormattedText';
+import { Link } from 'react-router';
 
 interface LatestIssueProps {
   issue: WPIssue | null;
@@ -65,9 +66,11 @@ export const LatestIssue = ({
         <h2 className={styles.title}>Senaste numret</h2>
         <FormattedText text={acf.preface} className={styles.preface} />
         <span className={styles.readMoreScribble}>Läs mer</span>
-        <Button type={ButtonType.Button} className={styles.orderBtn}>
-          Beställ numret
-        </Button>
+        <Link to={`/arkiv/${acf.issue_number}`} className={styles.orderBtnWrapper}>
+          <Button type={ButtonType.Button} className={styles.orderBtn}>
+            Beställ numret
+          </Button>
+        </Link>
       </div>
       <button
         type="button"
