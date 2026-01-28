@@ -62,7 +62,6 @@ export const OrderForm = () => {
         <p>
           Vi har mottagit din order. Betalningsinfo kommer via mejl inom kort.
         </p>
-        <p className={styles.note}>{message}</p>
       </section>
     );
   }

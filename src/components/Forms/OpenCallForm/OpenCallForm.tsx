@@ -185,24 +185,25 @@ export const OpenCallForm = () => {
           </ul>
         )}
       </div>
-
-      {status === 'error' && (
-        <div className={styles.errorMessage}>{message}</div>
-      )}
-
-      <Button
-        type={ButtonType.Submit}
-        disabled={status === 'sending'}
-        className={styles.submitButton}
-      >
-        {status === 'sending' ? (
-          <>
-            Skickar <Spinner size={28} />{' '}
-          </>
-        ) : (
-          'Skicka ansökan'
+      <div className={styles.submitButtonWrapper}>
+        {status === 'error' && (
+          <div className={styles.errorMessage}>{message}</div>
         )}
-      </Button>
+
+        <Button
+          type={ButtonType.Submit}
+          disabled={status === 'sending'}
+          className={styles.submitButton}
+        >
+          {status === 'sending' ? (
+            <>
+              Skickar <Spinner size={28} />{' '}
+            </>
+          ) : (
+            'Skicka ansökan'
+          )}
+        </Button>
+      </div>
     </form>
   );
 };
