@@ -16,7 +16,7 @@
   @include mq(lg) {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
-    gap: var(--space-xl);
+    gap: var(--space-2xl);
     padding-inline: var(--space-xl);
   }
 
