@@ -128,12 +128,8 @@ The site reflects the printed magazine's aesthetic:
 
 <div align="center">
   <h3>Desktop & Mobile</h3>
-  <table>
-    <tr>
-      <td valign="top"><img src="src/assets/desktop-view.png" width="500" alt="Desktop View"></td>
-      <td valign="top"><img src="src/assets/mobile-view.png" width="200" alt="Mobile View"></td>
-    </tr>
-  </table>
+  <img src="src/assets/desktop-view.png" width="65%" alt="Desktop View" align="top" >
+  &nbsp; &nbsp; <img src="src/assets/mobile-view.png" width="28%" alt="Mobile View" align="top" >
 </div>
 
 ### ⚡ Performance
