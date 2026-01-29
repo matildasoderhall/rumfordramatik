@@ -5,10 +5,11 @@
 
 .commingEvents {
   padding-inline: var(--space-fluid);
-  margin-block: var(--space-2xl);
+  
 
   @include mq(md) {
     padding-inline: 0;
+    margin-block: var(--space-2xl);
   }
 }
 
