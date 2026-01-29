@@ -1,0 +1,62 @@
+@use '@styles/tokens/typography' as *;
+
+.errorPageWrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  
+
+  .content {
+    width: 100%;
+    max-width: 40rem; 
+    margin: 0 auto;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: var(--space-s);
+  }
+
+  .errorCode {
+    font-size: var(--fs-900);
+    font-family: $font-condensed;
+    line-height: 1;
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: var(--space-s);
+  }
+
+  h1 {
+    font-size: var(--fs-600);
+    margin-bottom: var(--space-m);
+  }
+
+  p {
+    font-size: var(--fs-400);
+    margin-bottom: var(--space-xl);
+    color: var(--color-text-muted);
+  }
+
+  .homeButton {
+    display: inline-block;
+    padding: var(--space-s) var(--space-l);
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: $font-condensed;
+    font-size: 2rem;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+
+    &:hover {
+      background-color: var(--color-primary-hover);
+      transform: scale(1.02);
+    }
+  }
+
+  .techDetails {
+    color: var(--color-black-transparent-md);
+  }
+}

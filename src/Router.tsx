@@ -9,6 +9,7 @@ import { SignUpPage } from './pages/SignUpPage';
 import { SingleIssuePage } from './pages/SingleIssuePage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { OrderPage } from './pages/OrderPage';
+import { ErrorPage } from './pages/ErrorPage';
 
 export const appRouter = createBrowserRouter([
   {
@@ -52,6 +53,6 @@ export const appRouter = createBrowserRouter([
         element: <NotFoundPage />,
       },
     ],
-    errorElement: '', //TODO: Add default ErrorPage
+    errorElement: <ErrorPage />,
   },
 ]);
