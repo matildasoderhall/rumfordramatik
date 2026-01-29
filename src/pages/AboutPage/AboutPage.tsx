@@ -7,7 +7,9 @@ export const AboutPage = () => {
     <div className={classNames(styles.aboutPage)}>
       <SEO
         title={'Om oss'}
-        description={'Rum för dramatik publicerar och utforskar samtida dramatik. Vi är en mötesplats för dramatiker och alla med intresse för text och scenkonst.'}
+        description={
+          'Rum för dramatik publicerar och utforskar samtida dramatik. Vi är en mötesplats för dramatiker och alla med intresse för text och scenkonst.'
+        }
       />
       <h1 className={styles.title}>Om oss</h1>
 

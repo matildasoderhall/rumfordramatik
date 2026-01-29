@@ -32,7 +32,7 @@
   align-items: flex-start;
   gap: var(--space-xs);
   cursor: pointer;
-  
+
   @include mq(md) {
     max-width: 330px;
   }

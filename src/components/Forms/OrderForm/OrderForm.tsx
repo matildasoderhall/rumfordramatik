@@ -138,7 +138,11 @@ export const OrderForm = () => {
   }
   return (
     <div className={styles.orderFormWrapper}>
-      <form className={classNames(styles.orderForm)} onSubmit={handleSubmit} noValidate>
+      <form
+        className={classNames(styles.orderForm)}
+        onSubmit={handleSubmit}
+        noValidate
+      >
         <div className={styles.row}>
           <TextInput
             type="text"

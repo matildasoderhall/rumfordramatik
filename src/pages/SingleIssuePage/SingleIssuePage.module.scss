@@ -93,7 +93,7 @@
   grid-template-columns: 1fr 1fr;
 
   @include mq(md) {
-    grid-template-columns: auto 1fr ;
+    grid-template-columns: auto 1fr;
     column-gap: var(--space-s);
   }
 
