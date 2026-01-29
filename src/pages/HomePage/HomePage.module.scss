@@ -32,10 +32,10 @@
 
 .newsletterBtn {
   order: 3;
+  align-items: flex-start !important;
 
   @include mq(md) {
     order: unset;
-    align-items: flex-start !important;
   }
 }
 
