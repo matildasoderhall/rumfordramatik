@@ -107,6 +107,7 @@ div:has(input[type='file']) {
   flex-direction: column;
   align-items: center;
   justify-items: end;
+  width: 100%;
 }
 
 .errorMessage {
