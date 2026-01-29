@@ -12,7 +12,7 @@ export const NotFoundPage = () => {
           sidan rivits ut.
         </p>
 
-        <Link to={"/"} className={styles.homeButton}>
+        <Link to={'/'} className={styles.homeButton}>
           Tillbaka till startsidan
         </Link>
       </div>

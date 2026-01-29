@@ -1,5 +1,5 @@
 // Adds an ellipsis after a specific number of lines.
-// @param $lines: The number of lines to show before cutting off. 
+// @param $lines: The number of lines to show before cutting off.
 //                Leave empty for single-line truncation.
 @mixin truncate-text($lines: null) {
   @if $lines {

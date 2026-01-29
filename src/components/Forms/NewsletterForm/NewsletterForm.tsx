@@ -58,40 +58,46 @@ export const NewsletterForm = ({
   useEffect(() => {
     const timer = setTimeout(() => {
       const msg = String(message).toLowerCase();
-      const isProfileUpdate = msg.includes('already subscribed') || msg.includes('profile has been updated');
+      const isProfileUpdate =
+        msg.includes('already subscribed') ||
+        msg.includes('profile has been updated');
 
       if (status === 'success' && isProfileUpdate) {
-        setAlertOpen(true); 
-      } 
-      else if (status === 'success') {
+        setAlertOpen(true);
+      } else if (status === 'success') {
         setAlertOpen(true);
         clearForm();
-      } 
-      else if (status === 'error') {
-        if (msg.includes('already subscribed') || msg.includes('redan prenumerant')) {
+      } else if (status === 'error') {
+        if (
+          msg.includes('already subscribed') ||
+          msg.includes('redan prenumerant')
+        ) {
           setAlertOpen(true);
         }
       }
     }, 0);
-    
+
     return () => clearTimeout(timer);
   }, [status, message]);
 
   const msg = String(message).toLowerCase();
-  
-  const isDuplicate = 
-    (status === 'error' && (msg.includes('already subscribed') || msg.includes('redan prenumerant'))) ||
-    (status === 'success' && (msg.includes('already subscribed') || msg.includes('profile has been updated')));
+
+  const isDuplicate =
+    (status === 'error' &&
+      (msg.includes('already subscribed') ||
+        msg.includes('redan prenumerant'))) ||
+    (status === 'success' &&
+      (msg.includes('already subscribed') ||
+        msg.includes('profile has been updated')));
 
   const isRealSuccess = status === 'success' && !isDuplicate;
-  
+
   const alertHeading = isRealSuccess ? 'Välkommen!' : 'Redan prenumerant';
 
   const alertDescription = isRealSuccess
     ? 'Tack för att du prenumererar på Rum för Dramatik.'
     : 'Den här e-postadressen finns redan i vårt register.';
 
-  
   const handleCloseAlert = () => {
     setAlertOpen(false);
   };
@@ -165,8 +171,12 @@ export const NewsletterForm = ({
           disabled={status === 'sending'}
         />
 
-        <Button type={ButtonType.Submit} disabled={status === 'sending'} circled>
-          {status === 'sending' ? <Spinner size={28}/> : 'Prenumerera'}
+        <Button
+          type={ButtonType.Submit}
+          disabled={status === 'sending'}
+          circled
+        >
+          {status === 'sending' ? <Spinner size={28} /> : 'Prenumerera'}
         </Button>
       </form>
     </>

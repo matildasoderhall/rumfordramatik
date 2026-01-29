@@ -37,7 +37,7 @@ export interface WPEvent {
   };
   yoast_head_json?: {
     schema?: {
-      "@graph": Array<{
+      '@graph': Array<{
         url?: string;
         caption?: string;
         width?: number;

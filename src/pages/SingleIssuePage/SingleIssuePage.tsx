@@ -91,9 +91,7 @@ export const SingleIssuePage = () => {
             className={styles.prefaceBody}
           />
           <Link to="/beställ" className={styles.prefaceButton}>
-            <Button type={ButtonType.Button}>
-              Beställ numret
-            </Button>
+            <Button type={ButtonType.Button}>Beställ numret</Button>
           </Link>
         </div>
       )}

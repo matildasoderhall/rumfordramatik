@@ -1,7 +1,6 @@
 import MailchimpSubscribe from 'react-mailchimp-subscribe';
 import { NewsletterForm } from './NewsletterForm';
 
-
 /**
  * The logic container for the Newsletter subscription feature.
  * * Responsibilities:

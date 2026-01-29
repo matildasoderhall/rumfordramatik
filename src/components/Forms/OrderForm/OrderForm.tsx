@@ -9,6 +9,7 @@ import { Link } from 'react-router';
 
 export const OrderForm = () => {
   const { submit, status, message, invalidFields } = useSubmitForm();
+  const [startTime] = useState(() => Date.now());
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -32,11 +33,26 @@ export const OrderForm = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
+    const rawData = new FormData(e.currentTarget as HTMLFormElement);
+    const honey = rawData.get('_honey');
+
+    if (honey && honey !== '') {
+      return;
+    }
+
+    const submitTime = Date.now();
+    const timeTaken = submitTime - startTime;
+    
+    if (timeTaken < 2500) {
+      return; 
+    }
+
+
     const formData = new FormData();
 
-    formData.append('your-firstname', firstName);
-    formData.append('your-lastname', lastName);
-    formData.append('your-email', email);
+    formData.append('mc4wp-FNAME', firstName);
+    formData.append('mc4wp-LNAME', lastName);
+    formData.append('mc4wp-EMAIL', email);
     formData.append('quantity', quantity);
     formData.append('shipment', shipmentMethod);
 
@@ -51,6 +67,8 @@ export const OrderForm = () => {
     }
 
     formData.append('_wpcf7_unit_tag', 'order-form');
+
+    formData.delete('_honey');
 
     submit('55', formData);
   };
@@ -72,13 +90,13 @@ export const OrderForm = () => {
           <TextInput
             type="text"
             label="Förnamn"
-            name="firstname"
+            name="mc4wp-FNAME"
             variant={
-              getFieldError('applicant-firstname')
+              getFieldError('mc4wp-FNAME')
                 ? InputVariant.Error
                 : InputVariant.Primary
             }
-            feedback={getFieldError('applicant-firstname')}
+            feedback={getFieldError('mc4wp-FNAME')}
             value={firstName}
             required
             onValueChange={(e) => setFirstName(e.target.value)}
@@ -88,13 +106,13 @@ export const OrderForm = () => {
           <TextInput
             type="text"
             label="Efternamn"
-            name="lastname"
+            name="mc4wp-LNAME"
             variant={
-              getFieldError('applicant-lastname')
+              getFieldError('mc4wp-LNAME')
                 ? InputVariant.Error
                 : InputVariant.Primary
             }
-            feedback={getFieldError('applicant-lastname')}
+            feedback={getFieldError('mc4wp-LNAME')}
             value={lastName}
             required
             onValueChange={(e) => setLastName(e.target.value)}
@@ -105,13 +123,13 @@ export const OrderForm = () => {
         <TextInput
           type="email"
           label="Email"
-          name="email"
+          name="mc4wp-EMAIL"
           variant={
-            getFieldError('applicant-email')
+            getFieldError('mc4wp-EMAIL')
               ? InputVariant.Error
               : InputVariant.Primary
           }
-          feedback={getFieldError('applicant-email')}
+          feedback={getFieldError('mc4wp-EMAIL')}
           value={email}
           required
           onValueChange={(e) => setEmail(e.target.value)}
@@ -242,6 +260,15 @@ export const OrderForm = () => {
         {status === 'error' && (
           <div className={styles.errorMessage}>{message}</div>
         )}
+
+        <input
+          type="text"
+          name="_honey"
+          style={{ display: 'none' }}
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+        />
 
         <Button
           type={ButtonType.Submit}

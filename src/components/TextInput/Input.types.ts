@@ -1,5 +1,5 @@
 export enum InputVariant {
   Primary = 'primary',
-  Warning = 'warning', 
+  Warning = 'warning',
   Error = 'error',
 }
