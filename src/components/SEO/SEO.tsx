@@ -7,15 +7,16 @@ interface SEOProps {
   url?: string;
 }
 
-export const SEO = ({ 
-  title, 
-  description = "En fysisk tidskrift och mötesplats för nyskriven dramatik på svenska, norska och danska. Beställ nummer, sök till vårt Open Call eller prenumerera på vårt nyhetsbrev.",
-  image = "https://rumfordramatik.se/share.jpg", 
-  url = window.location.href 
+export const SEO = ({
+  title,
+  description = 'En fysisk tidskrift och mötesplats för nyskriven dramatik på svenska, norska och danska. Beställ nummer, sök till vårt Open Call eller prenumerera på vårt nyhetsbrev.',
+  image = 'https://rumfordramatik.se/share.jpg',
+  url = window.location.href,
 }: SEOProps) => {
-  const siteTitle = title === "Hem" 
-    ? "Rum för Dramatik - Tidskrift för nyskriven dramatik" 
-    : `${title} | Rum för Dramatik`;
+  const siteTitle =
+    title === 'Hem'
+      ? 'Rum för Dramatik - Tidskrift för nyskriven dramatik'
+      : `${title} | Rum för Dramatik`;
 
   return (
     <Helmet>
