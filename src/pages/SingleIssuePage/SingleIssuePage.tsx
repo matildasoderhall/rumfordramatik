@@ -7,19 +7,25 @@ import { Link, useParams } from 'react-router';
 import { DecorativeArrow, ArrowType } from '@/components/DecorativeArrow';
 import { FormattedText } from '@/components/FormattedText';
 import { SEO } from '@/components/SEO';
+import { NotFoundPage } from '../NotFoundPage';
+import { Spinner } from '@/components/Spinner';
 
 export const SingleIssuePage = () => {
   const { id } = useParams();
-  const { issues } = useIssues();
+  const { issues, loading } = useIssues();
 
   const issue = issues.find((i) => i.acf.issue_number.toString() === id);
 
+  if (loading) {
+    return <div className={classNames(styles.singleIssuePage)}>
+        <Spinner />
+      </div>;
+  }
+
   if (!issue) {
     return (
-      <div className={classNames(styles.singleIssuePage, styles.notFound)}>
-        <h2>Oh oh!</h2>
-        <p>The issue you are looking for cannot be found.</p>
-        <p>Please refresh the page or come back later.</p>
+      <div className={classNames(styles.singleIssuePage)}>
+        <NotFoundPage />
       </div>
     );
   }
