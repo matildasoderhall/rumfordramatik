@@ -6,6 +6,7 @@ import { useIssues } from '@/hooks/useIssues';
 import { Link, useParams } from 'react-router';
 import { DecorativeArrow, ArrowType } from '@/components/DecorativeArrow';
 import { FormattedText } from '@/components/FormattedText';
+import { SEO } from '@/components/SEO';
 
 export const SingleIssuePage = () => {
   const { id } = useParams();
@@ -35,6 +36,10 @@ export const SingleIssuePage = () => {
 
   return (
     <div className={classNames(styles.singleIssuePage)}>
+      <SEO
+        title={`Nr. ${issue.acf.issue_number}: ${issue.acf.theme}`}
+        description={`Läs mer om temat och manusen som finns med i nr. ${issue.acf.issue_number}: ${issue.acf.theme}`}
+      />
       <h1 className="visually-hidden">
         Rum för dramatik nummer {issue.acf.issue_number}: tema {issue.acf.theme}
       </h1>

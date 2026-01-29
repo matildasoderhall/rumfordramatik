@@ -7,6 +7,8 @@ import { CommingEvents } from '@/components/CommingEvents';
 import { useEvents } from '@/hooks/useEvents';
 import { useOpenCall } from '@/hooks/useOpenCall';
 import { SectionLoader } from '@/components/Spinner';
+import { SEO } from '@/components/SEO';
+
 
 export const HomePage = () => {
   const { issues, loading: issuesLoading, error: issuesError } = useIssues();
@@ -28,14 +30,18 @@ export const HomePage = () => {
 
   return (
     <div className={classNames(styles.homePage)}>
-      <h1 className="visually-hidden">Hem</h1>
+      <SEO 
+        title="Hem" 
+        description="En fysisk tidskrift och mötesplats för nyskriven dramatik. Beställ nummer, sök till Open Call eller prenumerera på vårt nyhetsbrev."
+      />
+      <h1 className="visually-hidden">Rum för Dramatik - Tidskrift för nyskriven dramatik</h1>
       <div className={styles.banner}>
         <ActionBanner
           title="Nyhetsbrev"
           to="/nyhetsbrev"
           arrowDirection="left"
           contentTitle="Missa inte dramatiken!"
-          contentBody="Prenumerera på vårt nyhetsbrev och få det senaste från Rum för Dramatik före alla andra."
+          contentBody="Prenumerera på vårt nyhetsbrev och få det senaste från Rum för dramatik före alla andra."
           stickerText="Signa upp!"
           align={ActionBannerAlign.end}
           className={styles.newsletterBtn}
