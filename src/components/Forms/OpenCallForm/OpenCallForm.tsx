@@ -170,6 +170,7 @@ export const OpenCallForm = () => {
         feedback={getFieldError('applicant-firstname')}
         value={firstName}
         required
+        autoComplete="given-name"
         onValueChange={(e) => {
           setFirstName(e.target.value);
           if (localErrors['applicant-firstname']) {
@@ -195,6 +196,7 @@ export const OpenCallForm = () => {
         feedback={getFieldError('applicant-lastname')}
         value={lastName}
         required
+        autoComplete="family-name"
         onValueChange={(e) => {
           setLastName(e.target.value);
           if (localErrors['applicant-lastname']) {
@@ -220,6 +222,7 @@ export const OpenCallForm = () => {
         feedback={getFieldError('applicant-email')}
         value={email}
         required
+        autoComplete="email"
         onValueChange={(e) => {
           setEmail(e.target.value);
           if (localErrors['applicant-email']) {

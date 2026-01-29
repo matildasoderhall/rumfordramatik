@@ -122,6 +122,7 @@ div:has(input[type='file']) {
   font-size: var(--text-200);
 
   align-self: self-start;
+  max-width: fit-content;
 }
 
 .checkboxLabel {
