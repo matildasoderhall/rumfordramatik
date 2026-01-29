@@ -1,9 +1,14 @@
+import { SEO } from '@/components/SEO';
 import styles from './PrivacyPolicy.module.scss';
 import classNames from 'classnames';
 
 export const PrivacyPolicyPage = () => {
   return (
     <div className={classNames(styles.privacyPolicyPage)}>
+      <SEO
+        title="Integritetspolicy"
+        description="Information om hur Rum för dramatik hanterar dina personuppgifter, cookies och din integritet när du besöker vår hemsida eller handlar av oss."
+      />
       <h1>Integritetspolicy</h1>
       <span className={styles.lastUpdated}>Senast uppdaterad: 2026-01-27</span>
 

@@ -1,10 +1,15 @@
 import { OrderForm } from '@/components/Forms/OrderForm';
 import styles from './OrderPage.module.scss';
 import classNames from 'classnames';
+import { SEO } from '@/components/SEO';
 
 export const OrderPage = () => {
   return (
     <div className={classNames(styles.orderPage)}>
+      <SEO
+        title="Beställ"
+        description="Köp lösnummer av Rum för dramatik. Stötta utgivningen av nyskriven dramatik och få tidskriften direkt hem i brevlådan eller hämta ut den i Stockholm eller Göteborg."
+      />
       <h1>Beställ</h1>
       <div className={styles.formWrapper}>
         <section className={styles.orderInfo}>

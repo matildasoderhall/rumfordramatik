@@ -5,6 +5,7 @@ import { useOpenCall } from '@/hooks/useOpenCall';
 import { NewsletterContainer } from '@/components/Forms/NewsletterForm';
 import { FormattedText } from '@/components/FormattedText';
 import { SectionLoader } from '@/components/Spinner';
+import { SEO } from '@/components/SEO';
 
 export const OpenCallPage = () => {
   const { data, loading, isExpired, applicationDeadline } = useOpenCall();
@@ -25,6 +26,10 @@ export const OpenCallPage = () => {
 
   return (
     <div className={classNames(styles.openCallPage)}>
+      <SEO
+        title="Open Call"
+        description="Vill du bli publicerad? Skicka in din dramatik till oss. Här hittar du information om aktuella deadlines, teman och hur du ansöker till tidskriften."
+      />
       <h1 className={styles.pageTitle}>Open Call</h1>
 
       {isExpired ? (

@@ -1,9 +1,14 @@
+import { SEO } from '@/components/SEO';
 import styles from './AboutPage.module.scss';
 import classNames from 'classnames';
 
 export const AboutPage = () => {
   return (
     <div className={classNames(styles.aboutPage)}>
+      <SEO
+        title={'Om oss'}
+        description={'Rum för dramatik publicerar och utforskar samtida dramatik. Vi är en mötesplats för dramatiker och alla med intresse för text och scenkonst.'}
+      />
       <h1 className={styles.title}>Om oss</h1>
 
       <div className={styles.imgWrapperTop}>
