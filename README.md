@@ -130,15 +130,15 @@ The site reflects the printed magazine's aesthetic:
   <h3>Desktop & Mobile</h3>
   <table>
     <tr>
-      <td valign="top"><img src="image-3.png" width="500" alt="Desktop View"></td>
-      <td valign="top"><img src="image-2.png" width="200" alt="Mobile View"></td>
+      <td valign="top"><img src="src/assets/desktop-view.png" width="500" alt="Desktop View"></td>
+      <td valign="top"><img src="src/assets/mobile-view.png" width="200" alt="Mobile View"></td>
     </tr>
   </table>
 </div>
 
 ### ⚡ Performance
 <div align="center">
-  <img src="image.png" alt="Lighthouse Analysis"/>
+  <img src="src/assets/lighthouse-analysis.png" alt="Lighthouse Analysis"/>
 </div>
 
 ## 🤝 Credits
