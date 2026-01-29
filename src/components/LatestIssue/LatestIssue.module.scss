@@ -8,13 +8,14 @@
   flex-direction: column;
   gap: var(--space-l);
   margin-inline: var(--space-fluid);
-  margin-block: var(--space-2xl);
+  
 
   @include mq(md) {
     display: grid;
     grid-template-columns: 5fr 7fr;
     gap: 0 2rem;
     align-items: start;
+    margin-block: var(--space-2xl);
   }
 }
 .singleArrow {

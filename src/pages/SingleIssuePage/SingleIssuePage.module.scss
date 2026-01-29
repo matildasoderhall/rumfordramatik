@@ -80,10 +80,10 @@
   flex-direction: column;
   gap: var(--space-s);
 
-  font-size: var(--text-500);
+  font-size: var(--text-400);
 
   @include mq(md) {
-    max-width: 24.3rem;
+    max-width: 27rem;
   }
 }
 
@@ -92,7 +92,8 @@
   grid-template-columns: 1fr 1fr;
 
   @include mq(md) {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: auto 1fr ;
+    column-gap: var(--space-s);
   }
 
   dd {
@@ -150,6 +151,7 @@
 }
 
 .singleArrow {
+  display: none;
   position: absolute;
 
   right: 0;
@@ -166,6 +168,7 @@
   }
 
   @include mq(md) {
+    display: block;
     --arrow-width: 3rem;
     bottom: calc(var(--space-xl) * -1);
     right: -0.7rem;
