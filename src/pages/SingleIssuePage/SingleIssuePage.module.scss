@@ -150,6 +150,7 @@
 }
 
 .singleArrow {
+  display: none;
   position: absolute;
 
   right: 0;
@@ -166,6 +167,7 @@
   }
 
   @include mq(md) {
+    display: block;
     --arrow-width: 3rem;
     bottom: calc(var(--space-xl) * -1);
     right: -0.7rem;
