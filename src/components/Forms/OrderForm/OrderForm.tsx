@@ -10,6 +10,7 @@ import { Link } from 'react-router';
 export const OrderForm = () => {
   const { submit, status, message, invalidFields } = useSubmitForm();
   const [startTime] = useState(() => Date.now());
+  const [localErrors, setLocalErrors] = useState<Record<string, string>>({});
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -24,7 +25,20 @@ export const OrderForm = () => {
   const [newsletter, setNewsletter] = useState(false);
 
   const getFieldError = (fieldName: string): string | undefined => {
-    return invalidFields?.find((err) => err.field === fieldName)?.message;
+    return (
+      localErrors[fieldName] ||
+      invalidFields?.find((err) => err.field === fieldName)?.message
+    );
+  };
+
+  const clearError = (field: string) => {
+    if (localErrors[field]) {
+      setLocalErrors((prev) => {
+        const newErrors = { ...prev };
+        delete newErrors[field];
+        return newErrors;
+      });
+    }
   };
 
   const requiresAddress =
@@ -42,11 +56,52 @@ export const OrderForm = () => {
 
     const submitTime = Date.now();
     const timeTaken = submitTime - startTime;
-    
+
     if (timeTaken < 2500) {
-      return; 
+      return;
     }
 
+    const newErrors: Record<string, string> = {};
+    let isValid = true;
+
+    if (!firstName.trim()) {
+      newErrors['mc4wp-FNAME'] = 'Fyll i förnamn.';
+      isValid = false;
+    }
+    if (!lastName.trim()) {
+      newErrors['mc4wp-LNAME'] = 'Fyll i efternamn.';
+      isValid = false;
+    }
+    if (!email.trim()) {
+      newErrors['mc4wp-EMAIL'] = 'Fyll i e-post.';
+      isValid = false;
+    } else if (!email.includes('@')) {
+      newErrors['mc4wp-EMAIL'] = 'Ogiltig e-postadress.';
+      isValid = false;
+    }
+
+    if (!quantity || parseInt(quantity) < 1) {
+      newErrors['quantity'] = 'Ange antal.';
+      isValid = false;
+    }
+
+    if (requiresAddress) {
+      if (!address.trim()) {
+        newErrors['your-address'] = 'Fyll i gatuadress.';
+        isValid = false;
+      }
+      if (!zip.trim()) {
+        newErrors['your-zip'] = 'Fyll i postnummer.';
+        isValid = false;
+      }
+      if (!city.trim()) {
+        newErrors['your-city'] = 'Fyll i ort.';
+        isValid = false;
+      }
+    }
+
+    setLocalErrors(newErrors);
+    if (!isValid) return;
 
     const formData = new FormData();
 
@@ -68,8 +123,6 @@ export const OrderForm = () => {
 
     formData.append('_wpcf7_unit_tag', 'order-form');
 
-    formData.delete('_honey');
-
     submit('55', formData);
   };
 
@@ -85,7 +138,7 @@ export const OrderForm = () => {
   }
   return (
     <div className={styles.orderFormWrapper}>
-      <form className={classNames(styles.orderForm)} onSubmit={handleSubmit}>
+      <form className={classNames(styles.orderForm)} onSubmit={handleSubmit} noValidate>
         <div className={styles.row}>
           <TextInput
             type="text"
@@ -99,7 +152,11 @@ export const OrderForm = () => {
             feedback={getFieldError('mc4wp-FNAME')}
             value={firstName}
             required
-            onValueChange={(e) => setFirstName(e.target.value)}
+            autoComplete="given-name"
+            onValueChange={(e) => {
+              setFirstName(e.target.value);
+              clearError('mc4wp-FNAME');
+            }}
             disabled={status === 'sending'}
           />
 
@@ -115,7 +172,11 @@ export const OrderForm = () => {
             feedback={getFieldError('mc4wp-LNAME')}
             value={lastName}
             required
-            onValueChange={(e) => setLastName(e.target.value)}
+            autoComplete="family-name"
+            onValueChange={(e) => {
+              setLastName(e.target.value);
+              clearError('mc4wp-LNAME');
+            }}
             disabled={status === 'sending'}
           />
         </div>
@@ -132,7 +193,11 @@ export const OrderForm = () => {
           feedback={getFieldError('mc4wp-EMAIL')}
           value={email}
           required
-          onValueChange={(e) => setEmail(e.target.value)}
+          autoComplete="email"
+          onValueChange={(e) => {
+            setEmail(e.target.value);
+            clearError('mc4wp-EMAIL');
+          }}
           disabled={status === 'sending'}
         />
 
@@ -150,7 +215,10 @@ export const OrderForm = () => {
             value={quantity}
             required
             min={1}
-            onValueChange={(e) => setQuantity(e.target.value)}
+            onValueChange={(e) => {
+              setQuantity(e.target.value);
+              clearError('quantity');
+            }}
             disabled={status === 'sending'}
           />
         </div>
@@ -169,7 +237,20 @@ export const OrderForm = () => {
                   name="shipment"
                   value={option}
                   checked={shipmentMethod === option}
-                  onChange={(e) => setShipmentMethod(e.target.value)}
+                  onChange={(e) => {
+                    setShipmentMethod(e.target.value);
+                    if (
+                      e.target.value !== 'Skickat till mig (frakt tillkommer)'
+                    ) {
+                      setLocalErrors((prev) => {
+                        const newErr = { ...prev };
+                        delete newErr['your-address'];
+                        delete newErr['your-zip'];
+                        delete newErr['your-city'];
+                        return newErr;
+                      });
+                    }
+                  }}
                   disabled={status === 'sending'}
                 />
                 {option}
@@ -191,7 +272,11 @@ export const OrderForm = () => {
               feedback={getFieldError('your-address')}
               value={address}
               required={requiresAddress}
-              onValueChange={(e) => setAddress(e.target.value)}
+              autoComplete="address-line1"
+              onValueChange={(e) => {
+                setAddress(e.target.value);
+                clearError('your-address');
+              }}
               disabled={status === 'sending'}
             />
 
@@ -209,7 +294,11 @@ export const OrderForm = () => {
                   feedback={getFieldError('your-zip')}
                   value={zip}
                   required={requiresAddress}
-                  onValueChange={(e) => setZip(e.target.value)}
+                  autoComplete="postal-code"
+                  onValueChange={(e) => {
+                    setZip(e.target.value);
+                    clearError('your-zip');
+                  }}
                   disabled={status === 'sending'}
                 />
               </div>
@@ -225,7 +314,10 @@ export const OrderForm = () => {
                 feedback={getFieldError('your-city')}
                 value={city}
                 required={requiresAddress}
-                onValueChange={(e) => setCity(e.target.value)}
+                onValueChange={(e) => {
+                  setCity(e.target.value);
+                  clearError('your-city');
+                }}
                 disabled={status === 'sending'}
               />
             </div>
