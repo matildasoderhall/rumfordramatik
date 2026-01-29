@@ -115,7 +115,37 @@ div:has(input[type='file']) {
   background: var(--color-warning-surface);
   border: 1px solid var(--color-warning-border);
   border-radius: 4px;
-  padding: var(--space-s);
+  padding-block: 2px;
+  padding-left: var(--space-2xs);
+  padding-right: var(--space-l);
   font-family: $font-condensed;
   font-size: var(--text-200);
+
+  align-self: self-start;
+}
+
+.checkboxLabel {
+  font-size: var(--text-200);
+  padding-bottom: var(--space-2xs);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 1.2em;
+  height: 1.2em;
+  margin-top: 0.1em;
+  accent-color: var(--color-accent);
+}
+
+.labelText {
+  color: var(--color-black-transparent-md);
+  a {
+    text-decoration: underline;
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
 }
