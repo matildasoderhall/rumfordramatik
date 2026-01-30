@@ -15,22 +15,18 @@ export const OrderPage = () => {
         <section className={styles.orderInfo}>
           <h2>Köp första numret</h2>
           <p>
-            Detta formulär riktar sig till dig som inte kunde komma på vår
-            releasefest men vill köpa Rum för dramatiks första nummer, 2025:1
-            tema Rum.{' '}
+            Tidskriften kostar 120 kr. Du kan välja mellan att få den skickad
+            till din hemadress eller mötas upp i Göteborg eller Stockholm.
           </p>
           <p>
-            Boken kostar 120 kr. Du kan välja mellan att få den skickad till din
-            hemadress (skriv då din adress i fältet nedan), eller mötas upp med
-            någon av oss, antingen i Göteborg eller Stockholm. <br />
-            Betalning sker då du fått boken i din hand, eller levererad till dig
-            (du står själv för frakten). Det kommer finnas ett swishnummer.{' '}
+            Betalning sker då du fått boken i din hand eller levererad till dig.
+            Mottagare bekostar frakt. Du får en faktura med angivet Swish- och
+            kontonummer.
           </p>
           <p>
-            OBS! <br /> Antalet är begränsat och det är först till kvarn som
-            gäller så det är tyvärr inte säkert att du får ett ex bara för att
-            du skickat in det här formuläret. <br />
-            Vi kommer höra av oss till dig på mail kring leverans.{' '}
+            OBS! <br /> Antalet är begränsat. Det är tyvärr inte säkert att du
+            får ett exemplar bara för att du skickat in formuläret. <br /> Vi
+            kommer höra av oss till dig på mail angående leverans.
           </p>
         </section>
         <OrderForm />
