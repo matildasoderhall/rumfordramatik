@@ -81,7 +81,7 @@
   flex-direction: column;
   gap: var(--space-s);
 
-  font-size: var(--text-400);
+  font-size: var(--text-300);
 
   @include mq(md) {
     max-width: 27rem;

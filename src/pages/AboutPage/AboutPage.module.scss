@@ -235,6 +235,10 @@
   grid-column: 1 / -1;
   padding-inline: var(--space-fluid);
 
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+
   a {
     @include single-underline;
   }
