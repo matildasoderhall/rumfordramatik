@@ -252,7 +252,7 @@ export const NewsletterForm = ({
             />
             <span className={styles.labelText}>
               Jag godkänner att mina uppgifter behandlas enligt Rum för
-              Dramatiks{' '}
+              dramatiks{' '}
               <Link to="/integritetspolicy" target="_blank">
                 integritetspolicy
               </Link>

@@ -287,7 +287,7 @@ export const OpenCallForm = () => {
             }}
           />
           <span className={styles.labelText}>
-            Jag godkänner att mina uppgifter behandlas enligt Rum för Dramatiks{' '}
+            Jag godkänner att mina uppgifter behandlas enligt Rum för dramatiks{' '}
             <Link to="/integritetspolicy" target="_blank">
               integritetspolicy
             </Link>
