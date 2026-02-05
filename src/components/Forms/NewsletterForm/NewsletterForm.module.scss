@@ -1,3 +1,6 @@
+@use '@styles/tokens/typography' as *;
+@use '@styles/abstracts/mixins' as *;
+
 .newsletterForm {
   margin-bottom: var(--space-l);
   width: 100%;
@@ -8,5 +11,50 @@
 
   @include mq(xlg) {
     align-items: end;
+  }
+}
+
+.errorMessage {
+  color: var(--color-warning-text);
+  background: var(--color-warning-surface);
+  border: 1px solid var(--color-warning-border);
+  border-radius: 4px;
+  padding-block: 2px;
+  padding-left: var(--space-2xs);
+  padding-right: var(--space-l);
+  font-family: $font-condensed;
+  font-size: var(--text-200);
+
+  align-self: self-start;
+  max-width: fit-content;
+}
+
+.checkboxLabel {
+  font-size: var(--text-200);
+  padding-bottom: var(--space-2xs);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  cursor: pointer;
+
+  @include mq(md) {
+    max-width: 330px;
+  }
+}
+
+.checkbox {
+  width: 1.2em;
+  height: 1.2em;
+  margin-top: 0.1em;
+  accent-color: var(--color-accent);
+}
+
+.labelText {
+  color: var(--color-black-transparent-md);
+  a {
+    text-decoration: underline;
+    &:hover {
+      color: var(--color-primary);
+    }
   }
 }

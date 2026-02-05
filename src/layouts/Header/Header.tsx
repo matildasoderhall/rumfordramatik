@@ -10,7 +10,7 @@ export const Header = () => {
   return (
     <header className={classNames(styles.header)}>
       <div className={styles.innerWrapper}>
-        <NavLink to="/">
+        <NavLink to="/" aria-label="Rum för dramatik, startsida">
           <Icon
             icon={LogoWithText}
             fill={IconFill.OnDark}

@@ -5,6 +5,7 @@ import { Button, ButtonType } from '@/components/Button';
 import { useState, type FormEvent, useEffect } from 'react';
 import { Alert } from '@/components/Alert';
 import { Spinner } from '@/components/Spinner';
+import { Link } from 'react-router';
 
 interface NewsletterFormProps {
   status: 'sending' | 'error' | 'success' | null;
@@ -43,8 +44,9 @@ export const NewsletterForm = ({
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+  const [gdprConsent, setGdprConsent] = useState(false);
 
-  const [localError, setLocalError] = useState(false);
+  const [localErrors, setLocalErrors] = useState<Record<string, string>>({});
 
   const [alertOpen, setAlertOpen] = useState(false);
 
@@ -52,7 +54,8 @@ export const NewsletterForm = ({
     setEmail('');
     setFirstName('');
     setLastName('');
-    setLocalError(false);
+    setGdprConsent(false);
+    setLocalErrors({});
   };
 
   useEffect(() => {
@@ -104,10 +107,34 @@ export const NewsletterForm = ({
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    if (!firstName || !lastName || !email.includes('@')) {
-      setLocalError(true);
-      return;
+
+    const newErrors: Record<string, string> = {};
+    let isValid = true;
+
+    if (!firstName.trim()) {
+      newErrors['firstName'] = 'Fyll i förnamn.';
+      isValid = false;
     }
+    if (!lastName.trim()) {
+      newErrors['lastName'] = 'Fyll i efternamn.';
+      isValid = false;
+    }
+    if (!email.trim()) {
+      newErrors['email'] = 'Fyll i e-post.';
+      isValid = false;
+    } else if (!email.includes('@')) {
+      newErrors['email'] = 'Ange en giltig e-post.';
+      isValid = false;
+    }
+    if (!gdprConsent) {
+      newErrors['gdpr'] = 'Du måste godkänna villkoren.';
+      isValid = false;
+    }
+
+    setLocalErrors(newErrors);
+
+    if (!isValid) return;
+
     onValidated({ FNAME: firstName, LNAME: lastName, EMAIL: email });
   };
 
@@ -138,24 +165,46 @@ export const NewsletterForm = ({
           label="Förnamn"
           name="firstName"
           value={firstName}
-          onValueChange={(e) => setFirstName(e.target.value)}
+          onValueChange={(e) => {
+            setFirstName(e.target.value);
+            if (localErrors['firstName']) {
+              setLocalErrors((prev) => {
+                const newErrors = { ...prev };
+                delete newErrors['firstName'];
+                return newErrors;
+              });
+            }
+          }}
           variant={
-            localError && !firstName ? InputVariant.Error : InputVariant.Primary
+            localErrors['firstName'] ? InputVariant.Error : InputVariant.Primary
           }
+          feedback={localErrors['firstName']}
           required
           disabled={status === 'sending'}
+          autoComplete="given-name"
         />
 
         <TextInput
           label="Efternamn"
           name="lastName"
           value={lastName}
-          onValueChange={(e) => setLastName(e.target.value)}
+          onValueChange={(e) => {
+            setLastName(e.target.value);
+            if (localErrors['lastName']) {
+              setLocalErrors((prev) => {
+                const newErrors = { ...prev };
+                delete newErrors['lastName'];
+                return newErrors;
+              });
+            }
+          }}
           variant={
-            localError && !lastName ? InputVariant.Error : InputVariant.Primary
+            localErrors['lastName'] ? InputVariant.Error : InputVariant.Primary
           }
+          feedback={localErrors['lastName']}
           required
           disabled={status === 'sending'}
+          autoComplete="family-name"
         />
 
         <TextInput
@@ -163,13 +212,58 @@ export const NewsletterForm = ({
           name="email"
           type="email"
           value={email}
-          onValueChange={(e) => setEmail(e.target.value)}
+          onValueChange={(e) => {
+            setEmail(e.target.value);
+            if (localErrors['email']) {
+              setLocalErrors((prev) => {
+                const newErrors = { ...prev };
+                delete newErrors['email'];
+                return newErrors;
+              });
+            }
+          }}
           variant={
-            localError && !email ? InputVariant.Error : InputVariant.Primary
+            localErrors['email'] ? InputVariant.Error : InputVariant.Primary
           }
+          feedback={localErrors['email']}
           required
           disabled={status === 'sending'}
+          autoComplete="email"
         />
+
+        <div className={styles.checkboxWrapper}>
+          <label className={styles.checkboxLabel}>
+            <input
+              type="checkbox"
+              required
+              name="gdpr_consent"
+              className={styles.checkbox}
+              checked={gdprConsent}
+              onChange={(e) => {
+                setGdprConsent(e.target.checked);
+                if (e.target.checked && localErrors['gdpr']) {
+                  setLocalErrors((prev) => {
+                    const newErrors = { ...prev };
+                    delete newErrors['gdpr'];
+                    return newErrors;
+                  });
+                }
+              }}
+            />
+            <span className={styles.labelText}>
+              Jag godkänner att mina uppgifter behandlas enligt Rum för
+              dramatiks{' '}
+              <Link to="/integritetspolicy" target="_blank">
+                integritetspolicy
+              </Link>
+              .
+            </span>
+          </label>
+
+          {localErrors['gdpr'] && (
+            <p className={styles.errorMessage}>{localErrors['gdpr']}</p>
+          )}
+        </div>
 
         <Button
           type={ButtonType.Submit}

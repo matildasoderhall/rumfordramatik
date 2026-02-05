@@ -5,7 +5,6 @@
 
 .commingEvents {
   padding-inline: var(--space-fluid);
-  
 
   @include mq(md) {
     padding-inline: 0;

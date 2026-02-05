@@ -17,9 +17,11 @@ export const SingleIssuePage = () => {
   const issue = issues.find((i) => i.acf.issue_number.toString() === id);
 
   if (loading) {
-    return <div className={classNames(styles.singleIssuePage)}>
+    return (
+      <div className={classNames(styles.singleIssuePage)}>
         <Spinner />
-      </div>;
+      </div>
+    );
   }
 
   if (!issue) {
