@@ -2,6 +2,7 @@
 @use '@styles/abstracts/mixins' as *;
 
 .signUpPage {
+  @include wrapper;
   padding-inline: var(--space-fluid);
   padding-block: var(--space-xl);
 
