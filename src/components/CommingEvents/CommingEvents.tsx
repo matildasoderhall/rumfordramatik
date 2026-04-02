@@ -82,7 +82,7 @@ export const CommingEvents = ({
       className={classNames(styles.commingEvents, className)}
       id="upcoming-events"
     >
-      <h2 className={styles.sectionTitle}>Kommande event</h2>
+      <h2 className={styles.sectionTitle}>Event</h2>
       <div className={styles.eventsList}>
         {sortedEvents.map((event) => {
           const acf = event.acf || {};
