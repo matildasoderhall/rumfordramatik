@@ -42,6 +42,10 @@ export const SingleIssuePage = () => {
     }
   };
 
+  const imageNode =
+    issue.yoast_head_json?.schema?.['@graph']?.find((node) => node.caption) ||
+    issue.yoast_head_json?.schema?.['@graph']?.[1];
+
   return (
     <div className={classNames(styles.singleIssuePage)}>
       <SEO
@@ -57,6 +61,8 @@ export const SingleIssuePage = () => {
             issueNumber={issue.acf.issue_number}
             theme={issue.acf.theme}
             className={styles.cover}
+            imageUrl={imageNode?.url}
+            imageAlt={imageNode?.caption}
           />
           <DecorativeArrow
             type={ArrowType.singleCurved}

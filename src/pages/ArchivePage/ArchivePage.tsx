@@ -7,6 +7,7 @@ import { SEO } from '@/components/SEO';
 
 export const ArchivePage = () => {
   const { issues } = useIssues();
+
   return (
     <div className={classNames(styles.archivePage)}>
       <SEO
@@ -15,16 +16,25 @@ export const ArchivePage = () => {
       />
       <h1 className={styles.title}>Arkiv</h1>
       <section className={styles.archiveWrapper}>
-        {issues.map((issue) => (
-          <Link key={issue.id} to={`/arkiv/${issue.acf.issue_number}`}>
-            <IssueCover
-              issueNumber={issue.acf.issue_number}
-              theme={issue.acf.theme}
-              className={styles.cover}
-              hoverEffect={true}
-            />
-          </Link>
-        ))}
+        {issues.map((issue) => {
+          const imageNode =
+            issue.yoast_head_json?.schema?.['@graph']?.find(
+              (node) => node.caption
+            ) || issue.yoast_head_json?.schema?.['@graph']?.[1];
+
+          return (
+            <Link key={issue.id} to={`/arkiv/${issue.acf.issue_number}`}>
+              <IssueCover
+                issueNumber={issue.acf.issue_number}
+                theme={issue.acf.theme}
+                className={styles.cover}
+                hoverEffect={true}
+                imageUrl={imageNode?.url}
+                imageAlt={imageNode?.caption}
+              />
+            </Link>
+          );
+        })}
       </section>
     </div>
   );

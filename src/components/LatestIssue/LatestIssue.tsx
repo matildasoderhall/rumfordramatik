@@ -48,6 +48,11 @@ export const LatestIssue = ({
     }
   };
 
+  const imageNode =
+    issue.yoast_head_json?.schema?.['@graph']?.find(
+      (node) => node.caption
+    ) || issue.yoast_head_json?.schema?.['@graph']?.[1];
+
   return (
     <section className={classNames(styles.latestIssue, className)}>
       <div className={styles.issueWrapper}>
@@ -55,6 +60,8 @@ export const LatestIssue = ({
           className={styles.cover}
           issueNumber={acf.issue_number}
           theme={acf.theme}
+          imageUrl={imageNode?.url}
+          imageAlt={imageNode?.caption || `Cover for issue ${acf.issue_number}`}
         />
         <DecorativeArrow
           type={ArrowType.singleCurved}
