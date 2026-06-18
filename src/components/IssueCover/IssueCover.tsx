@@ -28,7 +28,6 @@ export const IssueCover = ({
     <div className={classNames(styles.issueCover, className)}>
       {/* 1. NEW: The anchor for the text. No overflow: hidden here! */}
       <div className={styles.coverContainer}>
-        
         {/* 2. The Clipping Mask: Keeps the scaling image neatly inside the box */}
         <div
           className={classNames(styles.clippingMask, {
@@ -48,9 +47,7 @@ export const IssueCover = ({
         </div>
 
         {/* 3. The Text: Lives inside the anchor, but outside the clipping mask */}
-        <span className={styles.issueNumber}>
-          Nr. {getTitle(issueNumber)}
-        </span>
+        <span className={styles.issueNumber}>Nr. {getTitle(issueNumber)}</span>
       </div>
 
       <span className={styles.theme}>Tema: {theme}</span>

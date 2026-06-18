@@ -49,9 +49,8 @@ export const LatestIssue = ({
   };
 
   const imageNode =
-    issue.yoast_head_json?.schema?.['@graph']?.find(
-      (node) => node.caption
-    ) || issue.yoast_head_json?.schema?.['@graph']?.[1];
+    issue.yoast_head_json?.schema?.['@graph']?.find((node) => node.caption) ||
+    issue.yoast_head_json?.schema?.['@graph']?.[1];
 
   return (
     <section className={classNames(styles.latestIssue, className)}>
