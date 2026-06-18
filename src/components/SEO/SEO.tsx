@@ -15,8 +15,8 @@ export const SEO = ({
 }: SEOProps) => {
   const siteTitle =
     title === 'Hem'
-      ? 'Rum för Dramatik - Tidskrift för nyskriven dramatik'
-      : `${title} | Rum för Dramatik`;
+      ? 'Rum för dramatik - Tidskrift för nyskriven dramatik'
+      : `${title} | Rum för dramatik`;
 
   return (
     <Helmet>
