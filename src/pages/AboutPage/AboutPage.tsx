@@ -54,7 +54,7 @@ export const AboutPage = () => {
       <div className={styles.contactText}>
         <p>
           Redaktionen utgörs av Anna Axelsson, Inez Petterson, Julia Nicolaisen
-          och Klara Kirk. Nora Widell står för den grafiska formgivningen.
+          och Klara Asta Kirk. Nora Widell står för den grafiska formgivningen.
         </p>
         <p>
           Har du några funderingar eller vill komma i kontakt med oss kan du
