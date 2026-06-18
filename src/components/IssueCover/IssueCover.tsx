@@ -6,6 +6,8 @@ interface IssueCoverProps {
   theme: string;
   className?: string;
   hoverEffect?: boolean;
+  imageUrl?: string;
+  imageAlt?: string;
 }
 
 export const IssueCover = ({
@@ -13,6 +15,8 @@ export const IssueCover = ({
   theme,
   className,
   hoverEffect,
+  imageUrl,
+  imageAlt,
 }: IssueCoverProps) => {
   const getTitle = (num: number) => {
     if (!num) return '';
@@ -22,13 +26,30 @@ export const IssueCover = ({
 
   return (
     <div className={classNames(styles.issueCover, className)}>
-      <div
-        className={classNames(styles.coverBg, {
-          [styles.hoverEffect]: hoverEffect,
-        })}
-      >
+      {/* 1. NEW: The anchor for the text. No overflow: hidden here! */}
+      <div className={styles.coverContainer}>
+        {/* 2. The Clipping Mask: Keeps the scaling image neatly inside the box */}
+        <div
+          className={classNames(styles.clippingMask, {
+            [styles.hoverEffect]: hoverEffect,
+          })}
+        >
+          {imageUrl ? (
+            <img
+              src={imageUrl}
+              alt={imageAlt || `Cover for issue ${getTitle(issueNumber)}`}
+              className={styles.coverImage}
+              loading="lazy"
+            />
+          ) : (
+            <div className={styles.coverBg}></div>
+          )}
+        </div>
+
+        {/* 3. The Text: Lives inside the anchor, but outside the clipping mask */}
         <span className={styles.issueNumber}>Nr. {getTitle(issueNumber)}</span>
       </div>
+
       <span className={styles.theme}>Tema: {theme}</span>
     </div>
   );
