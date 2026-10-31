@@ -6,6 +6,12 @@ import { useState, type FormEvent } from 'react';
 import { Button, ButtonType } from '@/components/Button';
 import { Spinner } from '@/components/Spinner';
 import { Link } from 'react-router';
+import { SelectInput } from '@/components/SelectDropdown/SelectInput';
+
+const AVAILABLE_ISSUES = [
+  { value: 'issue-2', label: 'Nr.02 - Glömska' },
+  { value: 'issue-1', label: 'Nr.01 - Rum' },
+];
 
 export const OrderForm = () => {
   const { submit, status, message, invalidFields } = useSubmitForm();
@@ -19,6 +25,7 @@ export const OrderForm = () => {
   const [zip, setZip] = useState('');
   const [city, setCity] = useState('');
   const [quantity, setQuantity] = useState('1');
+  const [issue, setIssue] = useState(AVAILABLE_ISSUES[0].value);
   const [shipmentMethod, setShipmentMethod] = useState(
     'Skickat till mig (frakt tillkommer)'
   );
@@ -109,6 +116,7 @@ export const OrderForm = () => {
     formData.append('mc4wp-LNAME', lastName);
     formData.append('mc4wp-EMAIL', email);
     formData.append('quantity', quantity);
+    formData.append('issue', issue);
     formData.append('shipment', shipmentMethod);
 
     if (requiresAddress) {
@@ -205,26 +213,45 @@ export const OrderForm = () => {
           disabled={status === 'sending'}
         />
 
-        <div className={styles.narrowField}>
-          <TextInput
-            type="number"
-            label="Antal exemplar"
-            name="quantity"
+        <div className={styles.row}>
+          <SelectInput
+            label="Välj nummer"
+            name="issue"
             variant={
-              getFieldError('quantity')
-                ? InputVariant.Error
-                : InputVariant.Primary
+              getFieldError('issue') ? InputVariant.Error : InputVariant.Primary
             }
-            feedback={getFieldError('quantity')}
-            value={quantity}
+            feedback={getFieldError('issue')}
+            value={issue}
             required
-            min={1}
+            options={AVAILABLE_ISSUES}
             onValueChange={(e) => {
-              setQuantity(e.target.value);
-              clearError('quantity');
+              setIssue(e.target.value);
+              clearError('issue');
             }}
             disabled={status === 'sending'}
           />
+
+          <div className={styles.narrowField}>
+            <TextInput
+              type="number"
+              label="Antal exemplar"
+              name="quantity"
+              variant={
+                getFieldError('quantity')
+                  ? InputVariant.Error
+                  : InputVariant.Primary
+              }
+              feedback={getFieldError('quantity')}
+              value={quantity}
+              required
+              min={1}
+              onValueChange={(e) => {
+                setQuantity(e.target.value);
+                clearError('quantity');
+              }}
+              disabled={status === 'sending'}
+            />
+          </div>
         </div>
 
         <div className={styles.radioGroupWrapper}>
