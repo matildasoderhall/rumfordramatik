@@ -13,9 +13,9 @@ export const OrderPage = () => {
       <h1>Beställ</h1>
       <div className={styles.formWrapper}>
         <section className={styles.orderInfo}>
-          <h2>Köp första numret</h2>
+          <h2>Köp tidskriften</h2>
           <p>
-            Tidskriften kostar 120 kr. Du kan välja mellan att få den skickad
+            Tidskriften kostar 150 kr. Du kan välja mellan att få den skickad
             till din hemadress eller mötas upp i Göteborg eller Stockholm.
           </p>
           <p>
